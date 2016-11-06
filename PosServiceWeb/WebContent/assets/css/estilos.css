@@ -1,0 +1,119 @@
+.show {
+    display: block;
+}
+html, body {
+    height: 100%;
+}
+
+body { 
+    background-image: url(../../assets/img/carretera.jpg);
+    background-repeat: round;
+    background-size:100% 100%;
+    width: 100%;
+    height: 100%;
+}
+
+div {
+    display: block;
+}
+
+
+hr{
+    margin-top: 38% !important;
+    margin-bottom: 20px;
+    margin-left: 55px !important;
+    border-top: 1px solid rgba(133,190,197,0.5);
+}
+h4{
+    color: white;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.buscar-consultor input[type="text"] {
+    font-weight: 300;
+    border: 0 !important;
+    width: 80% !important;
+    height: 10px;
+    padding: 13px 19px !important;
+    margin-bottom: 11px;
+    background-color: rgba(220,220,197,0.7);
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+.btn-lg {
+    background-color: #58e5ff;
+    border: 1px solid white;
+    margin-left: 50%;
+    width: 37%;
+    font-size: 13px;
+    color: white;
+    padding: 7px;
+    background-color: #58e5ff;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+.btn-lg1 {
+    background-color: #58e5ff;
+    border: 1px solid white;
+    width: 37%;
+    font-size: 13px;
+    color: white;
+    padding: 7px;
+    background-color: #58e5ff;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    margin-right: 53%;
+    margin-top: 4% !important;
+}
+
+#button-blue{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    float:left;
+    width: 50%;
+    border: #fbfbfb solid 4px;
+    cursor:pointer;
+    background-color: #3498db;
+    color:white;
+    font-size:24px;
+    padding-top:22px;
+    padding-bottom:22px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+::-webkit-input-placeholder {
+   color: #F4F4F4;
+}
+
+@media only screen and (max-width: 580px) {
+
+
+#form-div {
+    background-color: rgba(72,72,72,0.4);
+    padding-left: 35px;
+    padding-right: 28px;
+    padding-top: 0px;
+    padding-bottom: 50px;
+    width: 70%;
+    float: left;
+    left: 5%;
+    position: absolute;
+    margin-top: 28px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    height: 73%;
+}
+
+}
+

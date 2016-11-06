@@ -1,0 +1,400 @@
+/* @import url(http://fonts.googleapis.com/css?family=Oswald:400,300); */
+/* @import url(http://fonts.googleapis.com/css?family=Abel|Satisfy); */
+
+/*
+	Monochromed: A responsive HTML5 website template by HTML5Templates.com
+	Released for free under the Creative Commons Attribution 3.0 license (html5templates.com/license)
+	Visit http://html5templates.com for more great templates or follow us on Twitter @HTML5T
+*/
+
+
+/*********************************************************************************/
+/* Global                                                                        */
+/*********************************************************************************/
+
+body {
+	padding: 0px;
+    background: #090909 url(images/img01.png) repeat;
+    margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+	color: #808080;
+}
+ 
+h1, h2, h3 {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 200;
+	color: #4F4F4F;
+}
+
+p, ol, ul {
+	margin-top: 0px;
+}
+
+p {
+	line-height: 200%;
+}
+
+strong {
+	font-weight: 700;
+}
+
+a {
+	color: #292929;
+}
+
+
+/* Header */
+
+#header-wrapper {
+	height: 122px;
+}
+
+/* Page */
+
+#page-wrapper {
+	padding: 50px 0px;
+	background: url(images/img02.png) repeat;
+	width: 100%;
+}
+
+/* Footer Content */
+
+#footer-wrapper {
+	overflow: auto;
+	padding: 50px 0px;
+	background: url(images/img03.png) repeat;
+	height: 200px;
+}
+
+/* Copyright */
+
+#copyright {
+	overflow: hidden;
+	height: 35px;
+}
+
+#copyright p {
+	padding: 5px 0px 0px 0px;
+	text-align: center;
+	font-size: 11pt;
+	color: #4F4F4F;
+}
+
+/* List style */
+
+.list-style1 {
+}
+
+.list-style1 li {
+	padding: 20px 0px 20px 0px;
+	background: /*url(images/link-style1-divider.png)*/ repeat-x left top;
+}
+
+.list-style1 p {
+	margin: 0px;
+	padding: 0px;
+}
+
+.list-style1 img {
+	float: left;
+	margin-top: 3px;
+	margin-right: 20px;
+}
+
+.list-style1 .posted {
+	padding: 10px 0px 0px 0px;
+	font-size: 8pt;
+	font-style: italic;
+	color: #A2A2A2;
+}
+
+.list-style1 .first {
+	padding-top: 0px;
+	background: none;
+}
+
+/* List style2 */
+
+.list-style2 {
+	margin: 0px;
+	padding: 30px 0px 0px 0px;
+	list-style: none;
+}
+
+.list-style2 li {
+	padding: 0px 0px 15px 0px;
+}
+
+/* List style3 */
+
+.list-style3 {
+	margin: 0px;
+	padding: 30px 0px 0px 0px;
+	list-style: none;
+}
+
+.list-style3 li {
+	padding: 0px 0px 16px 0px;
+}
+
+.list-style3 a {
+	color: #ABABAB;
+}
+   
+
+/* Image style */
+
+.image-style1 {
+	margin-bottom: 20px;
+	padding: 9px;
+	background: #FFFFFF;
+	border: 1px solid #B8B8B8;
+}
+
+/* Button style */
+
+.button-style {
+	text-align: center;
+}
+
+.button-style a {
+	display: inline-block;
+	width: 140px;
+	height: 27px;
+	margin-top: 21px;
+	background: url(images/img04.jpg) no-repeat left top;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 200;
+	font-size: 11pt;
+	color: #DDDDDD;
+}
+
+/* Button style */
+
+.button-style1 a {
+	display: inline-block;
+	width: 140px;
+	height: 27px;
+	margin-top: 20px;
+	background: url(images/img04.jpg) no-repeat left top;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 200;
+	font-size: 11pt;
+	color: #DDDDDD;
+}
+.button-style2 a {
+	display: inline-block;
+	width: 140px;
+	height: 27px;
+	margin-top: 21px;
+	background: url(images/img04.jpg) no-repeat left top;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 200;
+	font-size: 11pt;
+	color: #DDDDDD;
+}
+
+.button-style a:hover {
+        background: rgba(220,220,197,0.9);
+        background: linear-gradient(top, rgba(220,220,197,0.0) 0%, rgba(220,220,197,0.9) 40%);
+        background: -moz-linear-gradient(top, rgba(220,220,197,0.2) 0%, rgba(220,220,197,0.2) 40%);
+        background: -webkit-linear-gradient(top, rgba(220,220,197,0.7) 0%, #808080 40%);
+        text-transform: uppercase;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 200;
+		font-size: 11pt;
+        color: rgba(220,220,197,0.7);
+    }
+
+.button-style1 a:hover {
+    background: rgba(220,220,197,0.9);
+    background: linear-gradient(top, rgba(220,220,197,0.0) 0%, rgba(220,220,197,0.9) 40%);
+    background: -moz-linear-gradient(top, rgba(220,220,197,0.2) 0%, rgba(220,220,197,0.2) 40%);
+    background: -webkit-linear-gradient(top, rgba(220,220,197,0.7) 0%, #808080 40%);
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+	font-size: 11pt;
+    color: rgba(220,220,197,0.7);
+}
+
+.button-style2 a:hover {
+    background: rgba(220,220,197,0.9);
+    background: linear-gradient(top, rgba(220,220,197,0.0) 0%, rgba(220,220,197,0.9) 40%);
+    background: -moz-linear-gradient(top, rgba(220,220,197,0.2) 0%, rgba(220,220,197,0.2) 40%);
+    background: -webkit-linear-gradient(top, rgba(220,220,197,0.7) 0%, #808080 40%);
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+	font-size: 11pt;
+    color: rgba(220,220,197,0.7);
+}
+
+@media (max-width: 950px) {
+#feature-content h2 {
+    margin-left: -14%;
+}
+
+form {
+    margin-left: -10%;
+}
+.buscar-consultor7 {
+    width: 25%;
+}
+}
+@media (max-width: 1127px) {
+
+table {
+    width: 93% !important;
+   margin-left: 38px;
+}
+#header {
+
+    height: 40%;
+}
+.buscar-consultor7 {
+    width: 18% !important;   
+}
+#logo p {
+    margin-left: 74% !important;
+}
+
+.button-style a {
+	width: 157px;
+    margin-left: 60px;
+}
+.button-style1 a {
+	width: 157px;
+    margin-left: 70px;
+}
+.button-style2 a {
+	width: 157px;
+}
+
+
+}
+
+@media (max-width: 1060px) {
+
+table {
+    width: 89% !important;
+   margin-left: 38px;
+}
+#header {
+
+    height: 40%;
+}
+.buscar-consultor7 {
+    width: 18% !important;   
+}
+#logo p {
+    margin-left: 74% !important;
+}
+
+.button-style a {
+	width: 157px;
+    margin-left: 60px;
+}
+.button-style1 a {
+	width: 157px;
+    margin-left: 70px;
+}
+.button-style2 a {
+	width: 157px;
+}
+
+
+
+
+}
+
+
+
+
+@media (max-width: 980px) {
+
+table {   
+    width: 85% !important;
+    margin-left: 57px;
+}
+
+form {
+    margin-left: -34px;
+}
+
+.buscar-consultor7 {
+    width: 25.5%;   
+}
+
+#header {
+    height: 35%;
+}
+
+}
+
+
+
+/* latin-ext */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oswald Light'), local('Oswald-Light'), url(http://fonts.gstatic.com/s/oswald/v11/l1cOQ90roY9yC7voEhngDBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oswald Light'), local('Oswald-Light'), url(http://fonts.gstatic.com/s/oswald/v11/HqHm7BVC_nzzTui2lzQTDVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(http://fonts.gstatic.com/s/oswald/v11/yg0glPPxXUISnKUejCX4qfesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(http://fonts.gstatic.com/s/oswald/v11/pEobIV_lL25TKBpqVI_a2w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Abel'), local('Abel-Regular'), url(http://fonts.gstatic.com/s/abel/v6/brdGGFwqYJxjg2CD1E9o7g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Satisfy';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Satisfy'), url(http://fonts.gstatic.com/s/satisfy/v6/2OzALGYfHwQjkPYWELy-cw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}

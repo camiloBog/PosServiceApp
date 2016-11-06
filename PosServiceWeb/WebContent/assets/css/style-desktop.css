@@ -1,0 +1,422 @@
+/*
+    Monochromed: A responsive HTML5 website template by HTML5Templates.com
+    Released for free under the Creative Commons Attribution 3.0 license (html5templates.com/license)
+    Visit http://html5templates.com for more great templates or follow us on Twitter @HTML5T
+*/
+
+/*********************************************************************************/
+/* Desktop (>= 480px)                                                            */
+/*********************************************************************************/
+
+/* Header */
+#header {
+	padding: 0px;
+	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+	color: #808080;
+	width: 100%;
+	height: 25%;
+	position: fixed;
+}
+
+/* Logo */
+#logo {
+	overflow: hidden;
+	height: 112px;
+	padding-top: 11px;
+	background-color: black;
+}
+
+#logo h1 a {
+	display: block;
+	letter-spacing: -2px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: lowercase;
+	font-family: 'Satisfy', cursive;
+	font-size: 50pt;
+	font-weight: 200;
+	color: #FFFFFF;
+}
+
+#logo p {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 14pt;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 200;
+	margin-top: -3%;
+	margin-left: 83%;
+}
+
+/* Menu */
+#menu {
+	height: 36px;
+	background: #D5D5D5;
+	margin-top: -64px;
+	margin-left: -2%;
+	width: 102%;
+}
+
+#fixed-menu {
+	position: fixed;
+	height: 30px;
+	background: #D5D5D5;
+	margin-top: -6%;
+	margin-left: -2%;
+	width: 102%;
+}
+
+/*#menu li {
+    
+    border-left: 1px solid #9F9F9F;
+}*/
+#menu a {
+	height: 36px;
+	padding: 0px 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-size: 12pt;
+	font-weight: 200;
+	color: #303030;
+	margin-top: 5px !important;
+}
+
+#menu a:hover {
+	color: #171717;
+	height: 36px;
+	margin-top: 5px !important;
+}
+
+#menu .first {
+	border-left: none;
+}
+
+/* Featured Content */
+#feature-content {
+	overflow: hidden;
+	padding: 0px 0px 20px 0px;
+	background: url(images/img05.jpg) repeat-x left bottom;
+}
+
+#feature-content h2 {
+	padding: 0px 0px 30px 0px;
+	letter-spacing: -2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-size: 26pt;
+	font-weight: 200;
+	color: #303030;
+}
+
+#feature-content a img {
+	display: block;
+	width: 100%;
+}
+
+/* Footer Content */
+#footer-content {
+	font-size: 10pt;
+}
+
+#footer-content h2 {
+	padding: 0px 0px 30px 0px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-size: 22pt;
+	font-weight: 200;
+	color: #BFBFBF;
+}
+
+/* Page */
+#page {
+	overflow: hidden;
+	padding: 50px 0px 0px 0px;
+}
+
+/* Content */
+#content {
+	
+}
+
+.column2 #content {
+	
+}
+
+#content h2 {
+	letter-spacing: -2px;
+	text-transform: uppercase;
+	font-size: 30pt;
+	color: #2A2A2A;
+}
+
+#content .subtitle {
+	padding: 0px 0px 30px 0px;
+	letter-spacing: -1px;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-size: 16pt;
+	font-weight: 300;
+	color: #696969;
+}
+
+#content img {
+	padding: 0px 0px 30px 0px;
+}
+
+#content a img {
+	display: block;
+	width: 100%;
+}
+
+/* Sidebar */
+#sidebar {
+	padding: 10px 0px 0px 0px;
+}
+
+.column2 #sidebar {
+	
+}
+
+#sidebar h2 {
+	letter-spacing: -1px;
+	text-transform: uppercase;
+	font-size: 22pt;
+	color: #2A2A2A;
+}
+
+#sidebar .subtitle {
+	padding: 0px 0px 30px 0px;
+	letter-spacing: -1px;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-size: 16pt;
+	font-weight: 300;
+	color: #696969;
+}
+
+.buscar-consultor5 input[type="text"] {
+	font-weight: 300;
+	border: 0 !important;
+	width: 40% !important;
+	height: 11px;
+	padding: 5px 23px !important;
+	margin-bottom: 1px;
+	background-color: #FFFFFF;
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
+
+.btn-lg1 {
+	background-color: #58e5ff;
+	border: 1px solid white;
+	margin-left: 64%;
+	margin-top: -106px;
+	width: 14%;
+	height: 4%;
+	font-size: 13px;
+	padding-top: 4px;
+	padding-left: 8px;
+	border: 1px solid white;
+}
+
+.buscar1 {
+	background-image: url(../../assets/img/search.png);
+	background-repeat: no-repeat;
+	background-size: 14%;
+	color: black;
+	background-position-y: 4PX;
+}
+
+.buscar {
+	background-image: url(../../assets/img/search.png);
+	background-repeat: no-repeat;
+	background-size: 10%;
+	color: black;
+	background-position-y: 8px;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	margin-left: 11%;
+	width: 82%;
+	border: 1px solid white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+td {
+	border: 1px solid rgba(220, 220, 197, 0.7);
+	text-align: center;
+	padding: 1px;
+}
+
+th {
+	border: 1px solid #FFFFFF;
+	padding: 8px;
+	background-color: #373636;
+	color: white;
+}
+
+tr:nth-child(even) {
+	background-color: rgba(220, 220, 197, 0.7);
+}
+
+nav ul ul {
+	display: none;
+}
+
+nav ul li:hover>ul {
+	display: block;
+}
+
+nav ul li {
+	float: left;
+}
+
+nav ul li:hover {
+	background: rgba(220, 220, 197, 0.9);
+	background: linear-gradient(top, rgba(220, 220, 197, 0.0) 0%,
+		rgba(220, 220, 197, 0.9) 40%);
+	background: -moz-linear-gradient(top, rgba(220, 220, 197, 0.2) 0%,
+		rgba(220, 220, 197, 0.2) 40%);
+	background: -webkit-linear-gradient(top, rgba(220, 220, 197, 0.7) 0%,
+		#808080 40%);
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-size: 10pt;
+	margin-top: -1px;
+	font-weight: 800px;
+	color: rgba(220, 220, 197, 0.7);
+}
+
+nav ul li:hover a {
+	color: rgba(220, 220, 197, 0.2);
+}
+
+nav ul li a {
+	display: block;
+	padding: 25px 40px;
+	color: rgba(220, 220, 197, 0.7);
+	text-decoration: none;
+	width: auto;
+	margin-top: -1px;
+}
+
+nav ul ul {
+	background: rgba(220, 220, 197, 0.7);
+	border-radius: 0px;
+	padding: 0;
+	position: absolute;
+	top: 100%;
+	width: auto !important;
+	margin-top: -1px;
+}
+
+nav ul ul li {
+	border-top: 1px solid rgba(220, 220, 197, 0.1);
+	width: 100%;
+}
+
+nav ul ul li a {
+	padding: 15px 40px;
+	color: rgba(220, 220, 197, 0.2);
+}
+
+nav ul ul li a:hover {
+	background: rgba(220, 220, 197, 0.2);
+	width: auto;
+	margin-top: -1px;
+}
+
+nav ul ul ul {
+	position: absolute;
+	left: 100%;
+	margin-top: -1px;
+}
+
+nav ul:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+nav ul {
+	border-radius: 10px;
+	list-style: none;
+	position: relative;
+	display: inline-table;
+	margin-top: 5px;
+	padding: 0 20px;
+}
+
+form {
+	width: 100%;
+}
+
+.formulario {
+	clear: both;
+	float: left;
+	text-align: right;
+	padding: 3px;
+	margin-left: 10%;
+	margin-top: 0px;
+	width: 150px;
+}
+
+.espacio {
+	margin-left: 3%;
+}
+
+.buscar-consultor {
+	font-weight: 300;
+	border: 0 !important;
+	height: 15px;
+	padding: 10px 20px !important;
+	background-color: rgba(220, 220, 197, 0.7);
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+	font-weight: 300;
+	margin-bottom: 5px;
+	padding: 4px 19px 3px !important;
+}
+
+.buscar-consultor2 {
+	font-weight: 300;
+	border: 0 !important;
+	padding: 2px 16px 1px !important;
+	width: 16%;
+	background-color: rgba(220, 220, 197, 0.7) !important;
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+	clear: both;
+}
+
+.buscar-consultor31 {
+	font-weight: 300;
+	border: 0 !important;
+	width: auto !important;
+	height: 18px;
+	padding: 10px 20px !important;
+	background-color: rgba(220, 220, 197, 0.7);
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+	clear: both;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
