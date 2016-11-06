@@ -2,30 +2,35 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+  
   <parent>
     <groupId>PosServiceApp</groupId>
     <artifactId>PosService</artifactId>
     <version>0.0.1</version>
   </parent>
+  
   <groupId>PosServiceApp</groupId>
   <artifactId>PosServiceRest</artifactId>
   <version>0.0.1</version>
   <packaging>war</packaging>
   <name>PosServiceRest Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
   <repositories>
 	   <repository>
 		  <id>JBoss repository</id>
 		  <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
 	   </repository>
-	</repositories>
+  </repositories>
+  
   <dependencies>
 	<dependency>
 		<groupId>org.jboss.resteasy</groupId>
 		<artifactId>resteasy-jaxrs</artifactId>
 		<version>2.2.1.GA</version>
 	</dependency>
-</dependencies>
+  </dependencies>
+  
   <build>
     <finalName>PosServiceRest</finalName>
   </build>
