@@ -12,7 +12,8 @@ function loginController($scope, serviciosRestRequest) {
 		serviciosRestRequest.validar().success(function (data){
 			
 			$scope.valUsu = data;
-
+			
+			
 			
 		});
 
