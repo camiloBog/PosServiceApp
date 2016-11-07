@@ -4,12 +4,39 @@ angular.module('serviciosRest', [])
 
 .factory('serviciosRestRequest', function($http) {
 	
-	var path = "http://localhost:8080/Core/";//API path
+	var path = "http://localhost:8082/PosServiceRest/rest/";//API path
 	
 	return {
 		
 		validar : function(){ 
-			return $http.get(path+'someservice/getusuario');
+			
+//			var resp = $http({
+//	            method: 'GET',
+//	            url: path+'someservice/getusuarios'
+//	        }).success(function(data, status, headers, config) {
+//	        	var txt = "****success: "+data+"\nstatus:"+status+"\nheaders:"+headers+"\nconfig:"+config;
+////	        	alert(txt);
+//	        	console.log(txt)
+//	        	return data;
+////	            defered.resolve(data);
+//	        }).error(function(data, status, headers, config) {
+//	        	var txt = "error: "+data+"\nstatus:"+status+"\nheaders:"+headers+"\nconfig:"+config;
+//	        	console.log(txt)
+////	        	alert(txt);
+//	        	
+////	            if (status === 400) {
+////	                defered.reject(data);
+////	            } else {	
+////	                throw new Error("Fallo obtener los datos:" + status + "\n" + data);
+////	            }
+//	        });
+//			
+//			
+//			
+//			
+//			
+//			return resp;
+			return $http.get(path+'someservice/getusuarios');
 		}
 		
 //		//Login

@@ -15,6 +15,20 @@ import javax.ws.rs.core.Response;
 @Path("someservice")
 
 public class Registro {
+	
+	@GET
+	@Path("getipcliente")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getIpCliente( ) {
+		//@Context HttpServletRequest requ
+		System.out.println("Consulta " + new Date() );
+		
+		Usuario usu = new Usuario();
+		usu.setNombre("Camilo");
+		usu.setApellido("Bustamante");
+		
+		return Response.status(200).header("Access-Control-Allow-Origin", "http://localhost").entity(usu).build();
+	}
 
 	@GET
 	@Path("getdate")
@@ -35,16 +49,30 @@ public class Registro {
 		
 		Usuario usu = new Usuario();
 		usu.setNombre("Camilo");
-		usu.setApellido("Bustamante");
+		usu.setApellido("Bustamante  Sanchez");
 		
 		return usu;
+	}
+	
+	@GET
+	@Path("getusuarios")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUsuarios() {
+		
+		System.out.println("Consulta " + new Date() );
+		
+		Usuario usu = new Usuario();
+		usu.setNombre("Camilo");
+		usu.setApellido("Bustamante");
+		
+		return Response.status(200).header("Access-Control-Allow-Origin", "http://localhost").entity(usu).build();
 	}
 	
 	@POST
 	@Path("postusuario")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response postUsuario(Usuario usu) {
-		String resp = "";
+		String resp = "EL usuario";
 		return Response.status(201).entity(resp).build();
 	}
 
