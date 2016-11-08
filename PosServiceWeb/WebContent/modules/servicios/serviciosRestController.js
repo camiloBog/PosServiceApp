@@ -36,7 +36,8 @@ angular.module('serviciosRest', [])
 //			
 //			
 //			return resp;
-			return $http.get(path+'someservice/getusuarios');
+//			return $http.get(path+'someservice/getipcliente');
+			return $http.get(path+'someservice/getTenant');
 		}
 		
 //		//Login
