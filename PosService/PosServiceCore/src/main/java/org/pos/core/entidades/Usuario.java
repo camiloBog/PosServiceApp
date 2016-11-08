@@ -1,7 +1,6 @@
 package org.pos.core.entidades;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * The persistent class for the usuario database table.
@@ -16,13 +15,8 @@ public class Usuario implements Serializable {
 	private String contrasena;
 	private String nombre;
 	private String usuario;
-	
 	private Integer idarea;
 	private Integer idtenant;
-
-	private List<Movimiento> movimientos;
-	private Area area;
-	private Tenant tenant;
 
 	public Usuario(Integer idusuario, String apellidos, 
 			String contrasena, String nombre, 
@@ -78,30 +72,6 @@ public class Usuario implements Serializable {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-
-	public List<Movimiento> getMovimientos() {
-		return this.movimientos;
-	}
-
-	public void setMovimientos(List<Movimiento> movimientos) {
-		this.movimientos = movimientos;
-	}
-
-	public Area getArea() {
-		return this.area;
-	}
-
-	public void setArea(Area area) {
-		this.area = area;
-	}
-
-	public Tenant getTenant() {
-		return this.tenant;
-	}
-
-	public void setTenant(Tenant tenant) {
-		this.tenant = tenant;
 	}
 
 	public Integer getIdarea() {

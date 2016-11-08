@@ -13,7 +13,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.pos.core.config.DbService;
+import org.pos.core.bind.DbService;
 import org.pos.core.entidades.Area;
 import org.pos.core.entidades.Tenant;
 import org.pos.core.entidades.Usuario;
@@ -100,10 +100,8 @@ public class Registro {
 		Area a = new Area();
 		a.setDescripcion("Una localidad fea");
 		a.setIdarea(8);
-		usu.setArea(a);
 		usu.setContrasena("contraseñafea");
 		usu.setIdusuario(8073);
-		usu.setTenant(t);
 		usu.setUsuario("Nombre feo de usuario");
 		
 		return Response.status(200).header("Access-Control-Allow-Origin", "http://localhost").entity(usu).build();

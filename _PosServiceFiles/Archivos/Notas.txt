@@ -1,0 +1,14 @@
+
+WildFly
+user:	admin
+pass:	admin
+
+Base de Datos
+user:	postgres
+pass:	admin
+
+standalone.bat --server-config=standalone-full.xml
+
+
+Para configurar Wildfly, copiar la carpeta <<postgres>> en 
+WILDFLY_HOME\modules\system\layers\base\org
