@@ -9,6 +9,9 @@ function loginController($scope, serviciosRestRequest) {
 	//Objeto que contiene los input del login
 	$scope.Usu={}
 	
+	//Objeto que contiene los permisos a cada pantalla
+	$scope.menu={}
+	
 	//Valida si el usuario y el pass son correctos
 	$scope.loginFunction = function(){
 		
@@ -16,10 +19,9 @@ function loginController($scope, serviciosRestRequest) {
 		$scope.valUsu={}
 		
 		serviciosRestRequest.validar($scope.Usu.usu, $scope.Usu.pass).success(function (data){
-			
 			$scope.valUsu = data;
 			$scope.login = !$scope.valUsu.validacion;
-			
+			$scope.menu = $scope.valUsu.menu
 		});
 		
 		//Se vacia nuevamente el objeto que contiene los input del login
@@ -31,6 +33,7 @@ function loginController($scope, serviciosRestRequest) {
 		//Vacia las variables usadas
 		$scope.valUsu={}
 		$scope.Usu={}
+		$scope.menu={}
 		$scope.login = true;
 	}
 

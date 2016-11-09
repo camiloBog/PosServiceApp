@@ -24,6 +24,9 @@ public interface UsuarioDao extends DaoInterface{
 	@SqlQuery("select * from USUARIO where usuario = :usuario and contrasena = :contrasena")
 	public Usuario validate(@Bind("usuario") String usuario, @Bind("contrasena") String contrasena);
 	
+	@SqlQuery("select * from :esquema.USUARIO where usuario = :usuario and contrasena = :contrasena")
+	public Usuario validate2(@Bind("esquema") String esquema, @Bind("usuario") String usuario, @Bind("contrasena") String contrasena);
+	
 	@SqlQuery("select * from USUARIO")
 	public List<Usuario> findAll();
 	

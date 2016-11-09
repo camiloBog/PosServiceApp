@@ -5,5 +5,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 @RegisterMapper(TenantMapper.class)
 public interface TenantDao extends DaoInterface {
-	    
+	
+	
+	
 }

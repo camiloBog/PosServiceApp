@@ -10,7 +10,8 @@ import javax.ws.rs.core.Response;
 import org.pos.core.bind.DaoFactory;
 import org.pos.core.dao.UsuarioDao;
 import org.pos.core.entidades.Usuario;
-import org.pos.dto.LoginResponse;
+import org.pos.dto.LoginResponseDto;
+import org.pos.dto.MenuDto;
 
 
 @Path("loginsrv")
@@ -31,13 +32,13 @@ public class LoginSrv {
 		try {
 			usu = dao.validate(usuario, pass);
 		} catch (Exception e) {
-			System.out.println("Fallo la validacion! " + e.getLocalizedMessage());
+			System.out.println("Falló la validacion! " + e.getLocalizedMessage());
 			e.printStackTrace();
 		}finally {
 			dao.close();
 		}
 
-		LoginResponse rs = new LoginResponse();
+		LoginResponseDto rs = new LoginResponseDto();
 		if( null!=usu ){
 			System.out.println("Usuario OK!");
 			rs.setNombre(usu.getNombre() + " " + usu.getApellidos());
@@ -45,6 +46,8 @@ public class LoginSrv {
 			rs.setUsuario(usu.getUsuario());
 			rs.setValidacion(true);
 			rs.setMensaje("Bienvenido " + usu.getNombre());
+			rs.setMenu(new MenuDto(true));
+			
 		}else{
 			System.out.println("Usuario NULL!");
 			rs.setNombre("");
@@ -52,6 +55,7 @@ public class LoginSrv {
 			rs.setUsuario("");
 			rs.setValidacion(false);
 			rs.setMensaje("Usuario y/o contraseña incorrectos, intentalo de nuevo.");
+			rs.setMenu(new MenuDto(false));
 		}
 		
 		return Response.status(200).header("Access-Control-Allow-Origin", "http://localhost").entity(rs).build();

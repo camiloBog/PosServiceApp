@@ -1,24 +1,24 @@
 <div class="12u" id="menu">
 	<nav>
 		<ul>
-			<li><a href="#home">Configuracion</a>
+			<li ng-show="menu.headConfiguracion"><a href="#home">Configuracion</a>
 				<ul>
-					<li><a href="#tenan">Creacion de Tenant</a></li><br>
-					<li><a href="#usuario">Creacion de Usuario</a></li><br>
+					<li ng-show="menu.tenan"><a href="#tenan">Creacion de Tenant</a></li><br>
+					<li ng-show="menu.usuario"><a href="#usuario">Creacion de Usuario</a></li><br>
 				</ul>
 			</li>
-			<li><a href="#home">Inventario</a>
+			<li ng-show="menu.headInventario"><a href="#home">Inventario</a>
 				<ul>
-					<li><a href="#proveedores">Proveedores</a></li><br>
-					<li><a href="#productos">Productos</a></li><br>
-					<li><a href="#ingreso">Ingreso de Inventario</a></li><br>
+					<li ng-show="menu.proveedores"><a href="#proveedores">Proveedores</a></li><br>
+					<li ng-show="menu.productos"><a href="#productos">Productos</a></li><br>
+					<li ng-show="menu.ingreso"><a href="#ingreso">Ingreso de Inventario</a></li><br>
 				</ul>
 			</li>
-			<li><a href="#facturacion">Facturacion</a></li>
-			<li><a href="#home">Consultas</a>
+			<li ng-show="menu.headFacturacion"><a href="#facturacion">Facturacion</a></li>
+			<li ng-show="menu.headConsultas"><a href="#home">Consultas</a>
 				<ul>
-					<li><a href="#inventario">Ver Inventario</a></li><br>
-					<li><a href="#ventas">Ver Ventas</a></li><br>
+					<li ng-show="menu.inventario"><a href="#inventario">Ver Inventario</a></li><br>
+					<li ng-show="menu.ventas"><a href="#ventas">Ver Ventas</a></li><br>
 				</ul>
 			</li>
 			<li id="menuSalir"><a href="#home" ng-click="salirFunction()">Salir</a></li>

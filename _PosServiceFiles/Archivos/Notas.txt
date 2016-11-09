@@ -12,3 +12,7 @@ standalone.bat --server-config=standalone-full.xml
 
 Para configurar Wildfly, copiar la carpeta <<postgres>> en 
 WILDFLY_HOME\modules\system\layers\base\org
+
+
+Multitenant
+http://manikandan-k.github.io/2015/06/04/Multi_tenant_applications_in_jdbi.html
