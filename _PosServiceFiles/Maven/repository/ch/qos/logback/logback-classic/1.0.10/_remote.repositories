@@ -1,5 +1,0 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Mon Nov 07 14:46:17 COT 2016
-logback-classic-1.0.10.jar>=
-logback-classic-1.0.10.jar>central=
-logback-classic-1.0.10.pom>central=
