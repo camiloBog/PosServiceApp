@@ -7,7 +7,7 @@
   </parent>
   <artifactId>PosServiceEar</artifactId>
   <packaging>ear</packaging>
-  <name>PosServiceApp</name>
+  <name>PosServiceEar</name>
   <dependencies>
   	<dependency>
   		<groupId>PosServiceApp</groupId>

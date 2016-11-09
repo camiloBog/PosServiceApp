@@ -42,6 +42,9 @@ public class Registro {
 		
 		DbService db = new DbService();
 		Usuario usu = db.getUsuario(1);
+		
+		db.PruebaDaos();
+		
 //		Usuario usu = new Usuario();
 //		
 //		usu.setNombre(db.getUsuario(1));
@@ -92,6 +95,7 @@ public class Registro {
 		t.setNombre("Tenant Feo");
 		t.setTelefono("3216633");
 		t.setTipoidentificacion(555);
+		
 		
 		Usuario usu = new Usuario();
 		usu.setNombre("Camilo");
