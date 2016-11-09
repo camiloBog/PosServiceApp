@@ -1,12 +1,11 @@
 <div class="loginWrapper">
-	<div class="loginContainer">
-<!-- 		<h1 class="loginH1">Bienvenido...</h1> -->
-		
-		<h1 class="loginH1">Bienvenido {{valUsu.nombre}} {{valUsu.apellidos}}</h1>
+	<div class="loginContainer" >
+		<h1 class="loginH1">Bienvenido...</h1>		
+		<h1 class="loginH1">{{valUsu.mensaje}}</h1>
 
 		<form class="loginForm">
-			<input type="text" class="loginInput" placeholder="Username">
-			<input type="password" class="loginInput" placeholder="Password">
+			<input type="text" ng-model="Usu.usu" class="loginInput" placeholder="Username">
+			<input type="password" ng-model="Usu.pass" class="loginInput" placeholder="Password">
 			<button ng-click="loginFunction()" type="submit" id="login-button" class="loginButton">Login</button>
 		</form>
 	</div>

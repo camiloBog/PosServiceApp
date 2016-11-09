@@ -21,6 +21,9 @@ public interface UsuarioDao extends DaoInterface{
 	@SqlQuery("select * from USUARIO where idusuario = :id")
 	public Usuario findById(@Bind("id") int id);
 	
+	@SqlQuery("select * from USUARIO where usuario = :usuario and contrasena = :contrasena")
+	public Usuario validate(@Bind("usuario") String usuario, @Bind("contrasena") String contrasena);
+	
 	@SqlQuery("select * from USUARIO")
 	public List<Usuario> findAll();
 	
@@ -32,5 +35,5 @@ public interface UsuarioDao extends DaoInterface{
 	
 	@SqlUpdate("delete from USUARIO where idusuario = :idusuario")
 	public void deleteById(@Bind("idusuario") int idusuario);
-	
+
 }
