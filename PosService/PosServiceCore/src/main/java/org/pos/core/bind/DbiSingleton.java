@@ -5,6 +5,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.tweak.StatementLocator;
 
 /**
  * Singleton para generar el DBI
@@ -27,9 +28,15 @@ public class DbiSingleton {
 		}
 	}
 	
-	public static DBI getDBI() {
+	public static DBI getDBI(String esquema) {
 		if( null == dbi) createDBI();
+		dbi.define("esquema", esquema);
 		return DbiSingleton.dbi;
     }
+	
+//	public static DBI getDBI() {
+//		if( null == dbi) createDBI();
+//		return DbiSingleton.dbi;
+//    }
 	
 }
