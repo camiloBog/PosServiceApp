@@ -18,13 +18,14 @@ import org.pos.dto.MenuDto;
 public class LoginSrv {
 		
 	@GET
-	@Path("validar/{usu}/{pas}")
+	@Path("validar/{usu}/{pas}/{esquema}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response valida(
 			@PathParam("usu") String usuario, 
-			@PathParam("pas") String pass) {
+			@PathParam("pas") String pass,
+			@PathParam("esquema") String esquema) {
 		
-		UsuarioDao dao = DaoFactory.getUsuarioDao(UsuarioDao.class, "public");
+		UsuarioDao dao = DaoFactory.getUsuarioDao(UsuarioDao.class, esquema);
 		Usuario usu = null;
 		
 		System.out.println("Validando: "+usuario+" "+pass);
@@ -50,12 +51,13 @@ public class LoginSrv {
 			
 		}else{
 			System.out.println("Usuario NULL!");
-			rs.setNombre("");
-			rs.setTenant(null);
-			rs.setUsuario("");
-			rs.setValidacion(false);
-			rs.setMensaje("Usuario y/o contraseña incorrectos, intentalo de nuevo.");
-			rs.setMenu(new MenuDto(false));
+//			rs.setNombre("");
+//			rs.setTenant(null);
+//			rs.setUsuario("");
+//			rs.setValidacion(false);
+//			rs.setMensaje("Usuario y/o contraseña incorrectos, intentalo de nuevo.");
+			
+			rs = null;
 		}
 		
 		return Response.status(200).header("Access-Control-Allow-Origin", "http://localhost").entity(rs).build();

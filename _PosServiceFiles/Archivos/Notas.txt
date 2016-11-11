@@ -15,4 +15,9 @@ WILDFLY_HOME\modules\system\layers\base\org
 
 
 Multitenant
-http://manikandan-k.github.io/2015/06/04/Multi_tenant_applications_in_jdbi.html
+	http://manikandan-k.github.io/2015/06/04/Multi_tenant_applications_in_jdbi.html
+	http://zetcode.com/db/jdbi/
+	
+Rest
+	http://cursoangularjs.es/doku.php?id=unidades:10_servidor:01_rest
+	
