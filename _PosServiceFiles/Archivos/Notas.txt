@@ -20,4 +20,8 @@ Multitenant
 	
 Rest
 	http://cursoangularjs.es/doku.php?id=unidades:10_servidor:01_rest
-	
+
+NginX
+	https://elbauldelprogramador.com/como-configurar-un-balanceador-de-carga-en-entornos-cloud/
+	http://systemadmin.es/2012/04/balanceo-de-carga-con-nginx
+	http://www.digitalvalley.com/blog/configurar-nginx-como-balanceador-de-carga/

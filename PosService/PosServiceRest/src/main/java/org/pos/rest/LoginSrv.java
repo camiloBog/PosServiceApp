@@ -13,10 +13,14 @@ import org.pos.db.entidades.Usuario;
 import org.pos.dto.LoginResponseDto;
 import org.pos.dto.MenuDto;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 @Path("loginsrv")
 public class LoginSrv {
-		
+
+	private static final Logger log = LogManager.getLogger(LoginSrv.class);
+	
 	@GET
 	@Path("validar/{usu}/{pas}/{esquema}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -24,6 +28,8 @@ public class LoginSrv {
 			@PathParam("usu") String usuario, 
 			@PathParam("pas") String pass,
 			@PathParam("esquema") String esquema) {
+		
+		log.info("Validando usuario...");
 		
 		UsuarioDao dao = DaoFactory.getUsuarioDao(UsuarioDao.class, esquema);
 		Usuario usu = null;
@@ -60,7 +66,8 @@ public class LoginSrv {
 			rs = null;
 		}
 		
-		return Response.status(200).header("Access-Control-Allow-Origin", "http://localhost").entity(rs).build();
+		return Response.status(200).entity(rs).build();
+		//return Response.status(200).header("Access-Control-Allow-Origin", "http://localhost").entity(rs).build();
 	}
 	
 
