@@ -7,9 +7,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.pos.core.bind.DaoFactory;
-import org.pos.core.dao.UsuarioDao;
-import org.pos.core.entidades.Usuario;
+import org.pos.db.bind.DaoFactory;
+import org.pos.db.dao.UsuarioDao;
+import org.pos.db.entidades.Usuario;
 import org.pos.dto.LoginResponseDto;
 import org.pos.dto.MenuDto;
 
@@ -24,7 +24,7 @@ public class LoginSrv {
 			@PathParam("usu") String usuario, 
 			@PathParam("pas") String pass) {
 		
-		UsuarioDao dao = DaoFactory.getUsuarioDao(UsuarioDao.class);
+		UsuarioDao dao = DaoFactory.getUsuarioDao(UsuarioDao.class, "public");
 		Usuario usu = null;
 		
 		System.out.println("Validando: "+usuario+" "+pass);

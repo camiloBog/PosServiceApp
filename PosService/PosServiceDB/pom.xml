@@ -8,11 +8,18 @@
     <version>0.0.1</version>
   </parent>
   <groupId>PosServiceApp</groupId>
-  <artifactId>PosServiceCore</artifactId>
+  <artifactId>PosServiceDB</artifactId>
   <version>0.0.1</version>
-  <name>PosServiceCore</name>
+  <name>PosServiceDB</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <dependencies>
+    <dependency>
+	    <groupId>org.jdbi</groupId>
+	    <artifactId>jdbi</artifactId>
+	    <version>2.77</version>
+	</dependency>
+  </dependencies>
 </project>

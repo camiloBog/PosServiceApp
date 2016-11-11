@@ -26,6 +26,7 @@
   <modules>
     <module>PosServiceCore</module>
     <module>PosServiceRest</module>
+    <module>PosServiceDB</module>
     <module>PosServiceEar</module>
   </modules>
 </project>
