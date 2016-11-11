@@ -8,6 +8,9 @@
         <dependent-module archiveName="PosServiceCore-0.0.1.jar" deploy-path="/" handle="module:/resource/PosServiceCore/PosServiceCore">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="PosServiceDB-0.0.1.jar" deploy-path="/" handle="module:/resource/PosServiceDB/PosServiceDB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="jdbi-2.77.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jdbi/jdbi/2.77/jdbi-2.77.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>

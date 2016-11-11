@@ -15,12 +15,4 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <dependencies>
-  	<!-- https://mvnrepository.com/artifact/org.jdbi/jdbi -->
-	<dependency>
-	    <groupId>org.jdbi</groupId>
-	    <artifactId>jdbi</artifactId>
-	    <version>2.77</version>
-	</dependency>
-  </dependencies>
 </project>
