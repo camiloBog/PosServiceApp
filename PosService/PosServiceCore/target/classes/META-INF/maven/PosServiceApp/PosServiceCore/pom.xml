@@ -14,11 +14,17 @@
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <esquema.name>Natalia</esquema.name>
   </properties>
   <dependencies>
   	<dependency>
   		<groupId>PosServiceApp</groupId>
   		<artifactId>PosServiceDB</artifactId>
+  		<version>0.0.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>PosServiceApp</groupId>
+  		<artifactId>PosServiceCommon</artifactId>
   		<version>0.0.1</version>
   	</dependency>
   </dependencies>

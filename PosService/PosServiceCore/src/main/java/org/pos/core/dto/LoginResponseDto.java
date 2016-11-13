@@ -7,8 +7,22 @@ public class LoginResponseDto {
 	private String usuario;
 	private String nombre;
 	private String mensaje;
-
 	private MenuDto menu;
+	
+	public LoginResponseDto() {
+
+	}
+
+	public LoginResponseDto(boolean validacion, Integer tenant, String usuario, String nombre, String mensaje,
+			MenuDto menu) {
+		super();
+		this.validacion = validacion;
+		this.tenant = tenant;
+		this.usuario = usuario;
+		this.nombre = nombre;
+		this.mensaje = mensaje;
+		this.menu = menu;
+	}
 
 	public String getMensaje() {
 		return mensaje;

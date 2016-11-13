@@ -1,3 +1,9 @@
+start nginx
+nginx -s stop	fast shutdown
+nginx -s quit	graceful shutdown
+nginx -s reload	changing configuration, starting new worker processes with a new configuration, graceful shutdown of old worker processes
+nginx -s reopen	re-opening log files
+
 
 WildFly
 user:	admin
@@ -25,3 +31,15 @@ NginX
 	https://elbauldelprogramador.com/como-configurar-un-balanceador-de-carga-en-entornos-cloud/
 	http://systemadmin.es/2012/04/balanceo-de-carga-con-nginx
 	http://www.digitalvalley.com/blog/configurar-nginx-como-balanceador-de-carga/
+	
+	
+--DELETE FROM usuario ;
+insert into usuario values (1, 'camilo', '123', 'Camilo', 'Bustamante', 1, 1);
+insert into usuario values (2, 'pp', 'ytt', 'Pedro', 'Picapiedra', 1, 1);
+insert into usuario values (3, 'cb', '123', 'Camilo', 'Bustamante', 1, 1);
+insert into usuario values (4, 'as', 'asww', 'Andres', 'Sanchez', 1, 1);
+insert into usuario values (5, 'jm', 'tyty', 'Juan', 'Mendoza', 1, 1);
+insert into usuario values (6, 'dt', '5f', 'Donalt', 'Thrump', 1, 1);
+insert into usuario values (7, 'hc', '77', 'Hilary', 'Clinton', 1, 1);
+select * from usuario;
+

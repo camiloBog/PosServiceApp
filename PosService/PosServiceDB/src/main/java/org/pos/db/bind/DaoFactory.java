@@ -26,75 +26,146 @@ public class DaoFactory {
 	}
 
 	public static UsuarioDao getUsuarioDao(Class<UsuarioDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(UsuarioDao.class);
+		return DbiProvider.getDBI(esquema).open(UsuarioDao.class);
+	}
+	public static UsuarioDao getUsuarioDao(Class<UsuarioDao> daoClass) {
+		return DbiProvider.getDBI().open(UsuarioDao.class);
 	}
 
+	
 	public static AlmacenDao getAlmacenDao(Class<AlmacenDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(AlmacenDao.class);
+		return DbiProvider.getDBI(esquema).open(AlmacenDao.class);
+	}
+	public static AlmacenDao getAlmacenDao(Class<AlmacenDao> daoClass) {
+		return DbiProvider.getDBI().open(AlmacenDao.class);
 	}
 
+	
 	public static AlmacenProductoDao getAlmacenProductoDao(Class<AlmacenProductoDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(AlmacenProductoDao.class);
+		return DbiProvider.getDBI(esquema).open(AlmacenProductoDao.class);
+	}
+	public static AlmacenProductoDao getAlmacenProductoDao(Class<AlmacenProductoDao> daoClass) {
+		return DbiProvider.getDBI().open(AlmacenProductoDao.class);
 	}
 
+	
 	public static AreaDao getAreaDaoget(Class<AreaDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(AreaDao.class);
+		return DbiProvider.getDBI(esquema).open(AreaDao.class);
+	}
+	public static AreaDao getAreaDaoget(Class<AreaDao> daoClass) {
+		return DbiProvider.getDBI().open(AreaDao.class);
 	}
 
+	
 	public static CiudadDao getCiudadDao(Class<CiudadDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(CiudadDao.class);
+		return DbiProvider.getDBI(esquema).open(CiudadDao.class);
+	}
+	public static CiudadDao getCiudadDao(Class<CiudadDao> daoClass) {
+		return DbiProvider.getDBI().open(CiudadDao.class);
 	}
 
+	
 	public static DetalleMovimientoDao getDetalleMovimientoDao(Class<DetalleMovimientoDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(DetalleMovimientoDao.class);
+		return DbiProvider.getDBI(esquema).open(DetalleMovimientoDao.class);
 	}
+	public static DetalleMovimientoDao getDetalleMovimientoDao(Class<DetalleMovimientoDao> daoClass) {
+		return DbiProvider.getDBI().open(DetalleMovimientoDao.class);
+	}
+	
 
 	public static FuncionalidadDao getFuncionalidadDao(Class<FuncionalidadDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(FuncionalidadDao.class);
+		return DbiProvider.getDBI(esquema).open(FuncionalidadDao.class);
 	}
+	public static FuncionalidadDao getFuncionalidadDao(Class<FuncionalidadDao> daoClass) {
+		return DbiProvider.getDBI().open(FuncionalidadDao.class);
+	}
+	
 
 	public static ModuloDao get(Class<ModuloDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(ModuloDao.class);
+		return DbiProvider.getDBI(esquema).open(ModuloDao.class);
 	}
+	public static ModuloDao get(Class<ModuloDao> daoClass) {
+		return DbiProvider.getDBI().open(ModuloDao.class);
+	}
+	
 
 	public static MovimientoDao getMovimientoDao(Class<MovimientoDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(MovimientoDao.class);
+		return DbiProvider.getDBI(esquema).open(MovimientoDao.class);
 	}
+	public static MovimientoDao getMovimientoDao(Class<MovimientoDao> daoClass) {
+		return DbiProvider.getDBI().open(MovimientoDao.class);
+	}
+	
 
 	public static PerfilesDao getPerfilesDao(Class<PerfilesDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(PerfilesDao.class);
+		return DbiProvider.getDBI(esquema).open(PerfilesDao.class);
 	}
+	public static PerfilesDao getPerfilesDao(Class<PerfilesDao> daoClass) {
+		return DbiProvider.getDBI().open(PerfilesDao.class);
+	}
+	
 
 	public static PerfilFuncionalidadDao getPerfilFuncionalidadDao(Class<PerfilFuncionalidadDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(PerfilFuncionalidadDao.class);
+		return DbiProvider.getDBI(esquema).open(PerfilFuncionalidadDao.class);
 	}
+	public static PerfilFuncionalidadDao getPerfilFuncionalidadDao(Class<PerfilFuncionalidadDao> daoClass) {
+		return DbiProvider.getDBI().open(PerfilFuncionalidadDao.class);
+	}
+	
 
 	public static PersonaDao getPersonaDao(Class<PersonaDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(PersonaDao.class);
+		return DbiProvider.getDBI(esquema).open(PersonaDao.class);
 	}
+	public static PersonaDao getPersonaDao(Class<PersonaDao> daoClass) {
+		return DbiProvider.getDBI().open(PersonaDao.class);
+	}
+	
 
 	public static ProductoDao getProductoDao(Class<ProductoDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(ProductoDao.class);
+		return DbiProvider.getDBI(esquema).open(ProductoDao.class);
 	}
+	public static ProductoDao getProductoDao(Class<ProductoDao> daoClass) {
+		return DbiProvider.getDBI().open(ProductoDao.class);
+	}
+	
 
 	public static TenantDao getTenantDao(Class<TenantDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(TenantDao.class);
+		return DbiProvider.getDBI(esquema).open(TenantDao.class);
 	}
+	public static TenantDao getTenantDao(Class<TenantDao> daoClass) {
+		return DbiProvider.getDBI().open(TenantDao.class);
+	}
+	
 
 	public static TipoIdentificacionDao getTipoIdentificacionDao(Class<TipoIdentificacionDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(TipoIdentificacionDao.class);
+		return DbiProvider.getDBI(esquema).open(TipoIdentificacionDao.class);
 	}
+	public static TipoIdentificacionDao getTipoIdentificacionDao(Class<TipoIdentificacionDao> daoClass) {
+		return DbiProvider.getDBI().open(TipoIdentificacionDao.class);
+	}
+	
 
 	public static TipoMedidaDao getTipoMedidaDao(Class<TipoMedidaDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(TipoMedidaDao.class);
+		return DbiProvider.getDBI(esquema).open(TipoMedidaDao.class);
 	}
+	public static TipoMedidaDao getTipoMedidaDao(Class<TipoMedidaDao> daoClass) {
+		return DbiProvider.getDBI().open(TipoMedidaDao.class);
+	}
+	
 
 	public static TipoMovimientoDao getTipoMovimientoDao(Class<TipoMovimientoDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(TipoMovimientoDao.class);
+		return DbiProvider.getDBI(esquema).open(TipoMovimientoDao.class);
 	}
+	public static TipoMovimientoDao getTipoMovimientoDao(Class<TipoMovimientoDao> daoClass) {
+		return DbiProvider.getDBI().open(TipoMovimientoDao.class);
+	}
+	
 
 	public static TipoPersonasDao getTipoPersonasDao(Class<TipoPersonasDao> daoClass, String esquema) {
-		return DbiSingleton.getDBI(esquema).open(TipoPersonasDao.class);
+		return DbiProvider.getDBI(esquema).open(TipoPersonasDao.class);
+	}
+	public static TipoPersonasDao getTipoPersonasDao(Class<TipoPersonasDao> daoClass) {
+		return DbiProvider.getDBI().open(TipoPersonasDao.class);
 	}
 
 }

@@ -26,5 +26,10 @@
 	    <artifactId>jdbi</artifactId>
 	    <version>2.77</version>
 	</dependency>
+    <dependency>
+    	<groupId>PosServiceApp</groupId>
+    	<artifactId>PosServiceCommon</artifactId>
+    	<version>0.0.1</version>
+    </dependency>
   </dependencies>
 </project>

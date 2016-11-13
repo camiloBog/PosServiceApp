@@ -10,7 +10,7 @@ angular.module('serviciosRest', [])
 	return {
 		
 		validar : function(usu, pas){
-			return $http.get(path+"loginsrv/validar/"+usu+"/"+pas+"/public");
+			return $http.get(path+"loginsrv/validar/"+usu+"/"+pas);
 		}
 	
 //		validar : function(usu, pas){ 

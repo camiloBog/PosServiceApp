@@ -15,7 +15,7 @@ import org.pos.core.login.LoginController;
 @Path("loginsrv")
 public class LoginSrv {
 
-	private static final Logger log = LogManager.getLogger(LoginSrv.class);
+	private Logger log = LogManager.getLogger(LoginSrv.class);
 
 	@GET
 	@Path("validar/{usu}/{pas}")
@@ -27,7 +27,7 @@ public class LoginSrv {
 		log.info("Validando usuario: " + usuario);
 		LoginResponseDto response = new LoginController().validate(usuario, pass);
 
-		if (response != null) {
+		if (response!=null) {
 			log.info("Autenticacion correcta para el Usuario " + usuario);
 			return Response.status(200).entity(response).build();
 		} else {

@@ -1,4 +1,4 @@
-package org.pos.db.dao;
+package org.pos.db.bind;
 
 public interface DaoInterface {
 	public void close();

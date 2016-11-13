@@ -17,6 +17,9 @@
         <dependent-module archiveName="jdbi-2.77.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jdbi/jdbi/2.77/jdbi-2.77.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="PosServiceCommon-0.0.1.jar" deploy-path="/" handle="module:/resource/PosServiceCommon/PosServiceCommon">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="log4j-api-2.7.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/logging/log4j/log4j-api/2.7/log4j-api-2.7.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>

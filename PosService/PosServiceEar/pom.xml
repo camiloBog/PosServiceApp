@@ -25,5 +25,10 @@
   		<artifactId>PosServiceDB</artifactId>
   		<version>0.0.1</version>
   	</dependency>
+  	<dependency>
+  		<groupId>PosServiceApp</groupId>
+  		<artifactId>PosServiceCommon</artifactId>
+  		<version>0.0.1</version>
+  	</dependency>
   </dependencies>
 </project>
