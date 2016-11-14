@@ -21,7 +21,9 @@ function loginController($scope, serviciosRestRequest) {
 		serviciosRestRequest.validar($scope.Usu.usu, $scope.Usu.pass).success(function (data){
 			$scope.valUsu = data;
 			$scope.login = !$scope.valUsu.validacion;
+						
 			$scope.menu = $scope.valUsu.menu
+
 		});
 		
 		//Se vacia nuevamente el objeto que contiene los input del login
@@ -36,6 +38,19 @@ function loginController($scope, serviciosRestRequest) {
 		$scope.menu={}
 		$scope.login = true;
 	}
+	
+	//BORRAR
+	$scope.menu.headConfiguracion = true;
+	$scope.menu.tenan = true;
+	$scope.menu.usuario = true;
+	$scope.menu.headInventario = true;
+	$scope.menu.proveedores = true;
+	$scope.menu.productos = true;
+	$scope.menu.ingreso = true;
+	$scope.menu.headFacturacion = true;
+	$scope.menu.headConsultas = true;
+	$scope.menu.inventario = true;
+	$scope.menu.ventas = true;
 
 }
 

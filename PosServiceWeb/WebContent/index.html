@@ -4,9 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Compras</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/login.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/angular-busy.min.css">
 	</head>
 	
-	<body ng-app="mainApp" ng-init="login=true" ng-controller="loginController">
+	<body ng-app="mainApp" ng-init="login=false" ng-controller="loginController">
 	
 		<div ng-hide="login" id="header-wrapper">
 			<header id="header" class="5grid-layout">
@@ -16,7 +17,9 @@
 		</div>
 		
 		<div ng-hide="login" id="page-wrapper">
-			<div class="5grid-layout" ng-view></div>
+			<div cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}"
+				class="5grid-layout" ng-view>
+			</div>
 		</div>
 		
 		<div ng-hide="login" class="5grid-layout" ng-include="'modules/mainPage/footer.html'"></div>
@@ -27,6 +30,8 @@
 		<script src="assets/js/angular.min.js"></script>
 		<script src="assets/js/angular-route.min.js"></script>
 		<script src="assets/js/angular-resource.min.js"></script>
+		<script src="assets/js/angular-animate.min.js"></script>
+		<script src="assets/js/angular-busy.min.js"></script>
 		
 		<script src="index.js"></script>
 		<script src="modules/servicios/serviciosRestController.js"></script>

@@ -1,8 +1,8 @@
 start nginx
-nginx -s stop	fast shutdown
-nginx -s quit	graceful shutdown
-nginx -s reload	changing configuration, starting new worker processes with a new configuration, graceful shutdown of old worker processes
-nginx -s reopen	re-opening log files
+nginx -s stop			fast shutdown
+nginx -s quit			graceful shutdown
+nginx -s reload		changing configuration, starting new worker processes with a new configuration, graceful shutdown of old worker processes
+nginx -s reopen		re-opening log files
 
 
 WildFly
@@ -19,6 +19,8 @@ standalone.bat --server-config=standalone-full.xml
 Para configurar Wildfly, copiar la carpeta <<postgres>> en 
 WILDFLY_HOME\modules\system\layers\base\org
 
+Angular
+	http://ngmodules.org/
 
 Multitenant
 	http://manikandan-k.github.io/2015/06/04/Multi_tenant_applications_in_jdbi.html
