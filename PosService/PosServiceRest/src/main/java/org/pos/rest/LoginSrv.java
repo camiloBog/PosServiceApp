@@ -9,8 +9,9 @@ import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.pos.core.controller.LoginController;
 import org.pos.core.dto.LoginResponseDto;
-import org.pos.core.login.LoginController;
+import org.pos.core.dto.MsgResponseDto;
 
 @Path("loginsrv")
 public class LoginSrv {
@@ -28,11 +29,10 @@ public class LoginSrv {
 		LoginResponseDto response = new LoginController().validate(usuario, pass);
 
 		if (response!=null) {
-			log.info("Autenticacion correcta para el Usuario " + usuario);
 			return Response.status(200).entity(response).build();
 		} else {
 			log.warn("Autenticacion INCORRECTA para el Usuario " + usuario);
-			return Response.status(200).entity(null).build();
+			return Response.status(200).entity(new MsgResponseDto("Credenciales incorrectas.", false, null)).build();
 		}
 		
 	}

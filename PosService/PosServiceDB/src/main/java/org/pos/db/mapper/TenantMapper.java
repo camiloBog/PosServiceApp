@@ -8,7 +8,7 @@ import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
 public class TenantMapper implements ResultSetMapper<Tenant> {
-	
+		
 	@Override
     public Tenant map(int i, ResultSet rs, StatementContext statementContext) throws SQLException {
         return new Tenant(

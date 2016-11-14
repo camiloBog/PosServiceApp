@@ -53,4 +53,15 @@ public class DbiProvider {
 		return dbi;
     }
 	
+	/**
+	 * Retorna un BDI para el esquema base de la BD
+	 * 
+	 * @return	DBI
+	 */
+	public static DBI getSimpleDBI() {
+		DBI dbi = createDBI();
+		dbi.define(PosSGlobal.ESQUEMA, PosSGlobal.ESQUEMA_BASE);
+		return dbi;
+    }
+	
 }

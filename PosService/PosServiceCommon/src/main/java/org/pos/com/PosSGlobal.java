@@ -10,7 +10,7 @@ public class PosSGlobal {
 	/**
 	 * Valor que sera buscado en EsquemaSetter.class para proveer el valor del esquema
 	 */
-	public static final String ESQUEMA = ":esquema";
+	public static final String ESQUEMA = ":NombreDeEsquema";
 	
 	/**
 	 * Nombre del esquema base en la BD de PosService
