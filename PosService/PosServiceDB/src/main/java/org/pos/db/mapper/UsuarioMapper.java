@@ -17,7 +17,7 @@ public class UsuarioMapper implements ResultSetMapper<Usuario> {
         		rs.getString("nombre"),
         		rs.getString("apellidos"),
         		rs.getString("contrasena"), 
-        		rs.getInt("idarea"),
+        		rs.getInt("idperfiles"),
         		rs.getInt("idtenant")
         		);
     }

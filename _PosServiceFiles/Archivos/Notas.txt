@@ -28,6 +28,17 @@ Multitenant
 	
 Rest
 	http://cursoangularjs.es/doku.php?id=unidades:10_servidor:01_rest
+	
+	se usa POST para crear un recurso en el servidor
+	se usa GET para obtener un recurso
+	se usa PUT para cambiar el estado de un recurso o actualizarlo
+	se usa DELETE para eleminar un recurso
+	
+	200 -> OK : Petición recibida y procesada de forma correcta
+	201 -> Created : Petición completada. El resultado ha sido la creación de un nuevo recurso
+	204 -> No Content: La petición es correcta, pero la respuesta no tiene ningún contenido
+	401 -> Unauthorized: La información de autenticación no es válida
+	404 -> Not found: El recurso no ha sido encontrado
 
 NginX
 	https://elbauldelprogramador.com/como-configurar-un-balanceador-de-carga-en-entornos-cloud/
@@ -35,25 +46,6 @@ NginX
 	http://www.digitalvalley.com/blog/configurar-nginx-como-balanceador-de-carga/
 	
 	
---DELETE FROM usuario ;
-insert into usuario values (1, 'camilo', '123', 'Camilo', 'Bustamante', 1, 1);
-insert into usuario values (2, 'pp', 'ytt', 'Pedro', 'Picapiedra', 1, 1);
-insert into usuario values (3, 'cb', '123', 'Camilo', 'Bustamante', 1, 1);
-insert into usuario values (4, 'as', 'asww', 'Andres', 'Sanchez', 1, 1);
-insert into usuario values (5, 'jm', 'tyty', 'Juan', 'Mendoza', 1, 1);
-insert into usuario values (6, 'dt', '5f', 'Donalt', 'Thrump', 1, 1);
-insert into usuario values (7, 'hc', '77', 'Hilary', 'Clinton', 1, 1);
-select * from usuario;
 
-
-CREATE SEQUENCE tenant_seq
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 999999999
-  START 2
-  CACHE 1
-  CYCLE;
-ALTER TABLE tenant_seq
-  OWNER TO postgres;
   
 

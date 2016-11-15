@@ -15,17 +15,17 @@ public class Usuario implements Serializable {
 	private String nombre;
 	private String apellidos;
 	private String contrasena;
-	private Integer idarea;
+	private Integer idperfiles;
 	private Integer idtenant;
 
 	public Usuario(Integer idusuario, String usuario, String nombre, String apellidos, String contrasena,
-			Integer idarea, Integer idtenant) {
+			Integer idperfiles, Integer idtenant) {
 		this.idusuario = idusuario;
 		this.usuario = usuario;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.contrasena = contrasena;
-		this.idarea = idarea;
+		this.idperfiles = idperfiles;
 		this.idtenant = idtenant;
 	}
 
@@ -73,12 +73,12 @@ public class Usuario implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public Integer getIdarea() {
-		return idarea;
+	public Integer getIdPerfiles() {
+		return idperfiles;
 	}
 
-	public void setIdarea(Integer idarea) {
-		this.idarea = idarea;
+	public void setIdPerfil(Integer idperfiles) {
+		this.idperfiles = idperfiles;
 	}
 
 	public Integer getIdtenant() {

@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.pos.core.controller.LoginController;
+import org.pos.core.controller.UsuarioController;
 import org.pos.core.dto.LoginResponseDto;
 import org.pos.core.dto.MsgResponseDto;
 
@@ -26,7 +26,7 @@ public class LoginSrv {
 			@PathParam("pas") String pass) {
 
 		log.info("Validando usuario: " + usuario);
-		LoginResponseDto response = new LoginController().validate(usuario, pass);
+		LoginResponseDto response = new UsuarioController().validarUsuario(usuario, pass);
 
 		if (response!=null) {
 			return Response.status(200).entity(response).build();

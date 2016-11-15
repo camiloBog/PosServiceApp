@@ -31,20 +31,98 @@ public class TenantController {
 			tenant.setDireccion(direccion);
 			tenant.setTipoidentificacion(tipoId);
 
-			dao.generarTenant(tenant, esquemaName);
+			int id = -1;
+			id = dao.generarTenant(tenant, esquemaName);
 			
-			log.info("Tenant creado!");
-			return new MsgResponseDto("Tenant Creado Exitosamente",true,null);
-
+			if (id==-1) {
+				log.info("Tenant creado!");
+				return new MsgResponseDto("Tenant Creado Exitosamente con el ID: "+id, true, null);
+			} else {
+				return new MsgResponseDto("No fue posible generar el Tenant", false, null);
+			}
+			
 		} catch (Exception e) {
 			log.error("Ocurrio un error al realizar la creacion del tenan. " + e.getMessage() );
 			//e.printStackTrace();
 			return new MsgResponseDto("Ocurrio un error al realizar la creacion del tenan.",false,null);
 		}finally {
-			
 			if(dao!=null)
 				dao.close();
+		}
+		
+	}
+	
+	public MsgResponseDto BuscaTenantById(String id) {
+		
+		TenantDao dao = null;
+		Tenant tenant = null;
+		
+		try {
 			
+			dao = DaoFactory.getTenantDao(TenantDao.class);
+			tenant = dao.findByIdentificacion(Integer.parseInt(id));
+			
+			if(tenant!=null){
+				tenant.setEsquema(null);
+				return new MsgResponseDto("", true, tenant);
+			} else {
+				return new MsgResponseDto("No se encontro un tenant con el Id: "+id ,false,null);
+			}
+			
+		} catch (NumberFormatException e) {
+			log.error("Ocurrio un error al realizar la consulta del tenant. " + e.getMessage() );
+			return new MsgResponseDto("Ocurrio un error al realizar la consulta del tenant.",false,null);
+		}finally {
+			if(dao!=null)
+				dao.close();
+		}
+		
+	}
+	
+	public Tenant FindById(String id) {
+		
+		TenantDao dao = null;
+		Tenant tenant = null;
+		
+		try {
+			
+			dao = DaoFactory.getTenantDao(TenantDao.class);
+			tenant = dao.findByIdentificacion(Integer.parseInt(id));
+			return tenant;
+			
+		} catch (NumberFormatException e) {
+			log.error("Ocurrio un error al realizar la consulta del tenant. " + e.getMessage() );
+			return null;
+		}finally {
+			if(dao!=null)
+				dao.close();
+		}
+		
+	}
+	
+	public MsgResponseDto BuscaTenantByCod(String cod) {
+		
+		TenantDao dao = null;
+		Tenant tenant = null;
+		
+		try {
+			
+			dao = DaoFactory.getTenantDao(TenantDao.class);
+			tenant = dao.findByIdTenant(Integer.parseInt(cod));
+			
+			if(tenant!=null){
+				tenant.setEsquema(null);
+				return new MsgResponseDto("", true, tenant);
+			} else {
+				return new MsgResponseDto("No se encontro un tenant con el Codigo: "+cod ,false,null);
+			}
+			
+		} catch (NumberFormatException e) {
+			log.error("Ocurrio un error al realizar la consulta del tenant. " + e.getMessage() );
+			return new MsgResponseDto("Ocurrio un error al realizar la consulta del tenant.",false,null);
+		}finally {
+			if(dao!=null)
+				dao.close();
 		}
 		
 	}

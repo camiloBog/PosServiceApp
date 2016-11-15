@@ -21,15 +21,21 @@ public abstract class TenantDao {
 
 	@SqlUpdate("insert into "+PosSGlobal.ESQUEMA+".Tenant (idtenant, tipoidentificacion, identificacion, nombre, direccion, telefono, esquema) "
 			+ "values (:idtenant, :tipoidentificacion, :identificacion, :nombre, :direccion, :telefono, :esquema)")
-	public abstract void insert(@BindBean Tenant tenant);
+	protected abstract void insert(@BindBean Tenant tenant);
 	
 	@SqlUpdate("select crearschema(:nombre)")
-	public abstract void setEsquema(@Bind("nombre") String nombre);
+	protected abstract void setEsquema(@Bind("nombre") String nombre);
+	
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TENANT where idtenant = :idtenant")
+	public abstract Tenant findByIdTenant(@Bind("idtenant") int idtenant);
+	
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TENANT where identificacion = :identificacion")
+	public abstract Tenant findByIdentificacion(@Bind("identificacion") int identificacion);
 	
 	public abstract void close();
 	
 	@Transaction
-	public void generarTenant(Tenant tenant, String esquemaName){
+	public int generarTenant(Tenant tenant, String esquemaName){
 		
 		int id = getSecuence();
 		
@@ -38,6 +44,8 @@ public abstract class TenantDao {
 		
 		insert(tenant);
 		setEsquema(esquemaName+"_"+id);
+		
+		return id;
 		
 	}
 	

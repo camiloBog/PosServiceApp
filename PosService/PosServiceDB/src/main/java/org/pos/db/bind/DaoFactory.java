@@ -2,7 +2,6 @@ package org.pos.db.bind;
 
 import org.pos.db.dao.AlmacenDao;
 import org.pos.db.dao.AlmacenProductoDao;
-import org.pos.db.dao.AreaDao;
 import org.pos.db.dao.CiudadDao;
 import org.pos.db.dao.DetalleMovimientoDao;
 import org.pos.db.dao.FuncionalidadDao;
@@ -46,14 +45,6 @@ public class DaoFactory {
 	}
 	public static AlmacenProductoDao getAlmacenProductoDao(Class<AlmacenProductoDao> daoClass) {
 		return DbiProvider.getDBI().open(AlmacenProductoDao.class);
-	}
-
-	
-	public static AreaDao getAreaDaoget(Class<AreaDao> daoClass, String esquema) {
-		return DbiProvider.getDBI(esquema).open(AreaDao.class);
-	}
-	public static AreaDao getAreaDaoget(Class<AreaDao> daoClass) {
-		return DbiProvider.getDBI().open(AreaDao.class);
 	}
 
 	
@@ -104,7 +95,6 @@ public class DaoFactory {
 		return DbiProvider.getDBI().open(PerfilesDao.class);
 	}
 	
-
 	public static PerfilFuncionalidadDao getPerfilFuncionalidadDao(Class<PerfilFuncionalidadDao> daoClass, String esquema) {
 		return DbiProvider.getDBI(esquema).open(PerfilFuncionalidadDao.class);
 	}
