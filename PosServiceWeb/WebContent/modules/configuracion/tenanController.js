@@ -7,37 +7,55 @@ angular.module('tenan', ['serviciosRest'])
 
 function loginController($scope, serviciosRestRequest) {
 	
-	$scope.delay = 0;
-	$scope.minDuration = 0;
-	$scope.message = 'Por favor espere...';
-	$scope.backdrop = true;
-	$scope.promise = null;
-	
+	$scope.tenant = {};
+
 	$scope.consultar = function() {
-		
-		$scope.promise = $http.get('http://localhost/PosServiceRest/rest/conf/registrar/1/2/Los%20Santanderes/Algunacalle/81235');
-//		alert("Consultar");
+		swal("Upss!", "Hace falta implementar este metodo!", "error");
+	}
+	
+	$scope.cancelar = function() {
+		swal("Upss!", "Hace falta implementar este metodo!", "error");
 	}
 	
 	$scope.crear = function() {
 		
-		$scope.tenant={}
-		
-		$scope.promise = serviciosRestRequest.creaTenant("1","80735633","ElAmigoSupermercado","Calle","8123412").success(function (data){
+		if($scope.tenant.nom == null){
+			swal("Upss!", "El campo Nombre esta vacio.", "error");
+		} else if ($scope.tenant.idTipo == null){
+			swal("Upss!", "El campo Tipo de Identificacion esta vacio.", "error");
+		} else if ($scope.tenant.idNum == null){
+			swal("Upss!", "El campo Identificacion esta vacio.", "error");
+		} else if ($scope.tenant.dir == null){
+			swal("Upss!", "El campo Direccion esta vacio.", "error");
+		} else if ($scope.tenant.tel == null){
+			swal("Upss!", "El campo Telefono esta vacio.", "error");
+		} else {
 			
-			$scope.tenant = data;
+			swal({
+				  title: "Creacion de Tenant",
+				  text: "Esta accion creara un nuevo esquema en la Base de datos, esta seguro que desea crear el tenant?",
+				  type: "info",
+				  showCancelButton: true,
+				  closeOnConfirm: false,
+				  showLoaderOnConfirm: true,
+				}, function(){
+					
+					serviciosRestRequest.creaTenant($scope.tenant.idTipo, $scope.tenant.idNum, $scope.tenant.nom,
+							$scope.tenant.dir, $scope.tenant.tel).success(function (data){
+
+						$scope.tenantResp = data;
+						if( $scope.tenantResp.validacion == true ){
+							$scope.tenant = {};
+							swal($scope.tenantResp.mensaje, "", "success");
+						} else {
+							swal($scope.tenantResp.mensaje, "", "error");
+						}
+							
+					});
+				});
 			
-			//alert("Mensaje: "+$scope.tenant.mensaje);
-			
-		});
+		}
 		
-		
-		
-		
-	}
-	
-	$scope.cancelar = function() {
-		alert("Cancelar");
 	}
 
 }

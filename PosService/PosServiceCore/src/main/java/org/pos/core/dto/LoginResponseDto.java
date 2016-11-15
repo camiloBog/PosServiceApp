@@ -1,5 +1,9 @@
 package org.pos.core.dto;
 
+import java.util.List;
+
+import org.pos.db.entidades.TipoIdentificacion;
+
 public class LoginResponseDto {
 
 	private boolean validacion;
@@ -8,13 +12,14 @@ public class LoginResponseDto {
 	private String nombre;
 	private String mensaje;
 	private MenuDto menu;
+	private List<TipoIdentificacion> tiposIdentificacion;
 	
 	public LoginResponseDto() {
 
 	}
 
 	public LoginResponseDto(boolean validacion, Integer tenant, String usuario, String nombre, String mensaje,
-			MenuDto menu) {
+			MenuDto menu, List<TipoIdentificacion> tiposIdentificacion) {
 		super();
 		this.validacion = validacion;
 		this.tenant = tenant;
@@ -22,6 +27,7 @@ public class LoginResponseDto {
 		this.nombre = nombre;
 		this.mensaje = mensaje;
 		this.menu = menu;
+		this.tiposIdentificacion = tiposIdentificacion;
 	}
 
 	public String getMensaje() {
@@ -70,6 +76,14 @@ public class LoginResponseDto {
 
 	public void setMenu(MenuDto menu) {
 		this.menu = menu;
+	}
+
+	public List<TipoIdentificacion> getTiposIdentificacion() {
+		return tiposIdentificacion;
+	}
+
+	public void setTiposIdentificacion(List<TipoIdentificacion> tiposIdentificacion) {
+		this.tiposIdentificacion = tiposIdentificacion;
 	}
 
 }

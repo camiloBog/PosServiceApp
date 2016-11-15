@@ -37,12 +37,14 @@ public class TenantController {
 			return new MsgResponseDto("Tenant Creado Exitosamente",true,null);
 
 		} catch (Exception e) {
-			log.error("Ocurrio un error al realizar la creacion del tenan.");
-			e.printStackTrace();
-			
+			log.error("Ocurrio un error al realizar la creacion del tenan. " + e.getMessage() );
+			//e.printStackTrace();
 			return new MsgResponseDto("Ocurrio un error al realizar la creacion del tenan.",false,null);
 		}finally {
-			dao.close();
+			
+			if(dao!=null)
+				dao.close();
+			
 		}
 		
 	}

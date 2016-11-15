@@ -7,36 +7,37 @@
 		<form action="" method="POST">
 		
 			<label class="formulario">Codigo:</label>
-			<input style="width: 20%" style="width: 30%" type="text" class="buscar-consultor" id="buscar-consultor" name="usuario" value="" />
-			<label class="espacio">Nombre</label> 
-			<input style="width: 25%" type="" class="buscar-consultor" /><br />
+			<input style="width: 15%" style="width: 30%" type="text" 
+				class="buscar-consultor" id="buscar-consultor" placeholder="Codigo" ng-model="tenant.cod" />
+			<label class="espacio">Nombre:</label> 
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="nombre" ng-model="tenant.nom" /><br />
 			
 			
 			<label class="formulario">Identificacion: </label>
-			<input style="width: 15%" class="buscar-consultor" /> 
+			<input style="width: 15%" class="buscar-consultor" placeholder="Identificacion" ng-model="tenant.idNum"/> 
 			<label class="espacio">Tipo de Identificacion: </label> 
-			<select name="tipo_identificacion" class="buscar-consultor2">
-				<option>Seleccione</option>
-				<option>Cedula de Ciudadania</option>
-				<option>Cedula de Extranjeria</option>
+			
+			<select style="width: 15%" name="tipo_identificacion" class="buscar-consultor2" 
+				ng-model="tenant.idTipo" ng-options="tipo.ididentificacion as tipo.descripcion for tipo in tiposId">
 			</select> <br/> 
 			
 			<label class="formulario">Telefono:</label> 
-			<input type="text" class="buscar-consultor" /> 
+			<input style="width: 15%" type="text" class="buscar-consultor" placeholder="telefono" ng-model="tenant.tel"/> 
 			<label class="espacio">Direccion: </label>
-			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="" /> <br> 
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="Direccion" ng-model="tenant.dir"/> <br> 
 			
 		</form>
 		
 	</div>
 </div>
+<div class="botonera">
 <div class="2u">
 	<p class="button-style">
 		<a href="#/tenan" ng-click="consultar()">Consultar</a>
 	</p>
 </div>
 <div class="3u">
-	<p class="button-style" align="center">
+	<p class="button-style">
 		<a href="#/tenan" ng-click="crear()">Crear</a>
 	</p>
 </div>
@@ -44,4 +45,5 @@
 	<p class="button-style">
 		<a href="#/tenan" ng-click="cancelar()">Cancelar</a>
 	</p>
+</div>
 </div>

@@ -45,3 +45,15 @@ insert into usuario values (6, 'dt', '5f', 'Donalt', 'Thrump', 1, 1);
 insert into usuario values (7, 'hc', '77', 'Hilary', 'Clinton', 1, 1);
 select * from usuario;
 
+
+CREATE SEQUENCE tenant_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 999999999
+  START 2
+  CACHE 1
+  CYCLE;
+ALTER TABLE tenant_seq
+  OWNER TO postgres;
+  
+

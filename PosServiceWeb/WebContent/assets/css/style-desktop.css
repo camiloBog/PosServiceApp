@@ -383,10 +383,13 @@ form {
 	height: 15px;
 	padding: 10px 20px !important;
 	background-color: rgba(220, 220, 197, 0.7);
+	border-radius: 3px;
+	/*
 	border-top-left-radius: 9px;
 	border-top-right-radius: 9px;
 	border-bottom-left-radius: 9px;
 	border-bottom-right-radius: 9px;
+	*/
 	font-weight: 300;
 	margin-bottom: 5px;
 	padding: 4px 19px 3px !important;
@@ -398,10 +401,13 @@ form {
 	padding: 2px 16px 1px !important;
 	width: 16%;
 	background-color: rgba(220, 220, 197, 0.7) !important;
+	border-radius: 3px;
+	/*
 	border-top-left-radius: 9px;
 	border-top-right-radius: 9px;
 	border-bottom-left-radius: 9px;
 	border-bottom-right-radius: 9px;
+	*/
 	clear: both;
 }
 
