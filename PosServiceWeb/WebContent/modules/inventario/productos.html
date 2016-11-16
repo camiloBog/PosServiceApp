@@ -1,5 +1,34 @@
 <div id="feature-content">
 	<section>
-		<h2 align="center">Productos</h2>
+		<h2 align="center">PRODUCTOS</h2>
 	</section>
+	<div>
+		<form action="" method="POST">
+		
+			<label class="formulario">Id: </label>
+			<input style="width: 15%" style="width: 30%" type="text" 
+				class="buscar-consultor" id="buscar-consultor" placeholder="Id" ng-model="tenant.cod" />
+			<label class="espacio">Nombre: </label> 
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="nombre" ng-model="tenant.nom" /><br />
+			
+			
+			<label class="formulario">Tipo Medida: </label> 
+			<select style="width: 15%" name="tipo_identificacion" class="buscar-consultor2" 
+				ng-model="tenant.idTipo" ng-options="tipo.ididentificacion as tipo.descripcion for tipo in tiposId">
+			</select>
+			<label class="espacio">Descripcion: </label>
+			<input style="width: 15%" class="buscar-consultor" placeholder="Identificacion" ng-model="tenant.idNum"/><br/>
+			 
+			 
+			<div class="3u">
+				<p class="button-style">
+					<a href="#/tenan" ng-click="ProductoRegistrar()">Registrar</a>
+				</p>
+			</div>
+			
+		</form>
+	</div>
 </div>
+
+
+

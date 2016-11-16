@@ -6,6 +6,7 @@ import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
 import org.pos.db.dao.TenantDao;
 import org.pos.db.entidades.Tenant;
+import org.pos.db.entidades.Usuarios;
 
 public class TenantController {
 	
@@ -41,7 +42,7 @@ public class TenantController {
 			
 			if (id!=-1) {
 				log.info("Tenant creado!");
-				return new MsgResponseDto("Tenant Creado Exitosamente con el COD: "+id, true, null);
+				return new MsgResponseDto("Tenant Creado Exitosamente con el Codigo: "+id, true, null);
 			} else {
 				return new MsgResponseDto("No fue posible generar el Tenant", false, null);
 			}
@@ -105,6 +106,29 @@ public class TenantController {
 		
 	}
 	
+	public Tenant findByUsuario(Usuarios usuario) {
+		
+		TenantDao dao = null;
+		Tenant tenant = null;
+		
+		try {
+			
+			dao = DaoFactory.getTenantDao(TenantDao.class);
+			tenant = dao.findByIdTenant(usuario.getIdtenant());
+			
+			return tenant;
+			
+		} catch (NumberFormatException e) {
+			log.error("Ocurrio un error al realizar la consulta del tenant por usuario. ");
+			log.error(e.getMessage());
+			return null;
+		}finally {
+			if(dao!=null)
+				dao.close();
+		}
+		
+	}
+	
 	public MsgResponseDto BuscaTenantByCod(String cod) {
 		
 		TenantDao dao = null;
@@ -128,6 +152,23 @@ public class TenantController {
 		}finally {
 			if(dao!=null)
 				dao.close();
+		}
+		
+	}
+	
+	public String getEsquema(String usuario){
+		
+		try {
+			
+			Usuarios usu = new UsuarioController().findByUsuario(usuario);
+			Tenant tenant = new TenantController().findByUsuario(usu);
+						
+			return tenant.getEsquema();
+			
+		} catch (Exception e) {
+			log.error("Ocurrio un error obtener el esquema del usuario " + usuario);
+			log.error(e.getMessage());
+			return null;
 		}
 		
 	}

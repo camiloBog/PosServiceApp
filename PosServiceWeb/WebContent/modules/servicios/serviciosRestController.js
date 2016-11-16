@@ -18,9 +18,12 @@ angular.module('serviciosRest', [])
 		},
 		
 		consultaTenant : function(cod){
-			return $http.get(path+"consultar/ten/cod/"+cod);
-		}
+			return $http.get(path+"conf/cons/ten/cod/"+cod);
+		},
 		
+		creaUsuario : function(usuario, nombre, apellidos, contrasena, idperfil, idtenant){
+			return $http.get(path+"conf/reg/usu/"+usuario+"/"+nombre+"/"+apellidos+"/"+contrasena+"/"+idperfil+"/"+idtenant);
+		},
 		
 		
 	};

@@ -13,10 +13,9 @@ public class ProductoMapper implements ResultSetMapper<Producto> {
     public Producto map(int i, ResultSet rs, StatementContext statementContext) throws SQLException {
         return new Producto(
         		rs.getInt("idproducto"),
+        		rs.getString("nombreproducto"),
         		rs.getString("descripcion"),
-        		rs.getInt("idfabricante"),
-        		rs.getInt("idtipomedida"),
-        		rs.getBigDecimal("medida")
+        		rs.getInt("idtipomedida")
         		);
     }
 }

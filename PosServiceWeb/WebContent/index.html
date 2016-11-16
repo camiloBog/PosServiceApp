@@ -2,27 +2,26 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Compras</title>
+		<title>PosService</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/login.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
 	</head>
 	
 	<body ng-app="mainApp" ng-init="login=true" ng-controller="loginController">
 	
-		<div ng-hide="login" id="header-wrapper">
-			<header id="header" class="5grid-layout">
+		<div ng-hide="login" class="sample-show-hide" id="header-wrapper">
+			<header id="header" class="5grid-layout sample-show-hide">
 				<div class="row" ng-include="'modules/mainPage/header.html'"></div><br>
 				<div ng-include="'modules/mainPage/menu.html'"></div>
 			</header>
 		</div>
 		
 		<div ng-hide="login" id="page-wrapper">
-			<div class="5grid-layout" ng-view>
-			</div>
+			<div class="5grid-layout" ng-view></div>
 		</div>
 		
-		<div ng-hide="login" class="5grid-layout" ng-include="'modules/mainPage/footer.html'"></div>
-		<div ng-show="login" ng-include="'modules/mainPage/login.html'"></div>
+		<div ng-hide="login" class="5grid-layout sample-show-hide" ng-include="'modules/mainPage/footer.html'"></div>
+		<div ng-show="login" class="sample-show-hide" ng-include="'modules/mainPage/login.html'"></div>
 		
 		<script src="assets/css/5grid/jquery.js"></script>
 		<script src="assets/css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>

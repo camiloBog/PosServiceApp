@@ -9,6 +9,9 @@ function loginController($scope, serviciosRestRequest) {
 	//Objeto que contiene los tipos de identificacion del sistema
 	$scope.tiposId={}
 	
+	//Objeto que contiene los tipos de identificacion del sistema
+	$scope.tiposPerfil={}
+	
 	//Objeto que contiene los input del login
 	$scope.Usu={}
 	
@@ -24,9 +27,11 @@ function loginController($scope, serviciosRestRequest) {
 		serviciosRestRequest.validar($scope.Usu.usu, $scope.Usu.pass).success(function (data){
 			$scope.valUsu = data;
 			$scope.login = !$scope.valUsu.validacion;
-						
+			
+			//Carga los parametros del sistema
 			$scope.menu = $scope.valUsu.menu;
 			$scope.tiposId = $scope.valUsu.tiposIdentificacion;
+			$scope.tiposPerfil= $scope.valUsu.tiposPerfiles;
 
 		});
 		
@@ -38,6 +43,7 @@ function loginController($scope, serviciosRestRequest) {
 	//Salir de la app
 	$scope.salirFunction = function(){
 		//Vacia las variables usadas
+		$scope.tiposPerfil={}
 		$scope.tiposId={}
 		$scope.valUsu={}
 		$scope.Usu={}

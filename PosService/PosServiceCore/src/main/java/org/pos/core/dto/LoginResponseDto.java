@@ -2,40 +2,40 @@ package org.pos.core.dto;
 
 import java.util.List;
 
+import org.pos.db.entidades.Perfiles;
 import org.pos.db.entidades.TipoIdentificacion;
+import org.pos.db.entidades.TipoMedida;
 
 public class LoginResponseDto {
 
 	private boolean validacion;
 	private Integer tenant;
+	private String tenantName;
 	private String usuario;
 	private String nombre;
 	private String mensaje;
 	private MenuDto menu;
 	private List<TipoIdentificacion> tiposIdentificacion;
+	private List<TipoMedida> tipoMedida;
+	private List<Perfiles> tiposPerfiles;
 	
 	public LoginResponseDto() {
-
+		
 	}
 
-	public LoginResponseDto(boolean validacion, Integer tenant, String usuario, String nombre, String mensaje,
-			MenuDto menu, List<TipoIdentificacion> tiposIdentificacion) {
-		super();
+	public LoginResponseDto(boolean validacion, Integer tenant, String tenantName, String usuario, String nombre,
+			String mensaje, MenuDto menu, List<TipoIdentificacion> tiposIdentificacion, List<TipoMedida> tipoMedida,
+			List<Perfiles> tiposPerfiles) {
 		this.validacion = validacion;
 		this.tenant = tenant;
+		this.tenantName = tenantName;
 		this.usuario = usuario;
 		this.nombre = nombre;
 		this.mensaje = mensaje;
 		this.menu = menu;
 		this.tiposIdentificacion = tiposIdentificacion;
-	}
-
-	public String getMensaje() {
-		return mensaje;
-	}
-
-	public void setMensaje(String mensaje) {
-		this.mensaje = mensaje;
+		this.tipoMedida = tipoMedida;
+		this.tiposPerfiles = tiposPerfiles;
 	}
 
 	public boolean isValidacion() {
@@ -44,6 +44,22 @@ public class LoginResponseDto {
 
 	public void setValidacion(boolean validacion) {
 		this.validacion = validacion;
+	}
+
+	public Integer getTenant() {
+		return tenant;
+	}
+
+	public void setTenant(Integer tenant) {
+		this.tenant = tenant;
+	}
+
+	public String getTenantName() {
+		return tenantName;
+	}
+
+	public void setTenantName(String tenantName) {
+		this.tenantName = tenantName;
 	}
 
 	public String getUsuario() {
@@ -62,12 +78,12 @@ public class LoginResponseDto {
 		this.nombre = nombre;
 	}
 
-	public Integer getTenant() {
-		return tenant;
+	public String getMensaje() {
+		return mensaje;
 	}
 
-	public void setTenant(Integer tenant) {
-		this.tenant = tenant;
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
 	}
 
 	public MenuDto getMenu() {
@@ -86,4 +102,20 @@ public class LoginResponseDto {
 		this.tiposIdentificacion = tiposIdentificacion;
 	}
 
+	public List<TipoMedida> getTipoMedida() {
+		return tipoMedida;
+	}
+
+	public void setTipoMedida(List<TipoMedida> tipoMedida) {
+		this.tipoMedida = tipoMedida;
+	}
+
+	public List<Perfiles> getTiposPerfiles() {
+		return tiposPerfiles;
+	}
+
+	public void setTiposPerfiles(List<Perfiles> tiposPerfiles) {
+		this.tiposPerfiles = tiposPerfiles;
+	}
+	
 }

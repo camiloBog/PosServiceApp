@@ -1,5 +1,7 @@
 package org.pos.db.dao;
 
+import java.util.List;
+
 import org.pos.com.PosSGlobal;
 import org.pos.db.bind.DaoInterface;
 import org.pos.db.bind.EsquemaSetter;
@@ -14,7 +16,10 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 @OverrideStatementLocatorWith(EsquemaSetter.class)
 public interface TipoMedidaDao extends DaoInterface {
 	
-	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".tipomedida where idtipomedida = :id")
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TIPOMEDIDA where idtipomedida = :id")
 	public TipoMedida getTipoById(@Bind("id") String id);
+	
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TIPOMEDIDA")
+	public List<TipoMedida> findAll();
 	    
 }

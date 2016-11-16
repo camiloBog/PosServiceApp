@@ -3,9 +3,9 @@
 
 angular.module('tenan', ['serviciosRest'])
 
-.controller('tenanController', ['$scope', 'serviciosRestRequest',loginController]);
+.controller('tenanController', ['$scope', 'serviciosRestRequest',tenanController]);
 
-function loginController($scope, serviciosRestRequest) {
+function tenanController($scope, serviciosRestRequest) {
 	
 	$scope.tenant = {};
 

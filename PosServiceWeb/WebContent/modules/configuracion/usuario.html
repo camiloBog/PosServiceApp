@@ -2,4 +2,48 @@
 	<section>
 		<h2 align="center">Creacion de Usuario</h2>
 	</section>
+	 <div>
+	
+		<form action="" method="POST">
+		
+			<label class="formulario">Usuario:</label> 
+			<input style="width: 15%" id="usu" name="usu" type="text" class="buscar-consultor" placeholder="Usuario" ng-model="confUsu.usu"/> 
+			<label class="espacio">Contrase&ntilde;a: </label>
+			<input style="width: 18%" id="pass" name="pass" type="password" class="buscar-consultor" placeholder="Contrase&ntilde;a" ng-model="confUsu.pass"/> <br>
+			
+			<label class="formulario">Nombre:</label> 
+			<input style="width: 15%" type="text" class="buscar-consultor" placeholder="Nombre" ng-model="confUsu.nom"/> 
+			<label class="espacio">Apellidos: </label>
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="Apellidos" ng-model="confUsu.ape"/> <br>
+			
+			
+			<label class="formulario">Perfil: </label> 
+			<select style="width: 20%" class="buscar-consultor2" ng-model="confUsu.perfil" placeholder="Perfiles"
+				ng-options="tipo.idperfil as tipo.descripcion for tipo in tiposPerfil" >
+			</select>
+			<label class="espacio">Tenant: </label> 
+			<input style="width: 20%" type="text" class="buscar-consultor" 
+				placeholder="Identificacion" ng-model="confUsu.IdTenant"/> <br>
+			
+		</form>
+		
+	</div>
+</div>
+
+<div class="botonera">
+	<div class="2u">
+		<p class="button-style">
+			<a href="#/usuario" ng-click="UsuarioConsultar()">Consultar</a>
+		</p>
+	</div>
+	<div class="3u">
+		<p class="button-style">
+			<a href="#/usuario" ng-click="UsuarioCrear()">Crear</a>
+		</p>
+	</div>
+	<div class="2u">
+		<p class="button-style">
+			<a href="#/usuario" ng-click="UsuarioCancelar()">Cancelar</a>
+		</p>
+	</div>
 </div>

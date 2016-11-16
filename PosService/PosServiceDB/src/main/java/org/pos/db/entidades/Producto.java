@@ -1,7 +1,6 @@
 package org.pos.db.entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * The persistent class for the producto database table.
@@ -12,54 +11,44 @@ public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer idproducto;
+	private String nombreproducto;
 	private String descripcion;
-	private Integer idfabricante;
 	private Integer idtipomedida;
-	private BigDecimal medida;
-
-	public Producto(Integer idproducto, String descripcion, Integer idfabricante, Integer idtipomedida,
-			BigDecimal medida) {
-		this.idproducto = idproducto;
-		this.descripcion = descripcion;
-		this.idfabricante = idfabricante;
-		this.idtipomedida = idtipomedida;
-		this.medida = medida;
-	}
 
 	public Producto() {
 		
 	}
 
+	public Producto(Integer idproducto, String nombreproducto, 
+			String descripcion, Integer idtipomedida) {
+		this.idproducto = idproducto;
+		this.nombreproducto = nombreproducto;
+		this.descripcion = descripcion;
+		this.idtipomedida = idtipomedida;
+	}
+
 	public Integer getIdproducto() {
-		return this.idproducto;
+		return idproducto;
 	}
 
 	public void setIdproducto(Integer idproducto) {
 		this.idproducto = idproducto;
 	}
 
+	public String getNombreproducto() {
+		return nombreproducto;
+	}
+
+	public void setNombreproducto(String nombreproducto) {
+		this.nombreproducto = nombreproducto;
+	}
+
 	public String getDescripcion() {
-		return this.descripcion;
+		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public Integer getIdfabricante() {
-		return this.idfabricante;
-	}
-
-	public void setIdfabricante(Integer idfabricante) {
-		this.idfabricante = idfabricante;
-	}
-
-	public BigDecimal getMedida() {
-		return this.medida;
-	}
-
-	public void setMedida(BigDecimal medida) {
-		this.medida = medida;
 	}
 
 	public Integer getIdtipomedida() {
@@ -68,6 +57,10 @@ public class Producto implements Serializable {
 
 	public void setIdtipomedida(Integer idtipomedida) {
 		this.idtipomedida = idtipomedida;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 }

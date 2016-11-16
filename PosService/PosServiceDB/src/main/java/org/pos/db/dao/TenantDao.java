@@ -31,7 +31,7 @@ public abstract class TenantDao {
 	
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TENANT where identificacion = :identificacion")
 	public abstract Tenant findByIdentificacion(@Bind("identificacion") String identificacion);
-	
+		
 	public abstract void close();
 	
 	@Transaction

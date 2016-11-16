@@ -8,11 +8,14 @@ import org.pos.core.dto.LoginResponseDto;
 import org.pos.core.dto.MenuDto;
 import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
+import org.pos.db.dao.PerfilesDao;
 import org.pos.db.dao.TipoIdentificacionDao;
+import org.pos.db.dao.TipoMedidaDao;
 import org.pos.db.dao.UsuarioDao;
 import org.pos.db.entidades.Perfiles;
 import org.pos.db.entidades.Tenant;
 import org.pos.db.entidades.TipoIdentificacion;
+import org.pos.db.entidades.TipoMedida;
 import org.pos.db.entidades.Usuarios;
 
 public class UsuarioController {
@@ -176,30 +179,78 @@ public class UsuarioController {
 		TipoIdentificacionDao dao2 = null;
 		List<TipoIdentificacion> ti = null;
 		
-		//Obtiene los tipos de datos, para enviarlos al front
+		//Obtiene los tipos de identificacion, para enviarlos al front
 		try {
 			dao2 = DaoFactory.getTipoIdentificacionDao(TipoIdentificacionDao.class);
 			ti = dao2.findAll();
 		} catch (Exception e) {
-			log.error("Ocurrio un error al realizar la validacion de usuario.");
+			log.error("Ocurrio un error al obtener los tipos de identificacion.");
 			log.error(e.getMessage());
 		}finally {
 			if(null!=dao2)
 				dao2.close();
 		}
 		
+		
+		PerfilesDao daoP = null;
+		List<Perfiles> perfiles = null;
+		
+		//Obtiene los tipos de Perfiles, para enviarlos al front
+		try {
+			daoP = DaoFactory.getPerfilesDao(PerfilesDao.class);
+			perfiles = daoP.findAll();
+		} catch (Exception e) {
+			log.error("Ocurrio un error al obtener los tipos de perfiles.");
+			log.error(e.getMessage());
+		}finally {
+			if(null!=daoP)
+				daoP.close();
+		}
+		
+		TipoMedidaDao daoM = null;
+		List<TipoMedida> medidas = null;
+		
+		//Obtiene los tipos de Medidas, para enviarlos al front
+		try {
+			daoM = DaoFactory.getTipoMedidaDao(TipoMedidaDao.class);
+			medidas = daoM.findAll();
+		} catch (Exception e) {
+			log.error("Ocurrio un error al tipos de medidas.");
+			log.error(e.getMessage());
+		}finally {
+			if(null!=daoM)
+				daoM.close();
+		}
+		
+		Tenant t = new Tenant();
+		try {
+			t = new TenantController().findByIdTenant(usu.getIdtenant().toString());
+		} catch (Exception e) {
+			log.error("Ocurrio un error obtener el Tenant del usuario.");
+			log.error(e.getMessage());
+		}
+		
+		MenuDto menu = null;
+		if(usu.getIdperfil()==1)
+			menu = new MenuController().getAdministrador();
+		else if(usu.getIdperfil()==2)
+			menu = new MenuController().getUsuario();
+		else
+			menu = new MenuController().getFullAdministrador();
+
 		if (usu!=null) {
-			
-			MenuDto menu = new MenuDto(true);
-			
+
 			LoginResponseDto login = new LoginResponseDto();
 			login.setMensaje("");
 			login.setNombre(usu.getNombre());
 			login.setTenant(usu.getIdtenant());
+			login.setTenantName(t.getNombre());
 			login.setUsuario(usu.getUsuario());
 			login.setValidacion(true);
 			login.setMenu(menu);
 			login.setTiposIdentificacion(ti);
+			login.setTiposPerfiles(perfiles);
+			login.setTipoMedida(medidas);
 			
 			return login;
 			
