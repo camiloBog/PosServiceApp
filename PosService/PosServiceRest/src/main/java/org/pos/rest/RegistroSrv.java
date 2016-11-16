@@ -1,8 +1,6 @@
 package org.pos.rest;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -20,7 +18,7 @@ public class RegistroSrv {
 
 	private Logger log = LogManager.getLogger(RegistroSrv.class);
 
-	@POST
+	@GET
 	@Path("reg/ten/{tipoid}/{id}/{nom}/{dir}/{tel}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response RegistrarTenant(
@@ -40,11 +38,10 @@ public class RegistroSrv {
 			log.warn("No fue posible realizar el registro del tenant " + nombre);
 			return Response.status(200).entity(null).build();
 		}
-
 	}
 	
 	@GET
-	@Path("consultar/ten/cod/{cod}")
+	@Path("cons/ten/cod/{cod}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response BuscarTenantByCod(
 			@PathParam("cod") String cod) {
@@ -58,17 +55,16 @@ public class RegistroSrv {
 			log.warn("No fue posible encontrar el tenant con el codigo: " + cod);
 			return Response.status(200).entity(null).build();
 		}
-		
 	}
 	
 	@GET
-	@Path("consultar/ten/id/{id}")
+	@Path("cons/ten/id/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response BuscarTenantById(
+	public Response BuscarTenantByIdentificacion(
 			@PathParam("id") String id) {
 
 		log.info("Buscando Tenant por Id: " + id);
-		MsgResponseDto response = new TenantController().BuscaTenantById(id);
+		MsgResponseDto response = new TenantController().findByIdentificacion(id);
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
@@ -76,10 +72,9 @@ public class RegistroSrv {
 			log.warn("No fue posible encontrar el tenant con el Id: " + id);
 			return Response.status(200).entity(null).build();
 		}
-		
 	}
 		
-	@POST
+	@GET
 	@Path("reg/usu/{usuario}/{nombre}/{apellidos}/{contrasena}/{idperfil}/{idtenant}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response RegistrarUsuario(
@@ -100,11 +95,10 @@ public class RegistroSrv {
 			log.warn("No fue posible realizar el registro del usuario: " + usuario);
 			return Response.status(200).entity(null).build();
 		}
-
 	}
 	
 	@GET
-	@Path("consultar/usu/{usu}")
+	@Path("cons/usu/{usu}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response BuscarUsuario(
 			@PathParam("usu") String usu) {
@@ -121,8 +115,8 @@ public class RegistroSrv {
 		
 	}
 	
-	@PUT
-	@Path("actualizar/usu/{usuario}/{nombre}/{apellidos}/{contrasena}/{idperfil}/{idtenant}")
+	@GET
+	@Path("actu/usu/{usuario}/{nombre}/{apellidos}/{contrasena}/{idperfil}/{idtenant}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response ActualizarUsuario(
 			@PathParam("usuario") String usuario, 
@@ -142,7 +136,6 @@ public class RegistroSrv {
 			log.warn("No fue posible actualizar el usuario:" + usuario);
 			return Response.status(200).entity(null).build();
 		}
-
 	}
 
 }

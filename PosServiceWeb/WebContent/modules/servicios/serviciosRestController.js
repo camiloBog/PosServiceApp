@@ -14,8 +14,14 @@ angular.module('serviciosRest', [])
 		},
 		
 		creaTenant : function(tipoid,id,nom,dir,tel){
-			return $http.get(path+"conf/registrar/"+tipoid+"/"+id+"/"+nom+"/"+dir+"/"+tel);
+			return $http.get(path+"conf/reg/ten/"+tipoid+"/"+id+"/"+nom+"/"+dir+"/"+tel);
+		},
+		
+		consultaTenant : function(cod){
+			return $http.get(path+"consultar/ten/cod/"+cod);
 		}
+		
+		
 		
 	};
 	

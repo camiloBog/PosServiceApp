@@ -103,7 +103,7 @@ public class TiposController {
 			return tipoId;
 			
 		} catch (Exception e) {
-			log.error("Ocurrio un error al encontrar el tipo de usuario " + id);
+			log.error("Ocurrio un error al encontrar el tipo de identificacion " + id);
 			log.error(e.getMessage());
 			return null;
 		}finally {

@@ -30,7 +30,7 @@ public abstract class TenantDao {
 	public abstract Tenant findByIdTenant(@Bind("idtenant") int idtenant);
 	
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TENANT where identificacion = :identificacion")
-	public abstract Tenant findByIdentificacion(@Bind("identificacion") int identificacion);
+	public abstract Tenant findByIdentificacion(@Bind("identificacion") String identificacion);
 	
 	public abstract void close();
 	

@@ -13,13 +13,13 @@ import org.pos.db.dao.UsuarioDao;
 import org.pos.db.entidades.Perfiles;
 import org.pos.db.entidades.Tenant;
 import org.pos.db.entidades.TipoIdentificacion;
-import org.pos.db.entidades.Usuario;
+import org.pos.db.entidades.Usuarios;
 
 public class UsuarioController {
 	
 	private Logger log = LogManager.getLogger(UsuarioController.class);
 	
-	public Usuario FindByUsuario(String usuario) {
+	public Usuarios findByUsuario(String usuario) {
 		
 		UsuarioDao dao = null;
 		
@@ -40,14 +40,14 @@ public class UsuarioController {
 
 	public MsgResponseDto BuscaUsuario(String usu) {
 		
-		Usuario usuario = FindByUsuario(usu);
+		Usuarios usuario = findByUsuario(usu);
 		
 		if (usuario!=null){
 			
 			usuario.setContrasena("*******");
 			usuario.setIdusuario(null);
 			
-			return new MsgResponseDto("Se encontro el usuario "+usu, true, usu);
+			return new MsgResponseDto("Se encontro el usuario "+usu, true, usuario);
 		} else {
 			return new MsgResponseDto("No fue posible crear el usuario.", false, null);
 		}
@@ -59,7 +59,7 @@ public class UsuarioController {
 		
 		try {
 			
-			Usuario usu = FindByUsuario(usuario);
+			Usuarios usu = findByUsuario(usuario);
 			if(usu==null)
 				return new MsgResponseDto("No existe el usuario: "+usuario, false, null);
 			
@@ -68,11 +68,11 @@ public class UsuarioController {
 				if(perfil==null)
 					return new MsgResponseDto("No existe el perfil: "+idperfil, false, null);
 				else
-					usu.setIdPerfil(perfil.getIdperfil());
+					usu.setIdperfil(perfil.getIdperfil());
 			}
 			
 			if(!"".equals(idtenant) && null!=idtenant){
-				Tenant tenant = new TenantController().FindById(idtenant);
+				Tenant tenant = new TenantController().findByIdTenant(idtenant);
 				if(tenant==null)
 					return new MsgResponseDto("No existe el Tenant: "+idtenant, false, null);
 				else
@@ -107,16 +107,16 @@ public class UsuarioController {
 		if(perfil==null)
 			return new MsgResponseDto("No existe el perfil: "+idperfil, false, null);
 		
-		Tenant tenant = new TenantController().FindById(idtenant);
+		Tenant tenant = new TenantController().findByIdTenant(idtenant);
 		if(tenant==null)
 			return new MsgResponseDto("No existe el Tenant: "+idtenant, false, null);
 		
 		UsuarioDao daoU = null;
 		
-		Usuario usu = new Usuario();
+		Usuarios usu = new Usuarios();
 		usu.setApellidos(apellidos);
 		usu.setContrasena(contrasena);
-		usu.setIdPerfil(perfil.getIdperfil());
+		usu.setIdperfil(perfil.getIdperfil());
 		usu.setIdtenant(tenant.getIdtenant());
 		usu.setNombre(nombre);
 		usu.setUsuario(usuario);
@@ -151,11 +151,19 @@ public class UsuarioController {
 	public LoginResponseDto validarUsuario(String usuario, String contrasena) {
 		
 		UsuarioDao dao = null;
-		Usuario usu = null;
+		Usuarios usu = null;
 		
+		//Valida si coinciden el usuario y la contrasena
 		try {
 			dao = DaoFactory.getUsuarioDao(UsuarioDao.class);
 			usu = dao.validate(usuario, contrasena);
+			
+			if(null==usu){
+				log.error("Validacion de usuario incorrecta.");
+				return null;
+			}
+				
+			
 		} catch (Exception e) {
 			log.error("Ocurrio un error al realizar la validacion de usuario.");
 			log.error(e.getMessage());
@@ -168,6 +176,7 @@ public class UsuarioController {
 		TipoIdentificacionDao dao2 = null;
 		List<TipoIdentificacion> ti = null;
 		
+		//Obtiene los tipos de datos, para enviarlos al front
 		try {
 			dao2 = DaoFactory.getTipoIdentificacionDao(TipoIdentificacionDao.class);
 			ti = dao2.findAll();
@@ -194,9 +203,9 @@ public class UsuarioController {
 			
 			return login;
 			
-		} else {
-			return null;
 		}
+		
+		return null; 
 		
 	}
 
