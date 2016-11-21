@@ -34,10 +34,14 @@ public abstract class ProductoDao {
 	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.descripcion) like lower('%:descripcion%')" )
 	public abstract List<Producto> findByDescri(@Bind("descripcion") String descripcion);
 	
-	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where "
+	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where ("
 			+ "lower(p.descripcion) like lower('%:descripcion%') or "
-			+ "lower(p.nombreproducto) like lower('%:nombreproducto%') and "
+			+ "lower(p.nombreproducto) like lower('%:nombreproducto%') ) and "
 			+ "p.idtipomedida = :idtipomedida " )
+	public abstract List<Producto> findProducto2(@BindBean Producto producto);
+	
+	
+	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.descripcion) like lower('%:descripcion%') " )
 	public abstract List<Producto> findProducto(@BindBean Producto producto);
 
 	@SqlQuery("select nextval('"+PosSGlobal.ESQUEMA+".producto_seq')")

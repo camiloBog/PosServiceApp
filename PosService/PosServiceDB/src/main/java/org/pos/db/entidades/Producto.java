@@ -14,6 +14,7 @@ public class Producto implements Serializable {
 	private String nombreproducto;
 	private String descripcion;
 	private Integer idtipomedida;
+	private String usuario;
 
 	public Producto() {
 		
@@ -59,8 +60,12 @@ public class Producto implements Serializable {
 		this.idtipomedida = idtipomedida;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getUsuario() {
+		return usuario;
 	}
-	
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+		
 }

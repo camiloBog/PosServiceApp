@@ -1,4 +1,4 @@
-package org.pos.rest;
+package org.pos.rest.impl;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

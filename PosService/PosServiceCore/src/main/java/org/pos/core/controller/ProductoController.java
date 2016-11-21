@@ -1,5 +1,7 @@
 package org.pos.core.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.pos.core.dto.MsgResponseDto;
@@ -14,42 +16,65 @@ public class ProductoController {
 	public ProductoController() {
 		
 	}
-
-	public MsgResponseDto registra(String nombre, String descri, String medida, String usuario) {
+	
+	public MsgResponseDto buscar(Producto producto) {
 		
 		ProductoDao dao = null;
+		String usuario = producto.getUsuario();
 		
 		try {
 			
 			String esquema = new TenantController().getEsquema(usuario);
 			if("".equals(esquema) || null==esquema)
-				return new MsgResponseDto("El usuario "+usuario+" no existe.",false,null);
+				return new MsgResponseDto("El usuario "+producto.getUsuario()+" no existe.",false,null);
 			
 			dao = DaoFactory.getProductoDao(ProductoDao.class, esquema);
-			
-			Producto producto = new Producto();
-			producto.setNombreproducto(nombre);
-			producto.setDescripcion(descri);
-			producto.setIdtipomedida(Integer.parseInt(medida));
-			
-			int id = -1;
-			id = dao.creaProducto(producto);
-			
-			if (id!=-1) {
-				return new MsgResponseDto("Producto "+nombre+" registrado con el id: " +id,true,null);
-			} else {
-				return new MsgResponseDto("No fue posible registrar el producto!",false,null);
-			}
+			List<Producto> productos = dao.findProducto(producto);
+						
+			if (null!=productos)
+				return new MsgResponseDto("Se encontraron "+productos.size()+" productos",true,productos);
+			else
+				return new MsgResponseDto("No Se encontraron productos con estas caracteristicas!",false,null);
 			
 		} catch (Exception e) {
-			log.error("Ocurrio un error al registrar el producto " + nombre);
+			log.error("Ocurrio un error al registrar el producto " + usuario);
 			log.error(e.getMessage());
 			return new MsgResponseDto("Ocurrio un error al registrar el producto!",false,null);
 		}finally{
 			if(null!=dao)
 				dao.close();
 		}
+	}
+
+	public MsgResponseDto registra(Producto producto) {
 		
+		ProductoDao dao = null;
+		String usuario = producto.getUsuario();
+		
+		try {
+			
+			String esquema = new TenantController().getEsquema(usuario);
+			if("".equals(esquema) || null==esquema)
+				return new MsgResponseDto("El usuario "+producto.getUsuario()+" no existe.",false,null);
+			
+			dao = DaoFactory.getProductoDao(ProductoDao.class, esquema);
+
+			int id = -1;
+			id = dao.creaProducto(producto);
+			
+			if (id!=-1)
+				return new MsgResponseDto("Producto "+usuario+" registrado con el id: " +id,true,null);
+			else
+				return new MsgResponseDto("No fue posible registrar el producto!",false,null);
+			
+		} catch (Exception e) {
+			log.error("Ocurrio un error al registrar el producto " + usuario);
+			log.error(e.getMessage());
+			return new MsgResponseDto("Ocurrio un error al registrar el producto!",false,null);
+		}finally{
+			if(null!=dao)
+				dao.close();
+		}
 	}
 
 }

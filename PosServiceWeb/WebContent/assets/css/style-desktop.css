@@ -426,3 +426,10 @@ form {
 	margin-top: 0px;
 	margin-bottom: 10px;
 }
+
+.sample-show-hide {
+  transition: all linear 0.5s;
+}
+.sample-show-hide.ng-hide {
+  opacity: 0;
+}
