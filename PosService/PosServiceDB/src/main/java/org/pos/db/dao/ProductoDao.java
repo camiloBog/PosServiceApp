@@ -31,8 +31,8 @@ public abstract class ProductoDao {
 	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.nombreproducto) like lower('%:nombreproducto%')" )
 	public abstract List<Producto> findByNombre(@Bind("nombreproducto") String nombreproducto);
 	
-	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.descripcion) like lower('%:descripcion%')" )
-	public abstract List<Producto> findByDescri(@Bind("descripcion") String descripcion);
+	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.descripcion) like lower('%:desc%')" )
+	public abstract List<Producto> findByDescri(@Bind("desc") String desc);
 	
 	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where ("
 			+ "lower(p.descripcion) like lower('%:descripcion%') or "

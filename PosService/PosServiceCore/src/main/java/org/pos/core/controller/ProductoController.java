@@ -29,7 +29,8 @@ public class ProductoController {
 				return new MsgResponseDto("El usuario "+producto.getUsuario()+" no existe.",false,null);
 			
 			dao = DaoFactory.getProductoDao(ProductoDao.class, esquema);
-			List<Producto> productos = dao.findProducto(producto);
+//			List<Producto> productos = dao.findProducto(producto);
+			List<Producto> productos = dao.findByDescri(producto.getDescripcion());
 						
 			if (null!=productos)
 				return new MsgResponseDto("Se encontraron "+productos.size()+" productos",true,productos);
@@ -37,9 +38,9 @@ public class ProductoController {
 				return new MsgResponseDto("No Se encontraron productos con estas caracteristicas!",false,null);
 			
 		} catch (Exception e) {
-			log.error("Ocurrio un error al registrar el producto " + usuario);
+			log.error("Ocurrio un error al buscar el producto " + usuario);
 			log.error(e.getMessage());
-			return new MsgResponseDto("Ocurrio un error al registrar el producto!",false,null);
+			return new MsgResponseDto("Ocurrio un error al buscar el producto!",false,null);
 		}finally{
 			if(null!=dao)
 				dao.close();
