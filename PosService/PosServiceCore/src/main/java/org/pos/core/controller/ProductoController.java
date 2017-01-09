@@ -12,12 +12,8 @@ import org.pos.db.entidades.Producto;
 public class ProductoController {
 	
 	private Logger log = LogManager.getLogger(ProductoController.class);
-
-	public ProductoController() {
-		
-	}
 	
-	public MsgResponseDto buscar(Producto producto) {
+	public MsgResponseDto buscarPorDescri(Producto producto) {
 		
 		ProductoDao dao = null;
 		String usuario = producto.getUsuario();
@@ -29,8 +25,7 @@ public class ProductoController {
 				return new MsgResponseDto("El usuario "+producto.getUsuario()+" no existe.",false,null);
 			
 			dao = DaoFactory.getProductoDao(ProductoDao.class, esquema);
-//			List<Producto> productos = dao.findProducto(producto);
-			List<Producto> productos = dao.findByDescri(producto.getDescripcion());
+			List<Producto> productos = dao.findByDescri(producto);
 						
 			if (null!=productos)
 				return new MsgResponseDto("Se encontraron "+productos.size()+" productos",true,productos);

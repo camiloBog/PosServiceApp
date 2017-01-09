@@ -27,10 +27,10 @@ public abstract class TenantDao {
 	protected abstract void setEsquema(@Bind("nombre") String nombre);
 	
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TENANT where idtenant = :idtenant")
-	public abstract Tenant findByIdTenant(@Bind("idtenant") int idtenant);
+	public abstract Tenant findByIdTenant(@BindBean Tenant tenant);
 	
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TENANT where identificacion = :identificacion")
-	public abstract Tenant findByIdentificacion(@Bind("identificacion") String identificacion);
+	public abstract Tenant findByIdentificacion(@BindBean Tenant tenant);
 		
 	public abstract void close();
 	

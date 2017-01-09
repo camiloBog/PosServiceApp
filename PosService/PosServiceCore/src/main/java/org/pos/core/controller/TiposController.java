@@ -41,7 +41,7 @@ public class TiposController {
 		
 	}
 	
-	public Perfiles getPerfilById(String id){
+	public Perfiles getPerfilById(int id){
 		
 		PerfilesDao dao = null;
 		Perfiles perfil = null;
@@ -49,7 +49,7 @@ public class TiposController {
 		try {
 			dao = DaoFactory.getPerfilesDao(PerfilesDao.class);
 			
-			perfil = dao.findById(Integer.parseInt(id));
+			perfil = dao.findById(id);
 			return perfil;
 			
 		} catch (Exception e) {
@@ -90,20 +90,19 @@ public class TiposController {
 	 * @param tipo
 	 * @return
 	 */
-	public TipoIdentificacion getTipoIdentificacion(String id){
+	public TipoIdentificacion getTipoIdentificacion(int tipoIdentificacion){
 		
 		TipoIdentificacionDao dao = null;
 		TipoIdentificacion tipoId = null;
 		
 		try {
 			dao = DaoFactory.getTipoIdentificacionDao(TipoIdentificacionDao.class);
+			tipoId = dao.getTipoById(tipoIdentificacion);
 			
-			Integer tipo_ = Integer.parseInt(id);
-			tipoId = dao.getTipoById(tipo_);
 			return tipoId;
 			
 		} catch (Exception e) {
-			log.error("Ocurrio un error al encontrar el tipo de identificacion " + id);
+			log.error("Ocurrio un error al encontrar el tipo de identificacion " + tipoIdentificacion);
 			log.error(e.getMessage());
 			return null;
 		}finally {

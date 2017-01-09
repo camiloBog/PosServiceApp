@@ -28,21 +28,11 @@ public abstract class ProductoDao {
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".PRODUCTO")
 	public abstract List<Producto> findAll();
 	
-	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.nombreproducto) like lower('%:nombreproducto%')" )
-	public abstract List<Producto> findByNombre(@Bind("nombreproducto") String nombreproducto);
+	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.nombreproducto) like lower('%'||:nombreproducto||'%')" )
+	public abstract List<Producto> findByNombre(@BindBean Producto producto);
 	
-	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.descripcion) like lower('%:desc%')" )
-	public abstract List<Producto> findByDescri(@Bind("desc") String desc);
-	
-	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where ("
-			+ "lower(p.descripcion) like lower('%:descripcion%') or "
-			+ "lower(p.nombreproducto) like lower('%:nombreproducto%') ) and "
-			+ "p.idtipomedida = :idtipomedida " )
-	public abstract List<Producto> findProducto2(@BindBean Producto producto);
-	
-	
-	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.descripcion) like lower('%:descripcion%') " )
-	public abstract List<Producto> findProducto(@BindBean Producto producto);
+	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.descripcion) like lower('%'||:descripcion||'%') " )
+	public abstract List<Producto> findByDescri(@BindBean Producto producto);
 
 	@SqlQuery("select nextval('"+PosSGlobal.ESQUEMA+".producto_seq')")
 	public abstract int getSecuence();

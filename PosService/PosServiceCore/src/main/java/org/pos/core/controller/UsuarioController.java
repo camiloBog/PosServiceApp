@@ -22,14 +22,14 @@ public class UsuarioController {
 	
 	private Logger log = LogManager.getLogger(UsuarioController.class);
 	
-	public Usuarios findByUsuario(String usuario) {
+	public Usuarios findByUsuario(Usuarios usuarioIn) {
 		
 		UsuarioDao dao = null;
 		
 		try {
 			
 			dao = DaoFactory.getUsuarioDao(UsuarioDao.class);
-			return dao.findByUsuario(usuario);
+			return dao.findByUsuario(usuarioIn.getUsuario());
 			
 		} catch (NumberFormatException e) {
 			log.error("Ocurrio un error al realizar la consulta del usuario. " + e.getMessage() );
@@ -41,55 +41,54 @@ public class UsuarioController {
 		
 	}
 
-	public MsgResponseDto BuscaUsuario(String usu) {
+	public MsgResponseDto buscaUsuarioSeguridad(Usuarios usuarioIn) {
 		
-		Usuarios usuario = findByUsuario(usu);
+		Usuarios usuario = findByUsuario(usuarioIn);
 		
 		if (usuario!=null){
-			
+			//Se ocultan datos por seguridad.
 			usuario.setContrasena("*******");
 			usuario.setIdusuario(null);
 			
-			return new MsgResponseDto("Se encontro el usuario "+usu, true, usuario);
+			return new MsgResponseDto("Se encontro el usuario "+usuario.getUsuario(), true, usuario);
 		} else {
-			return new MsgResponseDto("No fue posible crear el usuario.", false, null);
+			return new MsgResponseDto("No fue posible encontrar el usuario.", false, null);
 		}
 
 	}
 
-	public MsgResponseDto actualizarUSuario(String usuario, String nombre, String apellidos, String contrasena,
-			String idperfil, String idtenant) {
+	public MsgResponseDto actualizarUSuario(Usuarios usuariosIn) {
 		
 		try {
 			
-			Usuarios usu = findByUsuario(usuario);
+			Usuarios usu = findByUsuario(usuariosIn);
 			if(usu==null)
-				return new MsgResponseDto("No existe el usuario: "+usuario, false, null);
+				return new MsgResponseDto("No existe el usuario: "+usuariosIn.getUsuario(), false, null);
 			
-			if(!"".equals(nombre) && null!=nombre){
-				Perfiles perfil = new TiposController().getPerfilById(idperfil);
+			if(!"".equals(usuariosIn.getNombre()) && null!=usuariosIn.getNombre()){
+				Perfiles perfil = new TiposController().getPerfilById(usuariosIn.getIdperfil());
 				if(perfil==null)
-					return new MsgResponseDto("No existe el perfil: "+idperfil, false, null);
+					return new MsgResponseDto("No existe el perfil: "+usuariosIn.getIdperfil(), false, null);
 				else
 					usu.setIdperfil(perfil.getIdperfil());
 			}
 			
-			if(!"".equals(idtenant) && null!=idtenant){
-				Tenant tenant = new TenantController().findByIdTenant(idtenant);
+			if(!"".equals(usuariosIn.getIdtenant()) && null!=usuariosIn.getIdtenant()){
+				Tenant tenant = new TenantController().findByIdTenant(usuariosIn.getIdtenant());
 				if(tenant==null)
-					return new MsgResponseDto("No existe el Tenant: "+idtenant, false, null);
+					return new MsgResponseDto("No existe el Tenant: "+usuariosIn.getIdtenant(), false, null);
 				else
 					usu.setIdtenant(tenant.getIdtenant());
 			}
 			
-			if(!"".equals(nombre) && null!=nombre)
-				usu.setNombre(nombre);
+			if(!"".equals(usuariosIn.getNombre()) && null!=usuariosIn.getNombre())
+				usu.setNombre(usuariosIn.getNombre());
 			
-			if(!"".equals(apellidos) && null!=apellidos)
-				usu.setApellidos(apellidos);
+			if(!"".equals(usuariosIn.getApellidos()) && null!=usuariosIn.getApellidos())
+				usu.setApellidos(usuariosIn.getApellidos());
 
-			if(!"".equals(contrasena) && null!=contrasena)
-				usu.setContrasena(contrasena);
+			if(!"".equals(usuariosIn.getContrasena()) && null!=usuariosIn.getContrasena())
+				usu.setContrasena(usuariosIn.getContrasena());
 			
 			UsuarioDao dao = DaoFactory.getUsuarioDao(UsuarioDao.class);
 			dao.update(usu);
@@ -103,38 +102,30 @@ public class UsuarioController {
 
 	}
 	
-	public MsgResponseDto crearUSuario(String usuario, String nombre, 
-			String apellidos, String contrasena, String idperfil, String idtenant) {
+	
+	public MsgResponseDto crearUSuario(Usuarios usuarios) {
 		
-		Perfiles perfil = new TiposController().getPerfilById(idperfil);
+		Perfiles perfil = new TiposController().getPerfilById(usuarios.getIdperfil());
 		if(perfil==null)
-			return new MsgResponseDto("No existe el perfil: "+idperfil, false, null);
+			return new MsgResponseDto("No existe el perfil: "+usuarios.getIdperfil(), false, null);
 		
-		Tenant tenant = new TenantController().findByIdTenant(idtenant);
+		Tenant tenant = new TenantController().findByIdTenant(usuarios.getIdtenant());
 		if(tenant==null)
-			return new MsgResponseDto("No existe el Tenant: "+idtenant, false, null);
+			return new MsgResponseDto("No existe el Tenant: "+usuarios.getIdtenant(), false, null);
 		
 		UsuarioDao daoU = null;
-		
-		Usuarios usu = new Usuarios();
-		usu.setApellidos(apellidos);
-		usu.setContrasena(contrasena);
-		usu.setIdperfil(perfil.getIdperfil());
-		usu.setIdtenant(tenant.getIdtenant());
-		usu.setNombre(nombre);
-		usu.setUsuario(usuario);
 		
 		try {
 			
 			daoU = DaoFactory.getUsuarioDao(UsuarioDao.class);
 			
 			//Se valida si el nombre de usuario ya existe.
-			if(daoU.findByUsuario(usuario) != null)
-				return new MsgResponseDto("El usuario: '"+usuario+"' ya existe, por favor intentalo de nuevo.",
+			if(daoU.findByUsuario(usuarios.getUsuario()) != null)
+				return new MsgResponseDto("El usuario: '"+usuarios.getUsuario()+"' ya existe, por favor intentalo de nuevo.",
 						false, null);
 
 			int id = -1;
-			id = daoU.creaUsuario(usu);
+			id = daoU.creaUsuario(usuarios);
 			
 			if (id!=-1)
 				return new MsgResponseDto("El usuario ha sido creado exitosamente con el ID: "+id, true, null);
@@ -150,8 +141,8 @@ public class UsuarioController {
 		}
 
 	}
-
-	public LoginResponseDto validarUsuario(String usuario, String contrasena) {
+	
+	public LoginResponseDto validarUsuario(Usuarios usuarios) {
 		
 		UsuarioDao dao = null;
 		Usuarios usu = null;
@@ -159,7 +150,7 @@ public class UsuarioController {
 		//Valida si coinciden el usuario y la contrasena
 		try {
 			dao = DaoFactory.getUsuarioDao(UsuarioDao.class);
-			usu = dao.validate(usuario, contrasena);
+			usu = dao.validate(usuarios.getUsuario(), usuarios.getContrasena());
 			
 			if(null==usu){
 				log.error("Validacion de usuario incorrecta.");
@@ -224,7 +215,7 @@ public class UsuarioController {
 		
 		Tenant t = new Tenant();
 		try {
-			t = new TenantController().findByIdTenant(usu.getIdtenant().toString());
+			t = new TenantController().findByIdTenant(usu.getIdtenant());
 		} catch (Exception e) {
 			log.error("Ocurrio un error obtener el Tenant del usuario.");
 			log.error(e.getMessage());

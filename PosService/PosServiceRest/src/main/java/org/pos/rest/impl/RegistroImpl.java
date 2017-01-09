@@ -7,59 +7,58 @@ import org.apache.logging.log4j.Logger;
 import org.pos.core.controller.TenantController;
 import org.pos.core.controller.UsuarioController;
 import org.pos.core.dto.MsgResponseDto;
+import org.pos.db.entidades.Tenant;
+import org.pos.db.entidades.Usuarios;
 import org.pos.rest.service.RegistroService;
 
 public class RegistroImpl implements RegistroService {
 
 	private Logger log = LogManager.getLogger(RegistroImpl.class);
 
-	public Response RegistrarTenant(String tipoidentificacion, String identificacion, 
-			String nombre, String direccion, String telefono) {
+	public Response RegistrarTenant(Tenant tenant) {
 
-		log.info("Registrando Tenant " + nombre);
-		MsgResponseDto response = new TenantController().registra(tipoidentificacion, 
-				identificacion, nombre, direccion, telefono);
+		log.info("Registrando Tenant " + tenant.getNombre());
+		MsgResponseDto response = new TenantController().registra(tenant);
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
 		} else {
-			log.warn("No fue posible realizar el registro del tenant " + nombre);
+			log.warn("No fue posible realizar el registro del tenant " + tenant.getNombre());
 			return Response.status(200).entity(null).build();
 		}
 	}
 	
-	public Response BuscarTenantByCod(String cod) {
+	public Response BuscarTenantById(Tenant tenant) {
 
-		log.info("Buscando Tenant por codigo: " + cod);
-		MsgResponseDto response = new TenantController().BuscaTenantByCod(cod);
-
-		if (response != null) {
-			return Response.status(200).entity(response).build();
-		} else {
-			log.warn("No fue posible encontrar el tenant con el codigo: " + cod);
-			return Response.status(200).entity(null).build();
-		}
-	}
-
-	public Response BuscarTenantByIdentificacion(String id) {
-
-		log.info("Buscando Tenant por Id: " + id);
-		MsgResponseDto response = new TenantController().findByIdentificacion(id);
+		log.info("Buscando Tenant por Idtenant: " + tenant.getIdtenant());
+		MsgResponseDto response = new TenantController().BuscaTenantById(tenant.getIdtenant());
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
 		} else {
-			log.warn("No fue posible encontrar el tenant con el Id: " + id);
+			log.warn("No fue posible encontrar el tenant con el codigo: " + tenant.getIdtenant());
 			return Response.status(200).entity(null).build();
 		}
 	}
+
+	public Response BuscarTenantByIdentificacion(Tenant tenant) {
+
+		log.info("Buscando Tenant por Identification: " + tenant.getIdentificacion());
+		MsgResponseDto response = new TenantController().findByIdentificacion(tenant.getIdentificacion());
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible encontrar el tenant con la Identification: " + tenant.getIdentificacion());
+			return Response.status(200).entity(null).build();
+		}
+	}
+	
+	public Response RegistrarUsuario(Usuarios usuario) {
+
+		log.info("Registrando Usuario " + usuario.getNombre());
 		
-	public Response RegistrarUsuario(String usuario, String nombre, 
-			String apellidos, String contrasena, String idperfil, String idtenant) {
-
-		log.info("Registrando Usuario " + nombre);
-		MsgResponseDto response = new UsuarioController().
-				crearUSuario(usuario, nombre, apellidos, contrasena, idperfil, idtenant);
+		MsgResponseDto response = new UsuarioController().crearUSuario(usuario);
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
@@ -69,31 +68,29 @@ public class RegistroImpl implements RegistroService {
 		}
 	}
 	
-	public Response BuscarUsuario(String usu) {
+	public Response BuscarUsuario(Usuarios usuario) {
 
-		log.info("Buscando Usuario: " + usu);
-		MsgResponseDto response = new UsuarioController().BuscaUsuario(usu);
+		log.info("Buscando Usuario: " + usuario.getUsuario());
+		MsgResponseDto response = new UsuarioController().buscaUsuarioSeguridad(usuario);
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
 		} else {
-			log.warn("No fue posible encontrar el usuario: " + usu);
+			log.warn("No fue posible encontrar el usuario: " + usuario.getUsuario());
 			return Response.status(200).entity(null).build();
 		}
 		
 	}
 	
-	public Response ActualizarUsuario(String usuario, String nombre, 
-			String apellidos, String contrasena, String idperfil, String idtenant) {
+	public Response ActualizarUsuario(Usuarios usuario) {
 
-		log.info("Actualizando Usuario:" + usuario);
-		MsgResponseDto response = new UsuarioController().actualizarUSuario(usuario, 
-				nombre, apellidos, contrasena, idperfil, idtenant) ;
+		log.info("Actualizando Usuario:" + usuario.getUsuario());
+		MsgResponseDto response = new UsuarioController().actualizarUSuario(usuario) ;
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
 		} else {
-			log.warn("No fue posible actualizar el usuario:" + usuario);
+			log.warn("No fue posible actualizar el usuario:" + usuario.getUsuario());
 			return Response.status(200).entity(null).build();
 		}
 	}

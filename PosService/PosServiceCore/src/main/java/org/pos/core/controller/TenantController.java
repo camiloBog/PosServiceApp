@@ -6,36 +6,33 @@ import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
 import org.pos.db.dao.TenantDao;
 import org.pos.db.entidades.Tenant;
+import org.pos.db.entidades.TipoIdentificacion;
 import org.pos.db.entidades.Usuarios;
 
 public class TenantController {
 	
 	private Logger log = LogManager.getLogger(TenantController.class);
 
-	public MsgResponseDto registra(String tipoidentificacion, String identificacion, 
-			String nombre, String direccion, String telefono) {
+	public MsgResponseDto registra(Tenant tenant) {
 
 		TenantDao dao = null;
-		Tenant tenant = new Tenant();
 		String esquemaName = "";
 		
 		try {
 			
 			dao = DaoFactory.getTenantDao(TenantDao.class);
-			Tenant t = dao.findByIdentificacion(identificacion);
+			Tenant t = dao.findByIdentificacion(tenant);
 			if(null!=t)
-				return new MsgResponseDto("Ya existe un Tenant con la identificacion: "+identificacion, false, null);
+				return new MsgResponseDto("Ya existe un Tenant con la identificacion: " + 
+						tenant.getIdentificacion(), false, null);
+						
+			TiposController tiposController = new TiposController();
+			TipoIdentificacion tipo = tiposController.getTipoIdentificacion(tenant.getTipoidentificacion());
 			
-			int tipoId = new TiposController().getTipoIdentificacion(tipoidentificacion).getIdidentificacion();
+			tenant.setTipoidentificacion(tipo.getIdidentificacion());
 			
 			dao = DaoFactory.getTenantDao(TenantDao.class);
-			esquemaName = getTenantName(nombre);
-			
-			tenant.setIdentificacion(identificacion);
-			tenant.setNombre(nombre);
-			tenant.setTelefono(telefono);
-			tenant.setDireccion(direccion);
-			tenant.setTipoidentificacion(tipoId);
+			esquemaName = getTenantName(tenant.getNombre());
 
 			int id = -1;
 			id = dao.generarTenant(tenant, esquemaName);
@@ -49,7 +46,6 @@ public class TenantController {
 			
 		} catch (Exception e) {
 			log.error("Ocurrio un error al realizar la creacion del tenan. " + e.getMessage() );
-			//e.printStackTrace();
 			return new MsgResponseDto("Ocurrio un error al realizar la creacion del tenan.",false,null);
 		}finally {
 			if(dao!=null)
@@ -58,21 +54,22 @@ public class TenantController {
 		
 	}
 	
-	public MsgResponseDto findByIdentificacion(String id) {
+	public MsgResponseDto findByIdentificacion(String identificacion) {
 		
 		TenantDao dao = null;
-		Tenant tenant = null;
+		Tenant tenant = new Tenant();
+		tenant.setIdentificacion(identificacion);
 		
 		try {
 			
 			dao = DaoFactory.getTenantDao(TenantDao.class);
-			tenant = dao.findByIdentificacion(id);
+			tenant = dao.findByIdentificacion(tenant);
 			
 			if(tenant!=null){
 				tenant.setEsquema(null);
 				return new MsgResponseDto("", true, tenant);
 			} else {
-				return new MsgResponseDto("No se encontro un tenant con el Id: "+id ,false,null);
+				return new MsgResponseDto("No se encontro un tenant con el Id: "+identificacion ,false,null);
 			}
 			
 		} catch (NumberFormatException e) {
@@ -85,15 +82,16 @@ public class TenantController {
 		
 	}
 	
-	public Tenant findByIdTenant(String id) {
+	public Tenant findByIdTenant(Integer idTenant) {
 		
 		TenantDao dao = null;
-		Tenant tenant = null;
+		Tenant tenant = new Tenant();
+		tenant.setIdtenant(idTenant);
 		
 		try {
 			
 			dao = DaoFactory.getTenantDao(TenantDao.class);
-			tenant = dao.findByIdTenant(Integer.parseInt(id));
+			tenant = dao.findByIdTenant(tenant);
 			return tenant;
 			
 		} catch (NumberFormatException e) {
@@ -109,12 +107,14 @@ public class TenantController {
 	public Tenant findByUsuario(Usuarios usuario) {
 		
 		TenantDao dao = null;
-		Tenant tenant = null;
+		Tenant tenant = new Tenant();
+		
+		tenant.setIdtenant(usuario.getIdtenant());
 		
 		try {
 			
 			dao = DaoFactory.getTenantDao(TenantDao.class);
-			tenant = dao.findByIdTenant(usuario.getIdtenant());
+			tenant = dao.findByIdTenant(tenant);
 			
 			return tenant;
 			
@@ -129,21 +129,23 @@ public class TenantController {
 		
 	}
 	
-	public MsgResponseDto BuscaTenantByCod(String cod) {
+	public MsgResponseDto BuscaTenantById(int idtenant) {
 		
 		TenantDao dao = null;
-		Tenant tenant = null;
+		Tenant tenant = new Tenant();
+		tenant.setIdtenant(idtenant);
 		
 		try {
 			
 			dao = DaoFactory.getTenantDao(TenantDao.class);
-			tenant = dao.findByIdTenant(Integer.parseInt(cod));
+			tenant = dao.findByIdTenant(tenant);
 			
 			if(tenant!=null){
+				//Por seguridad de oculta el esquema de BD.
 				tenant.setEsquema(null);
 				return new MsgResponseDto("", true, tenant);
 			} else {
-				return new MsgResponseDto("No se encontro un tenant con el Codigo: "+cod ,false,null);
+				return new MsgResponseDto("No se encontro un tenant con el idtenant: "+idtenant ,false,null);
 			}
 			
 		} catch (NumberFormatException e) {
@@ -158,10 +160,13 @@ public class TenantController {
 	
 	public String getEsquema(String usuario){
 		
+		Usuarios usu = new Usuarios();
+		usu.setUsuario(usuario);
+		
 		try {
 			
-			Usuarios usu = new UsuarioController().findByUsuario(usuario);
-			Tenant tenant = new TenantController().findByUsuario(usu);
+			Usuarios usuarios = new UsuarioController().findByUsuario(usu);
+			Tenant tenant = new TenantController().findByUsuario(usuarios);
 						
 			return tenant.getEsquema();
 			

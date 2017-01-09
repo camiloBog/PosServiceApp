@@ -29,15 +29,15 @@ public class InventarioImpl implements InventarioService{
 	}
 
 	@Override
-	public Response buscaProducto(Producto producto) {
+	public Response buscarPorDescripcion(Producto producto) {
 		
 		log.info("Buscando Producto");		
-		MsgResponseDto response = new ProductoController().buscar(producto);
+		MsgResponseDto response = new ProductoController().buscarPorDescri(producto);
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
 		} else {
-			log.warn("No fue posible realizar buscar el producto");
+			log.warn("No fue posible buscar el producto");
 			return Response.status(200).entity(null).build();
 		}
 	}
