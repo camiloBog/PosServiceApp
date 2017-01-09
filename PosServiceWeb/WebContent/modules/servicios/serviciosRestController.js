@@ -9,8 +9,18 @@ angular.module('serviciosRest', [])
 	
 	return {
 		
+//		validar : function(usu, pas){
+//			return $http.get(path+"loginsrv/validar/"+usu+"/"+pas);
+//		},
+		
 		validar : function(usu, pas){
-			return $http.get(path+"loginsrv/validar/"+usu+"/"+pas);
+			
+			var val_usuario = {
+				contrasena:pas,
+				usuario:usu
+			};
+			
+			return $http.post(path+"loginsrv/validar/", val_usuario);
 		},
 		
 		creaTenant : function(tipoid,id,nom,dir,tel){
