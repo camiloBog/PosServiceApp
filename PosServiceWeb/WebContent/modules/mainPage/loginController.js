@@ -24,7 +24,12 @@ function loginController($scope, serviciosRestRequest) {
 		//Objeto que maneja la respuesta del servicio
 		$scope.valUsu={}
 		
-		serviciosRestRequest.validar($scope.Usu.usu, $scope.Usu.pass).success(function (data){
+		var json_usuario = {
+			contrasena : $scope.Usu.pass,
+			usuario : $scope.Usu.usu
+		};
+
+		serviciosRestRequest.validar(json_usuario).success(function (data){
 			$scope.valUsu = data;
 			$scope.login = !$scope.valUsu.validacion;
 			

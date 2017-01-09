@@ -31,9 +31,17 @@ function usuarioController($scope, serviciosRestRequest) {
 			  closeOnConfirm: false,
 			  showLoaderOnConfirm: true,
 			}, function(){
+				
+				var json_usuario = {
+					usuario : $scope.confUsu.usu,
+					nombre : $scope.confUsu.nom,
+					apellidos : $scope.confUsu.ape,
+					contrasena : $scope.confUsu.pass,
+					idperfil : $scope.confUsu.perfil,
+					idtenant : $scope.confUsu.IdTenant
+				};
 
-				serviciosRestRequest.creaUsuario($scope.confUsu.usu, $scope.confUsu.nom, $scope.confUsu.ape, 
-						$scope.confUsu.pass, $scope.confUsu.perfil, $scope.confUsu.IdTenant).success(function (data){
+				serviciosRestRequest.creaUsuario(json_usuario).success(function (data){
 							
 					$scope.confUsuResp = data;
 					if( $scope.confUsuResp.validacion == true ){
