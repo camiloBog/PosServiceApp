@@ -9,6 +9,9 @@ function loginController($scope, serviciosRestRequest) {
 	//Objeto que contiene los tipos de identificacion del sistema
 	$scope.tiposId={}
 	
+	//Objeto que contiene los tipos de medida del sistema
+	$scope.tiposMedida={}
+	
 	//Objeto que contiene los tipos de identificacion del sistema
 	$scope.tiposPerfil={}
 	
@@ -36,6 +39,7 @@ function loginController($scope, serviciosRestRequest) {
 			//Carga los parametros del sistema
 			$scope.menu = $scope.valUsu.menu;
 			$scope.tiposId = $scope.valUsu.tiposIdentificacion;
+			$scope.tiposMedida = $scope.valUsu.tipoMedida;
 			$scope.tiposPerfil= $scope.valUsu.tiposPerfiles;
 
 		});
@@ -50,6 +54,7 @@ function loginController($scope, serviciosRestRequest) {
 		//Vacia las variables usadas
 		$scope.tiposPerfil={}
 		$scope.tiposId={}
+		$scope.tiposMedida={}
 		$scope.valUsu={}
 		$scope.Usu={}
 		$scope.menu={}

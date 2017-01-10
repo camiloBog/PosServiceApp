@@ -15,8 +15,8 @@
 			
 			<label class="formulario">Identificacion: </label>
 			<input style="width: 15%" class="buscar-consultor" placeholder="Identificacion" ng-model="tenant.idNum"/> 
+
 			<label class="espacio">Tipo de Identificacion: </label> 
-			
 			<select style="width: 15%" name="tipo_identificacion" class="buscar-consultor2" 
 				ng-model="tenant.idTipo" ng-options="tipo.ididentificacion as tipo.descripcion for tipo in tiposId">
 			</select> <br/> 
@@ -43,7 +43,7 @@
 	</div>
 	<div class="2u">
 		<p class="button-style">
-			<a href="#/tenan" ng-click="cancelar()">Cancelar</a>
+			<a href="#/tenan" ng-click="cancelar()">Limpiar</a>
 		</p>
 	</div>
 </div>

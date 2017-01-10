@@ -14,7 +14,7 @@ function tenanController($scope, serviciosRestRequest) {
 	}
 	
 	$scope.cancelar = function() {
-		swal("Upss!", "Hace falta implementar este metodo!", "error");
+		$scope.tenant = {};
 	}
 
 	$scope.crear = function() {
@@ -47,8 +47,6 @@ function tenanController($scope, serviciosRestRequest) {
 				  closeOnConfirm: false,
 				  showLoaderOnConfirm: true,
 				}, function(){
-					
-					
 					
 					serviciosRestRequest.creaTenant(json_tenant).success(function (data){
 

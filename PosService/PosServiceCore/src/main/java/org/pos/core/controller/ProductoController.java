@@ -13,6 +13,49 @@ public class ProductoController {
 	
 	private Logger log = LogManager.getLogger(ProductoController.class);
 	
+	public MsgResponseDto buscarProducto(Producto producto) {
+		
+		ProductoDao dao = null;
+		String usuario = producto.getUsuario();
+		
+		try {
+			
+			String esquema = new TenantController().getEsquema(usuario);
+			if("".equals(esquema) || null==esquema)
+				return new MsgResponseDto("El usuario "+producto.getUsuario()+" no existe.",false,null);
+			
+			dao = DaoFactory.getProductoDao(ProductoDao.class, esquema);
+			
+			
+			
+			
+			
+			List<Producto> productos = dao.findAll();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			if (null!=productos && 0!=productos.size())
+				return new MsgResponseDto("Se encontraron "+productos.size()+" productos",true,productos);
+			else
+				return new MsgResponseDto("No se encontraron productos!",false,null);
+			
+		} catch (Exception e) {
+			log.error("Ocurrio un error al buscar el producto " + usuario);
+			log.error(e.getMessage());
+			return new MsgResponseDto("Ocurrio un error al buscar el producto!",false,null);
+		}finally{
+			if(null!=dao)
+				dao.close();
+		}
+		
+	}
+	
 	public MsgResponseDto buscarPorDescri(Producto producto) {
 		
 		ProductoDao dao = null;
@@ -59,7 +102,7 @@ public class ProductoController {
 			id = dao.creaProducto(producto);
 			
 			if (id!=-1)
-				return new MsgResponseDto("Producto "+usuario+" registrado con el id: " +id,true,null);
+				return new MsgResponseDto("Producto "+producto.getNombreproducto()+" registrado con el id: " +id,true,null);
 			else
 				return new MsgResponseDto("No fue posible registrar el producto!",false,null);
 			
@@ -72,5 +115,5 @@ public class ProductoController {
 				dao.close();
 		}
 	}
-
+	
 }

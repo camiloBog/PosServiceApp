@@ -27,6 +27,20 @@ public class InventarioImpl implements InventarioService{
 		}
 	
 	}
+	
+	@Override
+	public Response buscarProducto(Producto producto) {
+		
+		log.info("Buscando Producto");		
+		MsgResponseDto response = new ProductoController().buscarProducto(producto);
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible buscar el producto");
+			return Response.status(200).entity(null).build();
+		}
+	}
 
 	@Override
 	public Response buscarPorDescripcion(Producto producto) {
@@ -55,5 +69,5 @@ public class InventarioImpl implements InventarioService{
 			return Response.status(200).entity(null).build();
 		}
 	}
-	
+
 }

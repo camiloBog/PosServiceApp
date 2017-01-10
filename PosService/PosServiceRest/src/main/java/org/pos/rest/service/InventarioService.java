@@ -20,6 +20,11 @@ public interface InventarioService {
 	@POST
 	@Path("busc/prod")
 	@Produces(MediaType.APPLICATION_JSON)
+	public Response buscarProducto(Producto producto);
+	
+	@POST
+	@Path("busc/prod/desc")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response buscarPorDescripcion(Producto producto);
 	
 	@PUT

@@ -6,29 +6,63 @@
 		<form action="" method="POST">
 		
 			<label class="formulario">Id: </label>
-			<input style="width: 15%" style="width: 30%" type="text" 
-				class="buscar-consultor" id="buscar-consultor" placeholder="Id" ng-model="tenant.cod" />
+			<input style="width: 9%" type="text" 
+				class="buscar-consultor" id="buscar-consultor" placeholder="Id" ng-model="productos.id" />
+			
 			<label class="espacio">Nombre: </label> 
-			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="nombre" ng-model="tenant.nom" /><br />
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="Nombre" ng-model="productos.nombre" /><br />
 			
-			
-			<label class="formulario">Tipo Medida: </label> 
-			<select style="width: 15%" name="tipo_identificacion" class="buscar-consultor2" 
-				ng-model="tenant.idTipo" ng-options="tipo.ididentificacion as tipo.descripcion for tipo in tiposId">
+			<label class="formulario">Medida: </label> 
+			<select style="width: 10%" name="tipo_medida" class="buscar-consultor2" 
+				ng-model="productos.medidaTipo" ng-options="tipo.idtipomedida as tipo.descripcion for tipo in tiposMedida">
 			</select>
-			<label class="espacio">Descripcion: </label>
-			<input style="width: 15%" class="buscar-consultor" placeholder="Identificacion" ng-model="tenant.idNum"/><br/>
-			 
-			 
-			<div class="3u">
-				<p class="button-style">
-					<a href="#/tenan" ng-click="ProductoRegistrar()">Registrar</a>
-				</p>
-			</div>
 			
+			<label class="espacio">Descripcion: </label>
+			<input style="width: 20%" class="buscar-consultor" placeholder="Descripcion" ng-model="productos.descri"/><br/>
+			 
 		</form>
 	</div>
 </div>
 
+<div class="botonera">
+	<div class="2u">
+		<p class="button-style">
+			<a href="#/productos" ng-click="ProductoRegistrar()">Guardar</a>
+		</p>
+	</div>
+	<div class="3u">
+		<p class="button-style">
+			<a href="#/productos" ng-click="ProductoConsultar()">Consultar</a>
+		</p>
+	</div>
+	<div class="2u">
+		<p class="button-style">
+			<a href="#/productos" ng-click="ProductoCancelar()">Limpiar</a>
+		</p>
+	</div>
+</div>
 
-
+<div ng-show="grilla_productos">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Medida</th>
+			<th>Medida</th>
+			<th>Descripcion</th>
+			<th>Eliminar</th>
+		</tr>
+		
+		<tr ng-repeat="producto in productosGrid">
+			<td>{{producto.idproducto}}</td>
+			<td>{{producto.nombreproducto}}</td>
+			<td>{{producto.idtipomedida}}</td>
+			<td >{{producto.idtipomedida}}</td>
+			<td>{{producto.descripcion}}</td>
+			<td>
+				<img src="assets/img/eliminar.png" style="width: 26px; height: 27px; padding: 0px 3px !important; margin-bottom: -9px;">
+			</td>
+		</tr>
+		
+	</table>
+</div>

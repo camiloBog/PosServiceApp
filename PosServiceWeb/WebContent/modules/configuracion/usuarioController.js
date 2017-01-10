@@ -18,20 +18,34 @@ function usuarioController($scope, serviciosRestRequest) {
 	}
 	
 	$scope.UsuarioCancelar = function() {
-		swal("Upss! UsuarioCancelar", "Hace falta implementar este metodo!", "error");
+		$scope.confUsu = {};
 	}
 	
 	$scope.UsuarioCrear = function() {
 		
-		swal({
-			  title: "Creacion de Usuario",
-			  text: "Esta accion creara un nuevo usuario en la Base de datos, esta seguro que desea crear el usuario?",
-			  type: "info",
-			  showCancelButton: true,
-			  closeOnConfirm: false,
-			  showLoaderOnConfirm: true,
+		if($scope.confUsu.usu == null){
+			swal("Upss!", "El campo Usuario esta vacio.", "error");
+		}else if($scope.confUsu.nom == null){
+			swal("Upss!", "El campo Nombre esta vacio.", "error");
+		}else if($scope.confUsu.ape == null){
+			swal("Upss!", "El campo Apellidos esta vacio.", "error");
+		}else if($scope.confUsu.pass == null){
+			swal("Upss!", "El campo Contraseña esta vacio.", "error");
+		}else if($scope.confUsu.perfil == null){
+			swal("Upss!", "El campo Perfil esta vacio.", "error");
+		}else if($scope.confUsu.IdTenant == null){
+			swal("Upss!", "El campo Tenant esta vacio.", "error");
+		}else{
+			
+			swal({
+				title: "Creacion de Usuario",
+				text: "Esta accion creara un nuevo usuario en la Base de datos, esta seguro que desea crear el usuario?",
+				type: "info",
+				showCancelButton: true,
+				closeOnConfirm: false,
+				showLoaderOnConfirm: true,
 			}, function(){
-				
+					
 				var json_usuario = {
 					usuario : $scope.confUsu.usu,
 					nombre : $scope.confUsu.nom,
@@ -42,7 +56,7 @@ function usuarioController($scope, serviciosRestRequest) {
 				};
 
 				serviciosRestRequest.creaUsuario(json_usuario).success(function (data){
-							
+								
 					$scope.confUsuResp = data;
 					if( $scope.confUsuResp.validacion == true ){
 						$scope.confUsu = {};
@@ -50,11 +64,12 @@ function usuarioController($scope, serviciosRestRequest) {
 					} else {
 						swal($scope.confUsuResp.mensaje, "", "error");
 					}
-						
+					
 				});
 			});
-		
-		
+			
+		}
+
 	}
 
 }
