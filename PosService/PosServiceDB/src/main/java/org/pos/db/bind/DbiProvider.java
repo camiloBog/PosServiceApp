@@ -60,7 +60,6 @@ public class DbiProvider {
 	 */
 	public static DBI getSimpleDBI() {
 		DBI dbi = createDBI();
-		dbi.define(PosSGlobal.ESQUEMA, PosSGlobal.ESQUEMA_BASE);
 		return dbi;
     }
 	

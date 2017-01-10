@@ -31,5 +31,10 @@ public interface InventarioService {
 	@Path("act/prod")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response actualizaProducto(Producto producto);
+	
+	@PUT
+	@Path("elim/prod/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response borrarProducto(Producto producto);
 
 }

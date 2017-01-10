@@ -22,6 +22,9 @@ public abstract class ProductoDao {
 			+ "values (:idproducto, :nombreproducto, :descripcion, :idtipomedida)")
 	protected abstract void insert(@BindBean Producto producto);
 	
+	@SqlQuery("delete from "+PosSGlobal.ESQUEMA+".PRODUCTO where idproducto = :idproducto")
+	public abstract Producto deleteById(@Bind("idproducto") int idproducto);
+	
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".PRODUCTO where idproducto = :idproducto")
 	public abstract Producto findById(@Bind("idproducto") int idproducto);
 	

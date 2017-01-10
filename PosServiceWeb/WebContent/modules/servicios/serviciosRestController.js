@@ -30,6 +30,10 @@ angular.module('serviciosRest', [])
 		
 		consultaProducto : function(busca_producto){
 			return $http.post(path+"inv/busc/prod/",busca_producto);
+		},
+		
+		eliminaProducto : function(busca_producto){
+			return $http.post(path+"inv/elim/prod/",busca_producto);
 		}
 		
 	};

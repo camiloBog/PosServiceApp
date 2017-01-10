@@ -70,4 +70,19 @@ public class InventarioImpl implements InventarioService{
 		}
 	}
 
+	@Override
+	public Response borrarProducto(Producto producto) {
+		
+		log.info("Eliminando Producto");		
+		MsgResponseDto response = new ProductoController().eliminar(producto);
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible eliminar el producto");
+			return Response.status(200).entity(null).build();
+		}
+		
+	}
+
 }
