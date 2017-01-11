@@ -74,6 +74,15 @@
 		height: 0;
 	}
 
+
+.caneca {
+	width: 26px;
+	height: 27px;
+	padding: 0px 3px !important;
+	margin-bottom: -9px;
+}
+
+
 /*********************/
 /* Mobile            */
 /*********************/

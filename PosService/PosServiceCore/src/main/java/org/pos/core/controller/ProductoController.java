@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
 import org.pos.db.bind.DbiProvider;
+import org.pos.db.dao.GenericoDao;
 import org.pos.db.dao.ProductoDao;
 import org.pos.db.entidades.Producto;
 import org.pos.db.mapper.ProductoMapper;
@@ -23,7 +24,7 @@ public class ProductoController {
 	public MsgResponseDto buscarProducto(Producto producto) {
 		
 		String usuario = producto.getUsuario();
-		Handle handle = null;
+		
 		
 		try {
 			
@@ -31,42 +32,7 @@ public class ProductoController {
 			if("".equals(esquema) || null==esquema)
 				return new MsgResponseDto("El usuario "+producto.getUsuario()+" no existe.",false,null);
 			
-			String sql = "SELECT * FROM "+esquema+".PRODUCTOS WHERE ";
-			
-			if(null!=producto.getIdproducto())
-				sql += "IDPRODUCTO = ? AND ";
-			else if(null!=producto.getIdtipomedida())
-				sql += "IDTIPOMEDIDA = ? AND ";
-			else if(null!=producto.getNombreproducto() && !"".equals(producto.getNombreproducto()))
-				sql += "LOWER(NOMBREPRODUCTO) LIKE LOWER(?) AND ";
-			else if(null!=producto.getDescripcion() && !"".equals(producto.getDescripcion()))
-				sql += "LOWER(DESCRIPCION) LIKE LOWER(?) AND ";
-			sql += "1=1";
-			
-			log.info("Buscando producto...");
-			log.info("Query: " + sql);
-			
-			DBI dbi = DbiProvider.getSimpleDBI();
-			handle = dbi.open();
-			
-			Query<Map<String, Object>> query = handle.createQuery(sql);
-			int position = 1;
-			if(null!=producto.getIdproducto()){
-				query.bind(position, producto.getIdproducto());
-				position++;
-			}else if(null!=producto.getIdtipomedida()){
-				query.bind(position, producto.getIdtipomedida());
-				position++;
-			}else if(null!=producto.getNombreproducto() && !"".equals(producto.getNombreproducto())){
-				query.bind(position, producto.getNombreproducto());
-				position++;
-			}else if(null!=producto.getDescripcion() && !"".equals(producto.getDescripcion())){
-				query.bind(position, producto.getDescripcion());
-				position++;
-			}
-			
-//			List<Producto> productos = handle.createQuery(sql).map(new ProductoMapper()).list();
-			List<Producto> productos = query.map(new ProductoMapper()).list();
+			List<Producto> productos = new GenericoDao().buscaProducto(producto, esquema);
 			
 			if (null!=productos && 0!=productos.size())
 				return new MsgResponseDto("Se encontraron "+productos.size()+" productos",true,productos);
@@ -77,9 +43,6 @@ public class ProductoController {
 			log.error("Ocurrio un error al buscar el producto " + usuario);
 			log.error(e.getMessage());
 			return new MsgResponseDto("Ocurrio un error al buscar el producto!",false,null);
-		}finally{
-			if(null!=handle)
-				handle.close();
 		}
 		
 	}
@@ -179,6 +142,7 @@ public class ProductoController {
 		
 		ProductoDao dao = null;
 		String usuario = producto.getUsuario();
+		String nombreProducto = producto.getNombreproducto();
 		
 		try {
 			
@@ -189,10 +153,10 @@ public class ProductoController {
 			dao = DaoFactory.getProductoDao(ProductoDao.class, esquema);
 			dao.deleteById(producto.getIdproducto());
 			
-			return new MsgResponseDto("Producto "+producto.getNombreproducto()+" borrado exitosamente!",true,null);
+			return new MsgResponseDto("Producto "+nombreProducto+" borrado exitosamente!",true,null);
 			
 		} catch (Exception e) {
-			log.error("Ocurrio un error al borrar el producto " + usuario);
+			log.error("Ocurrio un error al borrar el producto " + nombreProducto);
 			log.error(e.getMessage());
 			return new MsgResponseDto("Ocurrio un error al borrar el producto!",false,null);
 		}finally{

@@ -98,22 +98,21 @@ h4{
 
 @media only screen and (max-width: 580px) {
 
-
-#form-div {
-    background-color: rgba(72,72,72,0.4);
-    padding-left: 35px;
-    padding-right: 28px;
-    padding-top: 0px;
-    padding-bottom: 50px;
-    width: 70%;
-    float: left;
-    left: 5%;
-    position: absolute;
-    margin-top: 28px;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-    height: 73%;
-}
+	#form-div {
+	    background-color: rgba(72,72,72,0.4);
+	    padding-left: 35px;
+	    padding-right: 28px;
+	    padding-top: 0px;
+	    padding-bottom: 50px;
+	    width: 70%;
+	    float: left;
+	    left: 5%;
+	    position: absolute;
+	    margin-top: 28px;
+	    -moz-border-radius: 7px;
+	    -webkit-border-radius: 7px;
+	    height: 73%;
+	}
 
 }
 

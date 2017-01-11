@@ -18,6 +18,37 @@ function productosController($scope, serviciosRestRequest) {
 	
 	$scope.grilla_productos = false;
 	
+	/*
+	 * Se encarga de borrar un producto
+	 */
+	$scope.borrarProducto = function(productoBorrar) {
+		
+		productoBorrar.usuario = $scope.valUsu.usuario;
+		
+		swal({
+			title: "Eliminar Registro",
+			text: "Esta accion eliminara el producto en la Base de datos, esta seguro que desea eliminar el producto?",
+			type: "warning",
+			showCancelButton: true,
+			closeOnConfirm: false,
+			showLoaderOnConfirm: true,
+		}, function(){
+			
+			serviciosRestRequest.eliminaProducto(productoBorrar).success(function (data){
+							
+				$scope.productosResp = data;
+				if( $scope.productosResp.validacion == true ){
+					$scope.productos = {};
+					swal($scope.productosResp.mensaje, "", "success");
+				} else {
+					swal($scope.productosResp.mensaje, "", "error");
+				}
+				
+			});
+		});
+		
+	}
+	
 	$scope.ProductoCancelar = function() {
 		$scope.grilla_productos = false;
 		$scope.productos = {};
@@ -96,7 +127,7 @@ function productosController($scope, serviciosRestRequest) {
 					}
 					
 				});
-			});	
+			});
 		}	
 	}
 	

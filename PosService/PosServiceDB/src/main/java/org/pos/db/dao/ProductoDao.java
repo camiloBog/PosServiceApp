@@ -1,11 +1,16 @@
 package org.pos.db.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.pos.com.PosSGlobal;
+import org.pos.db.bind.DbiProvider;
 import org.pos.db.bind.EsquemaSetter;
 import org.pos.db.entidades.Producto;
 import org.pos.db.mapper.ProductoMapper;
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
+import org.skife.jdbi.v2.Query;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
@@ -22,8 +27,8 @@ public abstract class ProductoDao {
 			+ "values (:idproducto, :nombreproducto, :descripcion, :idtipomedida)")
 	protected abstract void insert(@BindBean Producto producto);
 	
-	@SqlQuery("delete from "+PosSGlobal.ESQUEMA+".PRODUCTO where idproducto = :idproducto")
-	public abstract Producto deleteById(@Bind("idproducto") int idproducto);
+	@SqlUpdate("delete from "+PosSGlobal.ESQUEMA+".PRODUCTO where idproducto = :idproducto")
+	public abstract void deleteById(@Bind("idproducto") int idproducto);
 	
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".PRODUCTO where idproducto = :idproducto")
 	public abstract Producto findById(@Bind("idproducto") int idproducto);
@@ -49,4 +54,5 @@ public abstract class ProductoDao {
 		insert(producto);
 		return id;
 	}
+	
 }

@@ -32,7 +32,7 @@ public interface InventarioService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response actualizaProducto(Producto producto);
 	
-	@PUT
+	@POST
 	@Path("elim/prod/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response borrarProducto(Producto producto);
