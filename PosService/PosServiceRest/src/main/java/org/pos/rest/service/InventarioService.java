@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.pos.db.entidades.Persona;
 import org.pos.db.entidades.Producto;
 
 @Path("inv")
@@ -36,5 +37,20 @@ public interface InventarioService {
 	@Path("elim/prod/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response borrarProducto(Producto producto);
+	
+	@POST
+	@Path("reg/pers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response registraProveedor(Persona persona);
+	
+	@POST
+	@Path("busc/pers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response buscarProveedor(Persona persona);
+		
+	@POST
+	@Path("elim/pers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response borrarProveedor(Persona persona);
 
 }

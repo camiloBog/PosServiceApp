@@ -9,13 +9,16 @@ import org.pos.core.dto.MenuDto;
 import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
 import org.pos.db.dao.PerfilesDao;
+import org.pos.db.dao.QueryDinamicoDao;
 import org.pos.db.dao.TipoIdentificacionDao;
 import org.pos.db.dao.TipoMedidaDao;
+import org.pos.db.dao.TipoPersonasDao;
 import org.pos.db.dao.UsuarioDao;
 import org.pos.db.entidades.Perfiles;
 import org.pos.db.entidades.Tenant;
 import org.pos.db.entidades.TipoIdentificacion;
 import org.pos.db.entidades.TipoMedida;
+import org.pos.db.entidades.TipoPersonas;
 import org.pos.db.entidades.Usuarios;
 
 public class UsuarioController {
@@ -206,12 +209,26 @@ public class UsuarioController {
 			daoM = DaoFactory.getTipoMedidaDao(TipoMedidaDao.class);
 			medidas = daoM.findAll();
 		} catch (Exception e) {
-			log.error("Ocurrio un error al tipos de medidas.");
+			log.error("Ocurrio un error al cargar los tipos de medidas.");
 			log.error(e.getMessage());
 		}finally {
 			if(null!=daoM)
 				daoM.close();
 		}
+		
+		TipoPersonasDao daoPersonas = null;
+		List<TipoPersonas> tipoPersonas = null;
+		
+		//Obtiene los tipos de Personas, para enviarlos al front
+		try {
+			daoPersonas = DaoFactory.getTipoPersonasDao(TipoPersonasDao.class);
+			tipoPersonas = daoPersonas.findAll();
+		} catch (Exception e) {
+			log.error("Ocurrio un error al cargar los tipos de personas.");
+			log.error(e.getMessage());
+		}
+		
+		
 		
 		Tenant t = new Tenant();
 		try {
@@ -242,12 +259,36 @@ public class UsuarioController {
 			login.setTiposIdentificacion(ti);
 			login.setTiposPerfiles(perfiles);
 			login.setTipoMedida(medidas);
+			login.setTiposPersonas(tipoPersonas);
 			
 			return login;
 			
 		}
 		
 		return null; 
+		
+	}
+
+	public MsgResponseDto BuscarUsuario(Usuarios usuario) {
+		
+		try {
+			
+			String esquema = new TenantController().getEsquema(usuario.getUsuario());
+			if("".equals(esquema) || null==esquema)
+				return new MsgResponseDto("El usuario "+usuario.getUsuario()+" no existe.",false,null);
+			
+			List<Usuarios> usuarios = new QueryDinamicoDao().buscaUsuario(usuario, esquema);
+			
+			if (null!=usuarios && 0!=usuarios.size())
+				return new MsgResponseDto("Se encontraron "+usuarios.size()+" usuarios",true,usuarios);
+			else
+				return new MsgResponseDto("No se encontraron usuarios!",false,null);
+			
+		} catch (Exception e) {
+			log.error("Ocurrio un error al buscar el usuario " + usuario.getUsuario());
+			log.error(e.getMessage());
+			return new MsgResponseDto("Ocurrio un error al buscar el usuario!",false,null);
+		}
 		
 	}
 

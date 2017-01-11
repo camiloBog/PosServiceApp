@@ -16,11 +16,11 @@ public class PersonaMapper implements ResultSetMapper<Persona> {
         		rs.getInt("idtipopersona"),
         		rs.getInt("idtipoidentificacion"),
         		rs.getLong("identificacion"),
-        		rs.getLong("nombre"),
-        		rs.getLong("direccion"),
-        		rs.getLong("telefono"),
-        		rs.getLong("correocontacto"),
-        		rs.getLong("contacto")
+        		rs.getString("nombre"),
+        		rs.getString("direccion"),
+        		rs.getString("telefono"),
+        		rs.getString("correocontacto"),
+        		rs.getString("contacto")
         		);
     }
 }

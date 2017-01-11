@@ -14,14 +14,15 @@ public class Persona implements Serializable {
 	private Integer idtipopersona;
 	private Integer idtipoidentificacion;
 	private Long identificacion;
-	private Long nombre;
-	private Long direccion;
-	private Long telefono;
-	private Long correocontacto;
-	private Long contacto;
+	private String nombre;
+	private String direccion;
+	private String telefono;
+	private String correocontacto;
+	private String contacto;
+	private String usuario;
 
 	public Persona(Integer idpersona, Integer idtipopersona, Integer idtipoidentificacion, Long identificacion,
-			Long nombre, Long direccion, Long telefono, Long correocontacto, Long contacto) {
+			String nombre, String direccion, String telefono, String correocontacto, String contacto) {
 		this.idpersona = idpersona;
 		this.idtipopersona = idtipopersona;
 		this.idtipoidentificacion = idtipoidentificacion;
@@ -64,45 +65,53 @@ public class Persona implements Serializable {
 	public void setIdentificacion(Long identificacion) {
 		this.identificacion = identificacion;
 	}
-
-	public Long getNombre() {
+	
+	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(Long nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public Long getDireccion() {
+	public String getDireccion() {
 		return direccion;
 	}
 
-	public void setDireccion(Long direccion) {
+	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
-	public Long getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(Long telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-	public Long getCorreocontacto() {
+	public String getCorreocontacto() {
 		return correocontacto;
 	}
 
-	public void setCorreocontacto(Long correocontacto) {
+	public void setCorreocontacto(String correocontacto) {
 		this.correocontacto = correocontacto;
 	}
 
-	public Long getContacto() {
+	public String getContacto() {
 		return contacto;
 	}
 
-	public void setContacto(Long contacto) {
+	public void setContacto(String contacto) {
 		this.contacto = contacto;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	
 }

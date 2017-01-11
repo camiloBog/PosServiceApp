@@ -4,7 +4,8 @@ angular.module('serviciosRest', [])
 
 .factory('serviciosRestRequest', function($http) {
 	
-	var path = "/PosServiceRest/rest/";//API path
+	//API path
+	var path = "/PosServiceRest/rest/";
 	
 	return {
 		
@@ -24,6 +25,10 @@ angular.module('serviciosRest', [])
 			return $http.post(path+"conf/reg/usu/",crea_usuario);
 		},
 		
+		consultaUsuario : function(consulta_usuario){
+			return $http.post(path+"conf/cons/usu/",consulta_usuario);
+		},
+		
 		creaProducto : function(crea_producto){
 			return $http.post(path+"inv/reg/prod/",crea_producto);
 		},
@@ -34,6 +39,18 @@ angular.module('serviciosRest', [])
 		
 		eliminaProducto : function(busca_producto){
 			return $http.post(path+"inv/elim/prod/",busca_producto);
+		},
+		
+		creaPersona : function(crea_producto){
+			return $http.post(path+"inv/reg/pers/",crea_producto);
+		},
+		
+		consultaPersona : function(busca_producto){
+			return $http.post(path+"inv/busc/pers/",busca_producto);
+		},
+		
+		eliminaPersona : function(busca_producto){
+			return $http.post(path+"inv/elim/pers/",busca_producto);
 		}
 		
 	};

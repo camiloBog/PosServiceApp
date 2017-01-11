@@ -1,16 +1,11 @@
 package org.pos.db.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.pos.com.PosSGlobal;
-import org.pos.db.bind.DbiProvider;
 import org.pos.db.bind.EsquemaSetter;
 import org.pos.db.entidades.Producto;
 import org.pos.db.mapper.ProductoMapper;
-import org.skife.jdbi.v2.DBI;
-import org.skife.jdbi.v2.Handle;
-import org.skife.jdbi.v2.Query;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;

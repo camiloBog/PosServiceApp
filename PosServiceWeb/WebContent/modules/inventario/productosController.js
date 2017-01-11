@@ -35,13 +35,18 @@ function productosController($scope, serviciosRestRequest) {
 		}, function(){
 			
 			serviciosRestRequest.eliminaProducto(productoBorrar).success(function (data){
-							
+				
 				$scope.productosResp = data;
 				if( $scope.productosResp.validacion == true ){
 					$scope.productos = {};
 					swal($scope.productosResp.mensaje, "", "success");
 				} else {
 					swal($scope.productosResp.mensaje, "", "error");
+				}
+				
+				//Si la grilla esta visible, la recarga.
+				if($scope.grilla_productos == true){
+					$scope.ProductoConsultar();
 				}
 				
 			});
@@ -53,6 +58,7 @@ function productosController($scope, serviciosRestRequest) {
 		$scope.grilla_productos = false;
 		$scope.productos = {};
 		$scope.productosResp = {};
+		$scope.productosGrid = {};
 	}
 
 	/*
@@ -92,11 +98,11 @@ function productosController($scope, serviciosRestRequest) {
 	 */
 	$scope.ProductoRegistrar = function() {
 		
-		if($scope.productos.nombre == null){
+		if($scope.productos.nombre == null || $scope.productos.nombre == "" ){
 			swal("Upss!", "El campo Nombre esta vacio.", "error");
-		}else if($scope.productos.medidaTipo == null){
+		}else if($scope.productos.medidaTipo == null || $scope.productos.medidaTipo == "" ){
 			swal("Upss!", "El campo Medida esta vacio.", "error");
-		}else if($scope.productos.descri == null){
+		}else if($scope.productos.descri == null || $scope.productos.descri == "" ){
 			swal("Upss!", "El campo Descripcion esta vacio.", "error");
 		}else{
 			

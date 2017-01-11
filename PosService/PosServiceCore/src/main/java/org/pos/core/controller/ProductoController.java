@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
 import org.pos.db.bind.DbiProvider;
-import org.pos.db.dao.GenericoDao;
+import org.pos.db.dao.QueryDinamicoDao;
 import org.pos.db.dao.ProductoDao;
 import org.pos.db.entidades.Producto;
 import org.pos.db.mapper.ProductoMapper;
@@ -32,7 +32,7 @@ public class ProductoController {
 			if("".equals(esquema) || null==esquema)
 				return new MsgResponseDto("El usuario "+producto.getUsuario()+" no existe.",false,null);
 			
-			List<Producto> productos = new GenericoDao().buscaProducto(producto, esquema);
+			List<Producto> productos = new QueryDinamicoDao().buscaProducto(producto, esquema);
 			
 			if (null!=productos && 0!=productos.size())
 				return new MsgResponseDto("Se encontraron "+productos.size()+" productos",true,productos);

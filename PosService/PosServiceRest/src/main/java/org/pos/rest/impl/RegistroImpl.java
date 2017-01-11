@@ -68,6 +68,21 @@ public class RegistroImpl implements RegistroService {
 		}
 	}
 	
+	public Response ConsultarUsuario(Usuarios usuario) {
+		
+		log.info("Consultando Usuario " + usuario.getNombre());
+		
+		MsgResponseDto response = new UsuarioController().BuscarUsuario(usuario);
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible consultar el registro del usuario: " + usuario);
+			return Response.status(200).entity(null).build();
+		}
+		
+	}
+	
 	public Response BuscarUsuario(Usuarios usuario) {
 
 		log.info("Buscando Usuario: " + usuario.getUsuario());

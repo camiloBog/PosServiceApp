@@ -1,5 +1,7 @@
 package org.pos.db.dao;
 
+import java.util.List;
+
 import org.pos.com.PosSGlobal;
 import org.pos.db.bind.DaoInterface;
 import org.pos.db.bind.EsquemaSetter;
@@ -16,5 +18,8 @@ public interface TipoPersonasDao  extends DaoInterface{
 	
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TipoPersonas where idtipopersona = :id")
 	public TipoPersonas getTipoById(@Bind("id") String id);
+	
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TipoPersonas")
+	public List<TipoPersonas> findAll();
 	    
 }

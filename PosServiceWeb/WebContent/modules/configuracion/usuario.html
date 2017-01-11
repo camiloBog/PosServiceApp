@@ -47,3 +47,32 @@
 		</p>
 	</div>
 </div>
+
+<div ng-show="grilla_usuarios">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Usuario</th>
+			<th>Nombre</th>
+			<th>Apellidos</th>
+			<th>Perfil</th>
+			<th>Tenant</th>
+			<th>Eliminar</th>
+		</tr>
+		
+		<tr ng-repeat="usuario in usuariosGrid">
+			<td>{{usuario.idusuario}}</td>
+			<td>{{usuario.usuario}}</td>
+			<td>{{usuario.nombre}}</td>
+			<td>{{usuario.apellidos}}</td>
+			<td>{{usuario.idperfil}}</td>
+			<td>{{usuario.idtenant}}</td>
+			
+			<td>
+				<img src="assets/img/eliminar.png" class="caneca"
+					ng-click="borrarUsuario(usuario)">
+			</td>
+		</tr>
+		
+	</table>
+</div>

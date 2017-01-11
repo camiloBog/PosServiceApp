@@ -3,8 +3,10 @@ package org.pos.core.dto;
 import java.util.List;
 
 import org.pos.db.entidades.Perfiles;
+import org.pos.db.entidades.Persona;
 import org.pos.db.entidades.TipoIdentificacion;
 import org.pos.db.entidades.TipoMedida;
+import org.pos.db.entidades.TipoPersonas;
 
 public class LoginResponseDto {
 
@@ -18,6 +20,7 @@ public class LoginResponseDto {
 	private List<TipoIdentificacion> tiposIdentificacion;
 	private List<TipoMedida> tipoMedida;
 	private List<Perfiles> tiposPerfiles;
+	private List<TipoPersonas> tiposPersonas;
 	
 	public LoginResponseDto() {
 		
@@ -25,7 +28,7 @@ public class LoginResponseDto {
 
 	public LoginResponseDto(boolean validacion, Integer tenant, String tenantName, String usuario, String nombre,
 			String mensaje, MenuDto menu, List<TipoIdentificacion> tiposIdentificacion, List<TipoMedida> tipoMedida,
-			List<Perfiles> tiposPerfiles) {
+			List<Perfiles> tiposPerfiles, List<TipoPersonas> tiposPersonas) {
 		this.validacion = validacion;
 		this.tenant = tenant;
 		this.tenantName = tenantName;
@@ -36,6 +39,7 @@ public class LoginResponseDto {
 		this.tiposIdentificacion = tiposIdentificacion;
 		this.tipoMedida = tipoMedida;
 		this.tiposPerfiles = tiposPerfiles;
+		this.setTiposPersonas(tiposPersonas);
 	}
 
 	public boolean isValidacion() {
@@ -117,5 +121,14 @@ public class LoginResponseDto {
 	public void setTiposPerfiles(List<Perfiles> tiposPerfiles) {
 		this.tiposPerfiles = tiposPerfiles;
 	}
+
+	public List<TipoPersonas> getTiposPersonas() {
+		return tiposPersonas;
+	}
+
+	public void setTiposPersonas(List<TipoPersonas> tiposPersonas) {
+		this.tiposPersonas = tiposPersonas;
+	}
+
 	
 }

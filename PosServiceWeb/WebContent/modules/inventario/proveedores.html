@@ -1,5 +1,89 @@
 <div id="feature-content">
 	<section>
-		<h2 align="center">Proveedores</h2>
+		<h2 align="center">PROVEEDORES</h2>
 	</section>
+	
+	<div>
+		<form action="" method="POST">
+
+			<label class="formulario">Id:</label>
+			<input style="width: 9%" type="text" 
+				class="buscar-consultor" id="buscar-consultor" placeholder="Id" ng-model="proveedor.idpersona" />
+			
+			<label class="espacio">Tipo de Identificacion:</label> 
+			<select style="width: 15%" name="tipo_identificacion" class="buscar-consultor2" 
+				ng-model="proveedor.idTipo" ng-options="tipo.ididentificacion as tipo.descripcion for tipo in tiposId">
+			</select> <br/> 
+			
+			<label class="formulario">Identificacion:</label>
+			<input style="width: 15%" class="buscar-consultor" placeholder="Identificacion" ng-model="proveedor.identificacion"/>
+			
+			<label class="espacio">Nombre:</label> 
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="nombre" ng-model="proveedor.nombre" /><br />
+			
+			<label class="formulario">Telefono:</label> 
+			<input style="width: 15%" type="text" class="buscar-consultor" placeholder="Telefono" ng-model="proveedor.telefono"/> 
+			
+			<label class="espacio">Direccion:</label>
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="Direccion" ng-model="proveedor.direccion"/> <br> 
+			
+			<label class="formulario">Correo:</label> 
+			<input style="width: 15%" type="email" class="buscar-consultor" placeholder="Correo" ng-model="proveedor.correocontacto"/> 
+			
+			<label class="espacio">Contacto:</label>
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="Nombre del Contacto" ng-model="proveedor.contacto"/> <br> 
+			
+			 
+		</form>
+	</div>
+</div>
+
+<div class="botonera">
+	<div class="2u">
+		<p class="button-style">
+			<a href="#/proveedores" ng-click="ProveedorRegistrar()">Guardar</a>
+		</p>
+	</div>
+	<div class="3u">
+		<p class="button-style">
+			<a href="#/proveedores" ng-click="ProveedorConsultar()">Consultar</a>
+		</p>
+	</div>
+	<div class="2u">
+		<p class="button-style">
+			<a href="#/proveedores" ng-click="ProveedorCancelar()">Limpiar</a>
+		</p>
+	</div>
+</div>
+
+<div ng-show="grilla_proveedor">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Tipo Id</th>
+			<th>Identificacion</th>
+			<th>Nombre</th>
+			<th>Direccion</th>
+			<th>Telefono</th>
+			<th>Correo</th>
+			<th>Contacto</th>
+			<th>Eliminar</th>
+		</tr>
+		
+		<tr ng-repeat="proveedor in proveedoresGrid">
+			<td>{{proveedor.idpersona}}</td>
+			<td>{{proveedor.idtipoidentificacion}}</td>
+			<td>{{proveedor.identificacion}}</td>
+			<td>{{proveedor.nombre}}</td>
+			<td>{{proveedor.direccion}}</td>
+			<td>{{proveedor.telefono}}</td>
+			<td>{{proveedor.correocontacto}}</td>
+			<td>{{proveedor.contacto}}</td>
+			<td>
+				<img src="assets/img/eliminar.png" class="caneca"
+					ng-click="borrarProveedor(proveedor)">
+			</td>
+		</tr>
+		
+	</table>
 </div>
