@@ -22,6 +22,9 @@ public abstract class UsuarioDao {
 			+ "values (:idusuario, :usuario, :nombre, :apellidos, :contrasena, :idperfil, :idtenant)")
 	protected abstract void insert(@BindBean Usuarios usuarios);
 	
+	@SqlUpdate("delete from "+PosSGlobal.ESQUEMA+".USUARIOS where idusuario = :idusuario")
+	public abstract void deleteById(@BindBean Usuarios usuarios);
+	
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".USUARIOS where idusuario = :id")
 	public abstract Usuarios findById(@Bind("id") int id);
 	

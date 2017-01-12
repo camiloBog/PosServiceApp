@@ -4,6 +4,7 @@ import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.pos.core.controller.ProductoController;
 import org.pos.core.controller.TenantController;
 import org.pos.core.controller.UsuarioController;
 import org.pos.core.dto.MsgResponseDto;
@@ -15,6 +16,7 @@ public class RegistroImpl implements RegistroService {
 
 	private Logger log = LogManager.getLogger(RegistroImpl.class);
 
+	@Override
 	public Response RegistrarTenant(Tenant tenant) {
 
 		log.info("Registrando Tenant " + tenant.getNombre());
@@ -28,6 +30,7 @@ public class RegistroImpl implements RegistroService {
 		}
 	}
 	
+	@Override
 	public Response BuscarTenantById(Tenant tenant) {
 
 		log.info("Buscando Tenant por Idtenant: " + tenant.getIdtenant());
@@ -41,6 +44,7 @@ public class RegistroImpl implements RegistroService {
 		}
 	}
 
+	@Override
 	public Response BuscarTenantByIdentificacion(Tenant tenant) {
 
 		log.info("Buscando Tenant por Identification: " + tenant.getIdentificacion());
@@ -54,6 +58,7 @@ public class RegistroImpl implements RegistroService {
 		}
 	}
 	
+	@Override
 	public Response RegistrarUsuario(Usuarios usuario) {
 
 		log.info("Registrando Usuario " + usuario.getNombre());
@@ -68,21 +73,23 @@ public class RegistroImpl implements RegistroService {
 		}
 	}
 	
+	@Override
 	public Response ConsultarUsuario(Usuarios usuario) {
 		
-		log.info("Consultando Usuario " + usuario.getNombre());
+		log.info("Consultando Usuario dinamicamente...");
 		
 		MsgResponseDto response = new UsuarioController().BuscarUsuario(usuario);
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
 		} else {
-			log.warn("No fue posible consultar el registro del usuario: " + usuario);
+			log.warn("No fue posible consultar el registro del usuario.");
 			return Response.status(200).entity(null).build();
 		}
 		
 	}
 	
+	@Override
 	public Response BuscarUsuario(Usuarios usuario) {
 
 		log.info("Buscando Usuario: " + usuario.getUsuario());
@@ -97,6 +104,7 @@ public class RegistroImpl implements RegistroService {
 		
 	}
 	
+	@Override
 	public Response ActualizarUsuario(Usuarios usuario) {
 
 		log.info("Actualizando Usuario:" + usuario.getUsuario());
@@ -108,6 +116,21 @@ public class RegistroImpl implements RegistroService {
 			log.warn("No fue posible actualizar el usuario:" + usuario.getUsuario());
 			return Response.status(200).entity(null).build();
 		}
+	}
+
+	@Override
+	public Response EliminarUsuario(Usuarios usuario) {
+		
+		log.info("Eliminando Usuario");		
+		MsgResponseDto response = new UsuarioController().eliminar(usuario);
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible eliminar el usuario");
+			return Response.status(200).entity(null).build();
+		}
+		
 	}
 
 }

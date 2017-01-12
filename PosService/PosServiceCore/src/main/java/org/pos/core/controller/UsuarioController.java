@@ -1,5 +1,6 @@
 package org.pos.core.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -272,22 +273,53 @@ public class UsuarioController {
 	public MsgResponseDto BuscarUsuario(Usuarios usuario) {
 		
 		try {
+
+			List<Usuarios> usuarios = new QueryDinamicoDao().buscaUsuario(usuario);
 			
-			String esquema = new TenantController().getEsquema(usuario.getUsuario());
-			if("".equals(esquema) || null==esquema)
-				return new MsgResponseDto("El usuario "+usuario.getUsuario()+" no existe.",false,null);
-			
-			List<Usuarios> usuarios = new QueryDinamicoDao().buscaUsuario(usuario, esquema);
-			
-			if (null!=usuarios && 0!=usuarios.size())
-				return new MsgResponseDto("Se encontraron "+usuarios.size()+" usuarios",true,usuarios);
-			else
+			if (null!=usuarios && 0!=usuarios.size()){
+				
+				List<Usuarios> listaFinal = new ArrayList<Usuarios>();
+				
+				//Se ocultan datos por seguridad.
+				for (Usuarios usu : usuarios) {
+					usu.setContrasena(null);
+					listaFinal.add(usu);
+				}
+
+				return new MsgResponseDto("Se encontraron "+usuarios.size()+" usuarios",true,listaFinal);
+
+			}else
 				return new MsgResponseDto("No se encontraron usuarios!",false,null);
 			
 		} catch (Exception e) {
 			log.error("Ocurrio un error al buscar el usuario " + usuario.getUsuario());
 			log.error(e.getMessage());
 			return new MsgResponseDto("Ocurrio un error al buscar el usuario!",false,null);
+		}
+		
+	}
+
+	public MsgResponseDto eliminar(Usuarios usuario) {
+		
+		log.info("Eliminando Usuario");
+		
+		UsuarioDao dao = null;
+		String nombreUsuario = usuario.getUsuario();
+		
+		try {
+			
+			dao = DaoFactory.getUsuarioDao(UsuarioDao.class);
+			dao.deleteById(usuario);
+			
+			return new MsgResponseDto("Usuario "+nombreUsuario+" borrado exitosamente!",true,null);
+			
+		} catch (Exception e) {
+			log.error("Ocurrio un error al borrar el Usuario " + nombreUsuario);
+			log.error(e.getMessage());
+			return new MsgResponseDto("Ocurrio un error al borrar el Usuario!",false,null);
+		}finally{
+			if(null!=dao)
+				dao.close();
 		}
 		
 	}

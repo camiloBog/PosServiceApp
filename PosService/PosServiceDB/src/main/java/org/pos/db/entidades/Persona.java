@@ -20,6 +20,10 @@ public class Persona implements Serializable {
 	private String correocontacto;
 	private String contacto;
 	private String usuario;
+	
+	public Persona() {
+
+	}
 
 	public Persona(Integer idpersona, Integer idtipopersona, Integer idtipoidentificacion, Long identificacion,
 			String nombre, String direccion, String telefono, String correocontacto, String contacto) {

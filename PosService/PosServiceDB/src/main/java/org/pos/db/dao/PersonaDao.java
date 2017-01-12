@@ -18,8 +18,8 @@ public abstract class PersonaDao{
 	
 	@SqlUpdate("insert into "+PosSGlobal.ESQUEMA+".PERSONA (idpersona, idtipopersona, idtipoidentificacion, "
 			+ "identificacion, nombre, direccion, telefono, correocontacto, contacto) "
-			+ "values (idpersona, idtipopersona, idtipoidentificacion, identificacion, nombre, direccion, "
-			+ "telefono, correocontacto, contacto)")
+			+ "values (:idpersona, :idtipopersona, :idtipoidentificacion, :identificacion, :nombre, :direccion, "
+			+ ":telefono, :correocontacto, :contacto)")
 	protected abstract void insert(@BindBean Persona persona);
 	
 	@SqlUpdate("delete from "+PosSGlobal.ESQUEMA+".PERSONA where idpersona = :idpersona")

@@ -11,16 +11,49 @@ function usuarioController($scope, serviciosRestRequest) {
 	$scope.confUsu = {};
 	
 	//Contiene la data de respuesta
-	$scope.confUsuResp = {};
+	$scope.usuariosResp = {};
 	
 	//Usuarios de la grilla
 	$scope.usuariosGrid = {};
 	
 	$scope.grilla_usuarios = false;
+	
+	/*
+	 * Se encarga de borrar un usuario
+	 */
+	$scope.borrarUsuario = function(usuarioBorrar) {
+		
+		swal({
+			title: "Eliminar Usuario",
+			text: "Esta accion eliminara el usuario en la Base de datos, esta seguro que desea eliminar el Usuario?",
+			type: "warning",
+			showCancelButton: true,
+			closeOnConfirm: false,
+			showLoaderOnConfirm: true,
+		}, function(){
+			
+			serviciosRestRequest.eliminaUsuario(usuarioBorrar).success(function (data){
+				
+				$scope.usuariosResp = data;
+				if( $scope.usuariosResp.validacion == true ){
+					swal($scope.usuariosResp.mensaje, "", "success");
+				} else {
+					swal($scope.usuariosResp.mensaje, "", "error");
+				}
+				
+				//Si la grilla esta visible, la recarga.
+				if($scope.grilla_usuarios == true){
+					$scope.UsuarioConsultar();
+				}
+				
+			});
+		});
+		
+	}
 
 	$scope.UsuarioConsultar = function() {
 		
-		$scope.confUsuResp = {};
+		$scope.usuariosResp = {};
 		
 		var json_usuario = {
 				usuario : $scope.confUsu.usu,
@@ -28,20 +61,26 @@ function usuarioController($scope, serviciosRestRequest) {
 				apellidos : $scope.confUsu.ape,
 				contrasena : $scope.confUsu.pass,
 				idperfil : $scope.confUsu.perfil,
-				idtenant : $scope.confUsu.IdTenant
+				idtenant : $scope.confUsu.IdTenant,
 		};
 		
 		serviciosRestRequest.consultaUsuario(json_usuario).success(function (data){
 			
-			$scope.confUsuResp = data;
-			if( $$scope.confUsuResp.validacion == true ){
+			$scope.usuariosResp = data;
+			if( $scope.usuariosResp.validacion == true ){
 				
 				$scope.grilla_usuarios = true;
-				$scope.usuariosGrid = $scope.confUsuResp.objeto;
+				$scope.usuariosGrid = $scope.usuariosResp.objeto;
 				
+				//Trae los nombre de los perfiles
+				for (var i = 0; i < $scope.usuariosGrid.length; i++)
+					for (var j = 0; j < $scope.tiposPerfil.length; j++)
+						if( $scope.usuariosGrid[i].idperfil == $scope.tiposPerfil[j].idperfil )
+							$scope.usuariosGrid[i].idperfil = $scope.tiposPerfil[j].descripcion;
+
 			} else {
 				$scope.grilla_usuarios = false;
-				swal($scope.confUsuResp.mensaje, "", "error");
+				swal($scope.usuariosResp.mensaje, "", "error");
 			}
 			
 		});
@@ -52,7 +91,7 @@ function usuarioController($scope, serviciosRestRequest) {
 	$scope.UsuarioCancelar = function() {
 		$scope.confUsu = {};
 		$scope.usuariosGrid = {};
-		$scope.confUsuResp = {};
+		$scope.usuariosResp = {};
 		$scope.grilla_usuarios = false;
 	}
 	
@@ -92,12 +131,12 @@ function usuarioController($scope, serviciosRestRequest) {
 
 				serviciosRestRequest.creaUsuario(json_usuario).success(function (data){
 								
-					$scope.confUsuResp = data;
-					if( $scope.confUsuResp.validacion == true ){
+					$scope.usuariosResp = data;
+					if( $scope.usuariosResp.validacion == true ){
 						$scope.confUsu = {};
-						swal($scope.confUsuResp.mensaje, "", "success");
+						swal($scope.usuariosResp.mensaje, "", "success");
 					} else {
-						swal($scope.confUsuResp.mensaje, "", "error");
+						swal($scope.usuariosResp.mensaje, "", "error");
 					}
 					
 				});

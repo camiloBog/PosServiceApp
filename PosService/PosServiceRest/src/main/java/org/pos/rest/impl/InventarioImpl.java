@@ -105,7 +105,7 @@ public class InventarioImpl implements InventarioService{
 	@Override
 	public Response buscarProveedor(Persona persona) {
 		
-		log.info("Buscando Persona " + persona.getNombre());		
+		log.info("Buscando Persona dinamicamente.");		
 		MsgResponseDto response = new PersonaController().buscar(persona);
 
 		if (response != null) {

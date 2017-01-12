@@ -33,9 +33,14 @@ public interface RegistroService {
 	public Response RegistrarUsuario(Usuarios usuario);
 	
 	@POST
-	@Path("cons/usu/")
+	@Path("cons/usu/params/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response ConsultarUsuario(Usuarios usuario);
+	
+	@POST
+	@Path("elim/usu/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response EliminarUsuario(Usuarios usuario);
 	
 	@POST
 	@Path("cons/usu/")

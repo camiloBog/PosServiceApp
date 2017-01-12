@@ -64,7 +64,7 @@ function proveedoresController($scope, serviciosRestRequest) {
 	/*
 	 * Metodo para consultar los proveedores
 	 */
-	$scope.ProductoConsultar = function() {
+	$scope.ProveedorConsultar = function() {
 		
 		$scope.proveedorResp = {};
 
@@ -72,7 +72,7 @@ function proveedoresController($scope, serviciosRestRequest) {
 				
 			idpersona : $scope.proveedor.idpersona,
 			//idtipopersona : $scope.proveedor.idtipopersona,
-			idtipoidentificacion : $scope.proveedor.idtipoidentificacion,
+			idtipoidentificacion : $scope.proveedor.idTipo,
 			identificacion : $scope.proveedor.identificacion,
 			nombre : $scope.proveedor.nombre,
 			direccion : $scope.proveedor.direccion,
@@ -107,7 +107,7 @@ function proveedoresController($scope, serviciosRestRequest) {
 		
 		if($scope.proveedor.nombre == null || $scope.proveedor.nombre == ""){
 			swal("Upss!", "El campo Nombre esta vacio.", "error");
-		}else if($scope.proveedor.idtipoidentificacion == null || $scope.proveedor.idtipoidentificacion == ""){
+		}else if($scope.proveedor.idTipo == null || $scope.proveedor.idTipo == ""){
 			swal("Upss!", "El campo Tipo identificacion esta vacio.", "error");
 		}else if($scope.proveedor.identificacion == null || $scope.proveedor.identificacion == ""){
 			swal("Upss!", "El campo Identificacion esta vacio.", "error");
