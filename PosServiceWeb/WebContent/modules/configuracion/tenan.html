@@ -47,3 +47,30 @@
 		</p>
 	</div>
 </div>
+
+<div ng-show="tenant_productos">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Identificacion</th>
+			<th>Tipo</th>
+			<th>Nombre</th>
+			<th>Direccion</th>
+			<th>Telefono</th>
+			<th>Eliminar</th>
+		</tr>
+	
+		<tr ng-repeat="tenant in tenantGrid">
+			<td>{{tenant.idtenant}}</td>
+			<td>{{tenant.identificacion}}</td>
+			<td>{{tenant.tipoidentificacion}}</td>
+			<td>{{tenant.nombre}}</td>
+			<td>{{tenant.direccion}}</td>
+			<td>{{tenant.telefono}}</td>
+			<td>
+				<img src="assets/img/eliminar.png" class="caneca" ng-click="borrarTenant(tenant)">
+			</td>
+		</tr>
+		
+	</table>
+</div>

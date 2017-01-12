@@ -18,7 +18,7 @@ angular.module('serviciosRest', [])
 		},
 
 		consultaTenant : function(cons_tenant){
-			return $http.post(path+"conf/cons/ten/cod/",cons_tenant);
+			return $http.post(path+"conf/cons/ten/",cons_tenant);
 		},
 
 		creaUsuario : function(crea_usuario){

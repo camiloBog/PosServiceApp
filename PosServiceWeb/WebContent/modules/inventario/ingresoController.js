@@ -1,11 +1,15 @@
 
 'use strict';
 
-angular.module('ingreso')
+angular.module('ingreso', ['serviciosRest'])
 
-.controller('ingresoController', function($scope) {
+.controller('ingresoController', ['$scope', 'serviciosRestRequest',ingresoController]);
+
+function ingresoController($scope, serviciosRestRequest) {
 	
-});
+	
+
+}
 
 
 
