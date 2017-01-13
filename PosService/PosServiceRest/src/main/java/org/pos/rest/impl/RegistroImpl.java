@@ -31,6 +31,20 @@ public class RegistroImpl implements RegistroService {
 	}
 	
 	@Override
+	public Response BuscarTenant(Tenant tenant) {
+		
+		log.info("Buscando Tenant dimanicamente...");
+		MsgResponseDto response = new TenantController().BuscaTenant(tenant);
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible encontrar el tenant" + tenant.getIdtenant());
+			return Response.status(200).entity(null).build();
+		}
+	}
+	
+	@Override
 	public Response BuscarTenantById(Tenant tenant) {
 
 		log.info("Buscando Tenant por Idtenant: " + tenant.getIdtenant());
@@ -54,6 +68,20 @@ public class RegistroImpl implements RegistroService {
 			return Response.status(200).entity(response).build();
 		} else {
 			log.warn("No fue posible encontrar el tenant con la Identification: " + tenant.getIdentificacion());
+			return Response.status(200).entity(null).build();
+		}
+	}
+	
+	@Override
+	public Response EliminarTenant(Tenant tenant) {
+
+		log.info("Eliminando Tenant...");
+		MsgResponseDto response = new TenantController().eliminaTenant(tenant);
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible eliminar el tenant" + tenant.getIdtenant());
 			return Response.status(200).entity(null).build();
 		}
 	}

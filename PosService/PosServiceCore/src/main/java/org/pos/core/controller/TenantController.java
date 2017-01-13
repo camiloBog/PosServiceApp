@@ -1,9 +1,12 @@
 package org.pos.core.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
+import org.pos.db.dao.QueryDinamicoDao;
 import org.pos.db.dao.TenantDao;
 import org.pos.db.entidades.Tenant;
 import org.pos.db.entidades.TipoIdentificacion;
@@ -50,6 +53,25 @@ public class TenantController {
 		}finally {
 			if(dao!=null)
 				dao.close();
+		}
+		
+	}
+	
+
+	public MsgResponseDto BuscaTenant(Tenant tenant) {
+		
+		try {
+			
+			List<Tenant> tenants = new QueryDinamicoDao().buscaTenant(tenant);
+			
+			if(tenants!=null)
+				return new MsgResponseDto("Se encontraron "+tenants.size() + " tenants.", true, tenants);
+			 else
+				return new MsgResponseDto("No se encontro ningun tenant!",false,null);
+
+		} catch (NumberFormatException e) {
+			log.error("Ocurrio un error al realizar la consulta del tenant." + e.getMessage() );
+			return new MsgResponseDto("Ocurrio un error al realizar la consulta del tenant.", false, null);
 		}
 		
 	}
@@ -209,6 +231,28 @@ public class TenantController {
 	    	name = name.replaceAll(caracteres.charAt(i) +"", "");
 	    
 		return name;
+	}
+
+
+	public MsgResponseDto eliminaTenant(Tenant tenant) {
+		
+		log.info("Eliminando el Tenant " + tenant.getIdtenant());
+		TenantDao dao = null;
+		
+		try {
+			
+			dao = DaoFactory.getTenantDao(TenantDao.class);
+			dao.eliminarTenant(tenant);
+			
+			return new MsgResponseDto("Se borro exitosamente el Tenant.", true, tenant);
+		
+		} catch (NumberFormatException e) {
+			log.error("Ocurrio un error al eliminar el tenant." + e.getMessage() );
+			return new MsgResponseDto("Ocurrio un error al eliminar el tenant.",false,null);
+		}finally {
+			if(dao!=null)
+				dao.close();
+		}
 	}
 	
 }

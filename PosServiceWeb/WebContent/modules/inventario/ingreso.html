@@ -5,17 +5,19 @@
 	<div>
 		<form action="" method="POST">
 		
-			<label class="formulario">Id: </label>
+			<label class="formulario">Pedido: </label>
 			<input style="width: 9%" type="text" 
 				class="buscar-consultor" id="buscar-consultor" placeholder="Id" ng-model="productos.id" />
+				
+			<label class="formulario">Proveedor: </label> 
+			<select style="width: 10%" name="tipo_medida" class="buscar-consultor" 
+				ng-model="productos.medidaTipo" ng-options="tipo.idtipomedida as tipo.descripcion for tipo in tiposMedida">
+			</select><br />
 			
 			<label class="espacio">Nombre: </label> 
-			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="Nombre" ng-model="productos.nombre" /><br />
+			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="Nombre" ng-model="productos.nombre" />
 			
-			<label class="formulario">Medida: </label> 
-			<select style="width: 10%" name="tipo_medida" class="buscar-consultor2" 
-				ng-model="productos.medidaTipo" ng-options="tipo.idtipomedida as tipo.descripcion for tipo in tiposMedida">
-			</select>
+			
 			
 			<label class="espacio">Descripcion: </label>
 			<input style="width: 20%" class="buscar-consultor" placeholder="Descripcion" ng-model="productos.descri"/><br/>

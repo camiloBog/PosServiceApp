@@ -18,6 +18,11 @@ public interface RegistroService {
 	public Response RegistrarTenant(Tenant tenant);
 	
 	@POST
+	@Path("cons/ten/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response BuscarTenant(Tenant tenant);
+	
+	@POST
 	@Path("cons/ten/cod/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response BuscarTenantById(Tenant tenant);
@@ -26,6 +31,11 @@ public interface RegistroService {
 	@Path("cons/ten/id/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response BuscarTenantByIdentificacion(Tenant tenant);
+
+	@POST
+	@Path("elim/ten")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response EliminarTenant(Tenant tenant);
 	
 	@POST
 	@Path("reg/usu/")

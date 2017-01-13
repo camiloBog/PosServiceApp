@@ -9,9 +9,11 @@ import org.pos.com.PosSGlobal;
 import org.pos.db.bind.DbiProvider;
 import org.pos.db.entidades.Persona;
 import org.pos.db.entidades.Producto;
+import org.pos.db.entidades.Tenant;
 import org.pos.db.entidades.Usuarios;
 import org.pos.db.mapper.PersonaMapper;
 import org.pos.db.mapper.ProductoMapper;
+import org.pos.db.mapper.TenantMapper;
 import org.pos.db.mapper.UsuarioMapper;
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
@@ -20,10 +22,24 @@ import org.skife.jdbi.v2.Query;
 public class QueryDinamicoDao {
 	
 	private Logger log = LogManager.getLogger(QueryDinamicoDao.class);
+	
+	private Handle handle;
+	
+	public QueryDinamicoDao() {
+		DBI dbi = DbiProvider.getSimpleDBI();
+		this.handle = dbi.open();
+	}
+	
+	private void closeHandle(){
+		try {
+			if (null != handle)
+				handle.close();
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+		}
+	}
 
 	public List<Producto> buscaProducto(Producto producto, String esquema) {
-		
-		Handle handle = null;
 
 		try {
 
@@ -38,9 +54,6 @@ public class QueryDinamicoDao {
 			else if (null != producto.getDescripcion() && !"".equals(producto.getDescripcion()))
 				sql += "LOWER(DESCRIPCION) LIKE LOWER('%'||:descripcion||'%') AND ";
 			sql += "1=1";
-
-			DBI dbi = DbiProvider.getSimpleDBI();
-			handle = dbi.open();
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			if (null != producto.getIdproducto())
@@ -59,15 +72,12 @@ public class QueryDinamicoDao {
 			log.error(e.getMessage());
 			return null;
 		} finally {
-			if (null != handle)
-				handle.close();
+			closeHandle();
 		}
 
 	}
 	
 	public List<Persona> buscaPersona(Persona persona, String esquema) {
-		
-		Handle handle = null;
 
 		try {
 			
@@ -90,9 +100,6 @@ public class QueryDinamicoDao {
 			else if (null != persona.getContacto() && !"".equals(persona.getContacto()))
 				sql += "LOWER(CONTACTO) LIKE LOWER('%'||:contacto||'%') AND ";
 			sql += "1=1";
-
-			DBI dbi = DbiProvider.getSimpleDBI();
-			handle = dbi.open();
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			
@@ -120,15 +127,12 @@ public class QueryDinamicoDao {
 			log.error(e.getMessage());
 			return null;
 		} finally {
-			if (null != handle)
-				handle.close();
+			closeHandle();
 		}
 
 	}
 
 	public List<Usuarios> buscaUsuario(Usuarios usuario) {
-		
-		Handle handle = null;
 
 		try {
 			
@@ -147,9 +151,6 @@ public class QueryDinamicoDao {
 			else if (null != usuario.getApellidos() && !"".equals(usuario.getApellidos()))
 				sql += "LOWER(APELLIDOS) LIKE LOWER('%'||:apellidos||'%') AND ";
 			sql += "1=1";
-
-			DBI dbi = DbiProvider.getSimpleDBI();
-			handle = dbi.open();
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			
@@ -173,8 +174,54 @@ public class QueryDinamicoDao {
 			log.error(e.getMessage());
 			return null;
 		} finally {
-			if (null != handle)
-				handle.close();
+			closeHandle();
+		}
+		
+	}
+	
+	public List<Tenant> buscaTenant(Tenant tenant) {
+
+		try {
+
+			String sql = "SELECT * FROM " + PosSGlobal.ESQUEMA_BASE + ".TENANT WHERE ";
+			
+			if (null != tenant.getIdtenant())
+				sql += "IDTENANT = :idtenant AND ";
+			else if(null != tenant.getTipoidentificacion())
+				sql += "TIPOIDENTIFICACION = :tipoidentificacion AND ";
+			else if (null != tenant.getIdentificacion() && !"".equals(tenant.getIdentificacion()))
+				sql += "LOWER(IDENTIFICACION) LIKE LOWER('%'||:identificacion||'%') AND ";
+			else if (null != tenant.getNombre() && !"".equals(tenant.getNombre()))
+				sql += "LOWER(NOMBRE) LIKE LOWER('%'||:nombre||'%') AND ";
+			else if (null != tenant.getDireccion() && !"".equals(tenant.getDireccion()))
+				sql += "LOWER(DIRECCION) LIKE LOWER('%'||:direccion||'%') AND ";
+			else if (null != tenant.getTelefono() && !"".equals(tenant.getTelefono()))
+				sql += "LOWER(TELEFONO) LIKE LOWER('%'||:telefono||'%') AND ";
+			sql += "1=1";
+
+			Query<Map<String, Object>> query = handle.createQuery(sql);
+			
+			if (null != tenant.getIdtenant())
+				query.bind("idtenant", tenant.getIdtenant());
+			else if(null != tenant.getTipoidentificacion())
+				query.bind("tipoidentificacion", tenant.getTipoidentificacion());
+			else if (null != tenant.getIdentificacion() && !"".equals(tenant.getIdentificacion()))
+				query.bind("identificacion", tenant.getIdentificacion());
+			else if (null != tenant.getNombre() && !"".equals(tenant.getNombre()))
+				query.bind("nombre", tenant.getNombre());
+			else if (null != tenant.getDireccion() && !"".equals(tenant.getDireccion()))
+				query.bind("direccion", tenant.getDireccion());
+			else if (null != tenant.getTelefono() && !"".equals(tenant.getTelefono()))
+				query.bind("telefono", tenant.getTelefono());
+
+			return query.map(new TenantMapper()).list();
+
+		} catch (Exception e) {
+			log.error("Ocurrio un error al buscar el tenant!");
+			log.error(e.getMessage());
+			return null;
+		} finally {
+			closeHandle();
 		}
 		
 	}

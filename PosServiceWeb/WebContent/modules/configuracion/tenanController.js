@@ -19,13 +19,11 @@ function tenanController($scope, serviciosRestRequest) {
 	//Bandera para mostrar la grilla
 	$scope.grilla_tenant = false;
 	
-	
-	
 	$scope.borrarTenant = function(tenantBorrar) {
 		
 		swal({
-			title: "Eliminar Registro",
-			text: "Esta accion eliminara el Tenant y el Esquema de la Base de datos, esta seguro que desea eliminar el Tenant y el Esquema?",
+			title: "*** Eliminar Registro ***",
+			text: "Esta accion eliminara el Tenant y el Esquema de la Base de datos asi como todos los Usuarios relacionados al Tenant, esta seguro que desea eliminar el Tenant, el Esquema y los Usuarios relacionados?",
 			type: "warning",
 			showCancelButton: true,
 			closeOnConfirm: false,
@@ -54,15 +52,17 @@ function tenanController($scope, serviciosRestRequest) {
 	
 	$scope.consultarTenant = function() {
 		
+//		swal("Upss!", "Hace falta implementar este metodo!", "error");
+		
 		$scope.tenantResp = {};
 				
 		var json_tenant = {
-			idtenant : $scope.productos.idtenant,
-			tipoidentificacion : $scope.productos.tipoidentificacion,
-			identificacion : $scope.productos.identificacion,
-			nombre : $scope.productos.nombre,
-			direccion : $scope.productos.direccion,
-			telefono : $scope.productos.telefono
+			idtenant : $scope.tenant.cod,
+			tipoidentificacion : $scope.tenant.idTipo,
+			identificacion : $scope.tenant.idNum,
+			nombre : $scope.tenant.nom,
+			direccion : $scope.tenant.dir,
+			telefono : $scope.tenant.tel
 		};
 		
 		serviciosRestRequest.consultaTenant(json_tenant).success(function (data){
@@ -90,7 +90,7 @@ function tenanController($scope, serviciosRestRequest) {
 		
 	}
 
-	$scope.crear = function() {
+	$scope.crearTenant = function() {
 		
 		if($scope.tenant.nom == null || $scope.tenant.nom ==""){
 			swal("Upss!", "El campo Nombre esta vacio.", "error");

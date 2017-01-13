@@ -33,12 +33,12 @@
 <div class="botonera">
 	<div class="2u">
 		<p class="button-style">
-			<a href="#/tenan" ng-click="consultar()">Consultar</a>
+			<a href="#/tenan" ng-click="consultarTenant()">Consultar</a>
 		</p>
 	</div>
 	<div class="3u">
 		<p class="button-style">
-			<a href="#/tenan" ng-click="crear()">Crear</a>
+			<a href="#/tenan" ng-click="crearTenant()">Crear</a>
 		</p>
 	</div>
 	<div class="2u">
@@ -48,12 +48,12 @@
 	</div>
 </div>
 
-<div ng-show="tenant_productos">
+<div ng-show="grilla_tenant">
 	<table>
 		<tr>
 			<th>Id</th>
 			<th>Identificacion</th>
-			<th>Tipo</th>
+<!-- 			<th>Tipo</th> -->
 			<th>Nombre</th>
 			<th>Direccion</th>
 			<th>Telefono</th>
@@ -63,7 +63,7 @@
 		<tr ng-repeat="tenant in tenantGrid">
 			<td>{{tenant.idtenant}}</td>
 			<td>{{tenant.identificacion}}</td>
-			<td>{{tenant.tipoidentificacion}}</td>
+<!-- 			<td>{{tenant.tipoidentificacion}}</td> -->
 			<td>{{tenant.nombre}}</td>
 			<td>{{tenant.direccion}}</td>
 			<td>{{tenant.telefono}}</td>

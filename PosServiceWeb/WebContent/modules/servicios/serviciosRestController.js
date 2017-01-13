@@ -20,6 +20,10 @@ angular.module('serviciosRest', [])
 		consultaTenant : function(cons_tenant){
 			return $http.post(path+"conf/cons/ten/",cons_tenant);
 		},
+		
+		eliminaTenant : function(elimina_tenant){
+			return $http.post(path+"conf/elim/ten/",elimina_tenant);
+		},
 
 		creaUsuario : function(crea_usuario){
 			return $http.post(path+"conf/reg/usu/",crea_usuario);
