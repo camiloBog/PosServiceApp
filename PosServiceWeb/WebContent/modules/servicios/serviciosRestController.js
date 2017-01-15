@@ -59,6 +59,10 @@ angular.module('serviciosRest', [])
 		
 		eliminaProveedor : function(busca_producto){
 			return $http.post(path+"inv/elim/pers/",busca_producto);
+		},
+		
+		creaIngresoProductos : function(ingresa_movimiento){
+			return $http.post(path+"inv/reg/mov/prod/",ingresa_movimiento);
 		}
 		
 	};

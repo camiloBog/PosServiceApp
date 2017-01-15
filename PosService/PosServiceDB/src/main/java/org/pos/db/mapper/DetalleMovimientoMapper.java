@@ -14,11 +14,10 @@ public class DetalleMovimientoMapper implements ResultSetMapper<DetalleMovimient
         return new DetalleMovimiento(
         		rs.getInt("idmovimiento"),
         		rs.getInt("iddetalle"),
-        		rs.getInt("idalmacen"),
         		rs.getInt("idproducto"),
         		rs.getInt("cantidad"),
-        		rs.getBigDecimal("valorcompra"),
-        		rs.getBigDecimal("valorventa")
+        		rs.getBigDecimal("valor"),
+        		rs.getString("observacion")
         		);
     }
 }

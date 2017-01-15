@@ -395,6 +395,17 @@ form {
 	padding: 4px 19px 3px !important;
 }
 
+.buscar-consultor-grill {
+	font-weight: 300;
+	border: 0 !important;
+	height: 15px;
+/*	background-color: rgba(220, 220, 197, 0.7); **/
+	border-radius: 2px;
+	font-weight: 300;
+/*	margin-bottom: 5px; */
+	padding: 4px 0 !important;
+}
+
 .buscar-consultor2 {
 	font-weight: 300;
 	border: 0 !important;

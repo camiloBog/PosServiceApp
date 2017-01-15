@@ -26,6 +26,25 @@ public class UsuarioController {
 	
 	private Logger log = LogManager.getLogger(UsuarioController.class);
 	
+	public Usuarios findUsuario(Integer idUsuario) {
+		
+		UsuarioDao dao = null;
+		
+		try {
+			
+			dao = DaoFactory.getUsuarioDao(UsuarioDao.class);
+			return dao.findById(idUsuario);
+			
+		} catch (NumberFormatException e) {
+			log.error("Ocurrio un error al realizar la consulta del usuario. " + e.getMessage() );
+			return null;
+		}finally {
+			if(dao!=null)
+				dao.close();
+		}
+		
+	}
+
 	public Usuarios findByUsuario(Usuarios usuarioIn) {
 		
 		UsuarioDao dao = null;

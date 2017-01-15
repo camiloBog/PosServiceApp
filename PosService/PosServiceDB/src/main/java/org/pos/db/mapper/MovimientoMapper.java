@@ -14,8 +14,7 @@ public class MovimientoMapper implements ResultSetMapper<Movimiento> {
         return new Movimiento(
         		rs.getInt("idmovimiento"),
         		rs.getInt("idtipomovimiento"),
-        		rs.getInt("idcliente"),
-        		rs.getInt("idproveedor"),
+        		rs.getInt("idpersona"),
         		rs.getTimestamp("fecha"),
         		rs.getInt("idusuario")
         		);

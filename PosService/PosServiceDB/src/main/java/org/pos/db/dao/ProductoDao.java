@@ -28,7 +28,7 @@ public abstract class ProductoDao {
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".PRODUCTO where idproducto = :idproducto")
 	public abstract Producto findById(@Bind("idproducto") int idproducto);
 	
-	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".PRODUCTO")
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".PRODUCTO order by nombreproducto")
 	public abstract List<Producto> findAll();
 	
 	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+".PRODUCTO p where lower(p.nombreproducto) like lower('%'||:nombreproducto||'%')" )
@@ -38,7 +38,7 @@ public abstract class ProductoDao {
 	public abstract List<Producto> findByDescri(@BindBean Producto producto);
 
 	@SqlQuery("select nextval('"+PosSGlobal.ESQUEMA+".producto_seq')")
-	public abstract int getSecuence();
+	protected abstract int getSecuence();
 	
 	public abstract void close();
 	

@@ -19,7 +19,7 @@ public interface TipoMedidaDao extends DaoInterface {
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TIPOMEDIDA where idtipomedida = :id")
 	public TipoMedida getTipoById(@Bind("id") String id);
 	
-	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TIPOMEDIDA")
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".TIPOMEDIDA order by descripcion")
 	public List<TipoMedida> findAll();
 	    
 }

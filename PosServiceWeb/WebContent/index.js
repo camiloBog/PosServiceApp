@@ -14,7 +14,7 @@ angular.module('serviciosRest', []);
 
 // se agregan los modulos
 var mainApp = angular.module('mainApp', [
-    'ngRoute', 'ngResource', 'ngAnimate',
+    'ngRoute', 'ngResource', 'ngAnimate', 
     'serviciosRest',
     'tenan', 'usuario', 'inventario', 
     'ventas', 'facturacion', 'ingreso', 

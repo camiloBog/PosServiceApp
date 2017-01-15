@@ -13,21 +13,19 @@ public class DetalleMovimiento implements Serializable {
 
 	private Integer idmovimiento;
 	private Integer iddetalle;
-	private Integer idalmacen;
 	private Integer idproducto;
 	private Integer cantidad;
-	private BigDecimal valorcompra;
-	private BigDecimal valorventa;
+	private BigDecimal valor;
+	private String observacion;
 
-	public DetalleMovimiento(Integer idmovimiento, Integer iddetalle, Integer idalmacen, Integer idproducto,
-			Integer cantidad, BigDecimal valorcompra, BigDecimal valorventa) {
+	public DetalleMovimiento(Integer idmovimiento, Integer iddetalle, Integer idproducto,
+			Integer cantidad, BigDecimal valor, String observacion) {
 		this.idmovimiento = idmovimiento;
 		this.iddetalle = iddetalle;
-		this.idalmacen = idalmacen;
 		this.idproducto = idproducto;
 		this.cantidad = cantidad;
-		this.valorcompra = valorcompra;
-		this.valorventa = valorventa;
+		this.valor = valor;
+		this.observacion = observacion;
 	}
 
 	public DetalleMovimiento() {
@@ -42,28 +40,20 @@ public class DetalleMovimiento implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public BigDecimal getValorcompra() {
-		return this.valorcompra;
+	public BigDecimal getValor() {
+		return valor;
 	}
 
-	public void setValorcompra(BigDecimal valorcompra) {
-		this.valorcompra = valorcompra;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
-	public BigDecimal getValorventa() {
-		return this.valorventa;
+	public String getObservacion() {
+		return observacion;
 	}
 
-	public void setValorventa(BigDecimal valorventa) {
-		this.valorventa = valorventa;
-	}
-
-	public Integer getIdalmacen() {
-		return idalmacen;
-	}
-
-	public void setIdalmacen(Integer idalmacen) {
-		this.idalmacen = idalmacen;
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
 	}
 
 	public Integer getIdmovimiento() {

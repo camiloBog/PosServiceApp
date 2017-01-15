@@ -83,6 +83,12 @@ function productosController($scope, serviciosRestRequest) {
 				
 				$scope.grilla_productos = true;
 				$scope.productosGrid = $scope.productosResp.objeto;
+
+				//Trae los nombre de las medidas
+				for (var i = 0; i < $scope.productosGrid.length; i++)
+					for (var j = 0; j < $scope.tiposMedida.length; j++)
+						if( $scope.productosGrid[i].idtipomedida == $scope.tiposMedida[j].idtipomedida )
+							$scope.productosGrid[i].idtipomedida = $scope.tiposMedida[j].descripcion;
 				
 			} else {
 				$scope.grilla_productos = false;

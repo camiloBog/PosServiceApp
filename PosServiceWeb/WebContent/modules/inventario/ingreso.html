@@ -6,64 +6,67 @@
 		<form action="" method="POST">
 		
 			<label class="formulario">Pedido: </label>
-			<input style="width: 9%" type="text" 
-				class="buscar-consultor" id="buscar-consultor" placeholder="Id" ng-model="productos.id" />
-				
+			<input style="width: 12%" type="text" 
+				class="buscar-consultor" id="buscar-consultor" placeholder="Identificador del pedido" ng-model="movimiento.id" /><br />
+
 			<label class="formulario">Proveedor: </label> 
-			<select style="width: 10%" name="tipo_medida" class="buscar-consultor" 
-				ng-model="productos.medidaTipo" ng-options="tipo.idtipomedida as tipo.descripcion for tipo in tiposMedida">
-			</select><br />
-			
-			<label class="espacio">Nombre: </label> 
-			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="Nombre" ng-model="productos.nombre" />
-			
-			
-			
-			<label class="espacio">Descripcion: </label>
-			<input style="width: 20%" class="buscar-consultor" placeholder="Descripcion" ng-model="productos.descri"/><br/>
-			 
+			<select style="width: 30%" name="tipo_medida" class="buscar-consultor2" 
+				ng-model="movimiento.proveedorId" ng-options="tipo.idpersona as tipo.nombre for tipo in proveedoresList">
+			</select>
+
+
 		</form>
 	</div>
 </div>
 
+
 <div class="botonera">
 	<div class="2u">
 		<p class="button-style">
-			<a href="#/productos" ng-click="ProductoRegistrar()">Guardar</a>
+			<a href="#/ingreso" ng-click="IngresoRegistrar()">Guardar</a>
 		</p>
 	</div>
 	<div class="3u">
 		<p class="button-style">
-			<a href="#/productos" ng-click="ProductoConsultar()">Consultar</a>
+			<a href="#/ingreso" ng-click="IngresoConsultar()">Consultar</a>
 		</p>
 	</div>
 	<div class="2u">
 		<p class="button-style">
-			<a href="#/productos" ng-click="ProductoCancelar()">Limpiar</a>
+			<a href="#/ingreso" ng-click="IngresoCancelar()">Limpiar</a>
 		</p>
 	</div>
 </div>
 
-<div ng-show="grilla_productos">
+<div ng-show="grilla_ingresos">
 	<table>
 		<tr>
-			<th>Id</th>
-			<th>Nombre</th>
-			<th>Medida</th>
-			<th>Medida</th>
-			<th>Descripcion</th>
-			<th>Eliminar</th>
+			<th>Producto</th>
+			<th>Cantidad</th>
+			<th>Valor Unitario</th>
+			<th>Observacion</th>
+			<th>Accion</th>
 		</tr>
 		
-		<tr ng-repeat="producto in productosGrid">
-			<td>{{producto.idproducto}}</td>
-			<td>{{producto.nombreproducto}}</td>
-			<td>{{producto.idtipomedida}}</td>
-			<td>{{producto.idtipomedida}}</td>
-			<td>{{producto.descripcion}}</td>
+		<tr>
+			<td>
+				<select ng-options="tipo.idproducto as tipo.nombreproducto for tipo in productosList" 
+					ng-model="movimientoTemp.idproducto"></select>
+			</td>
+			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.cantidad" placeholder="Cantidad"></td>
+			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.valor" placeholder="Valor Unitario"></td>
+			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.observacion" placeholder="Observacion"></td>
+			<td><img src="assets/img/agregar.png" class="agregar" ng-click="agregarIngreso(movimientoTemp)"></td>
+		</tr>
+
+ 		<tr ng-repeat="detalle in ingresoGrilla"> 
+			<td>{{detalle.idproducto}}</td>
+			<td>{{detalle.cantidad}}</td>
+			<td>{{detalle.valor}}</td>
+			<td>{{detalle.observacion}}</td>
 			<td>
 				<img src="assets/img/eliminar.png" class="caneca"
-					ng-click="borrarProducto(producto)">
+					ng-click="borrarIngreso(detallemovimiento)">
 			</td>
 		</tr>
 		

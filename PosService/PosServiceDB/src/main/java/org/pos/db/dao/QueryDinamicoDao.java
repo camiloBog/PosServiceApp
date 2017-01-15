@@ -53,7 +53,7 @@ public class QueryDinamicoDao {
 				sql += "LOWER(NOMBREPRODUCTO) LIKE LOWER('%'||:nombreproducto||'%') AND ";
 			else if (null != producto.getDescripcion() && !"".equals(producto.getDescripcion()))
 				sql += "LOWER(DESCRIPCION) LIKE LOWER('%'||:descripcion||'%') AND ";
-			sql += "1=1";
+			sql += "1=1 ORDER BY NOMBREPRODUCTO";
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			if (null != producto.getIdproducto())
@@ -99,7 +99,7 @@ public class QueryDinamicoDao {
 				sql += "LOWER(CORREOCONTACTO) LIKE LOWER('%'||:correocontacto||'%') AND ";
 			else if (null != persona.getContacto() && !"".equals(persona.getContacto()))
 				sql += "LOWER(CONTACTO) LIKE LOWER('%'||:contacto||'%') AND ";
-			sql += "1=1";
+			sql += "1=1 ORDER BY NOMBRE";
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			
@@ -150,7 +150,7 @@ public class QueryDinamicoDao {
 				sql += "LOWER(NOMBRE) LIKE LOWER('%'||:nombre||'%') AND ";
 			else if (null != usuario.getApellidos() && !"".equals(usuario.getApellidos()))
 				sql += "LOWER(APELLIDOS) LIKE LOWER('%'||:apellidos||'%') AND ";
-			sql += "1=1";
+			sql += "1=1 ORDER BY USUARIO";
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			
@@ -197,7 +197,7 @@ public class QueryDinamicoDao {
 				sql += "LOWER(DIRECCION) LIKE LOWER('%'||:direccion||'%') AND ";
 			else if (null != tenant.getTelefono() && !"".equals(tenant.getTelefono()))
 				sql += "LOWER(TELEFONO) LIKE LOWER('%'||:telefono||'%') AND ";
-			sql += "1=1";
+			sql += "1=1 ORDER BY NOMBRE";
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			

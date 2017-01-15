@@ -2,6 +2,7 @@ package org.pos.db.entidades;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * The persistent class for the movimiento database table.
@@ -13,17 +14,18 @@ public class Movimiento implements Serializable {
 
 	private Integer idmovimiento;
 	private Integer idtipomovimiento;
-	private Integer idcliente;
-	private Integer idproveedor;
+	private Integer idpersona;
 	private Timestamp fecha;
 	private Integer idusuario;
+	private String usuario;
 	
-	public Movimiento(Integer idmovimiento, Integer idtipomovimiento, Integer idcliente, Integer idproveedor,
+	private List<DetalleMovimiento> detallemovimiento;
+	
+	public Movimiento(Integer idmovimiento, Integer idtipomovimiento, Integer idpersona,
 			Timestamp fecha, Integer idusuario) {
 		this.idmovimiento = idmovimiento;
 		this.idtipomovimiento = idtipomovimiento;
-		this.idcliente = idcliente;
-		this.idproveedor = idproveedor;
+		this.idpersona = idpersona;
 		this.fecha = fecha;
 		this.idusuario = idusuario;
 	}
@@ -48,20 +50,12 @@ public class Movimiento implements Serializable {
 		this.idtipomovimiento = idtipomovimiento;
 	}
 
-	public Integer getIdcliente() {
-		return idcliente;
+	public Integer getIdpersona() {
+		return idpersona;
 	}
 
-	public void setIdcliente(Integer idcliente) {
-		this.idcliente = idcliente;
-	}
-
-	public Integer getIdproveedor() {
-		return idproveedor;
-	}
-
-	public void setIdproveedor(Integer idproveedor) {
-		this.idproveedor = idproveedor;
+	public void setIdpersona(Integer idpersona) {
+		this.idpersona = idpersona;
 	}
 
 	public Timestamp getFecha() {
@@ -78,6 +72,22 @@ public class Movimiento implements Serializable {
 
 	public void setIdusuario(Integer idusuario) {
 		this.idusuario = idusuario;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<DetalleMovimiento> getDetallemovimiento() {
+		return detallemovimiento;
+	}
+
+	public void setDetallemovimiento(List<DetalleMovimiento> detallemovimiento) {
+		this.detallemovimiento = detallemovimiento;
 	}
 
 }

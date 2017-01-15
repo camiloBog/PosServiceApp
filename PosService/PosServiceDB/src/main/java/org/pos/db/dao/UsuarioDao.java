@@ -34,7 +34,7 @@ public abstract class UsuarioDao {
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".USUARIOS where usuario = :usuario and contrasena = :contrasena")
 	public abstract Usuarios validate(@Bind("usuario") String usuario, @Bind("contrasena") String contrasena);
 	
-	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".USUARIOS")
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".USUARIOS order by nombre")
 	public abstract List<Usuarios> findAll();
 	
 	@SqlUpdate("update "+PosSGlobal.ESQUEMA+".USUARIOS set apellidos = :u.apellidos, "

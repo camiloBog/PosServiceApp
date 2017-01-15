@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.pos.db.entidades.Movimiento;
 import org.pos.db.entidades.Persona;
 import org.pos.db.entidades.Producto;
 
@@ -52,5 +53,10 @@ public interface InventarioService {
 	@Path("elim/pers")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response borrarProveedor(Persona persona);
+	
+	@POST
+	@Path("reg/mov/prod/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response registraIngresoProducto(Movimiento movimiento);
 
 }

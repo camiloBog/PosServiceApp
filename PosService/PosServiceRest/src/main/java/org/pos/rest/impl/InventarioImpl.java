@@ -4,9 +4,12 @@ import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.pos.com.PosSGlobal;
+import org.pos.core.controller.MovimientoController;
 import org.pos.core.controller.PersonaController;
 import org.pos.core.controller.ProductoController;
 import org.pos.core.dto.MsgResponseDto;
+import org.pos.db.entidades.Movimiento;
 import org.pos.db.entidades.Persona;
 import org.pos.db.entidades.Producto;
 import org.pos.rest.service.InventarioService;
@@ -91,6 +94,7 @@ public class InventarioImpl implements InventarioService{
 	public Response registraProveedor(Persona persona) {
 		
 		log.info("Registrando Persona " + persona.getNombre());		
+		persona.setIdtipopersona(PosSGlobal.TIPO_PROVEEDOR);
 		MsgResponseDto response = new PersonaController().registra(persona);
 
 		if (response != null) {
@@ -105,7 +109,8 @@ public class InventarioImpl implements InventarioService{
 	@Override
 	public Response buscarProveedor(Persona persona) {
 		
-		log.info("Buscando Persona dinamicamente.");		
+		log.info("Buscando Persona dinamicamente.");
+		persona.setIdtipopersona(PosSGlobal.TIPO_PROVEEDOR);
 		MsgResponseDto response = new PersonaController().buscar(persona);
 
 		if (response != null) {
@@ -127,6 +132,22 @@ public class InventarioImpl implements InventarioService{
 			return Response.status(200).entity(response).build();
 		} else {
 			log.warn("No fue posible eliminar la Persona " + persona.getNombre());
+			return Response.status(200).entity(null).build();
+		}
+		
+	}
+
+	@Override
+	public Response registraIngresoProducto(Movimiento movimiento) {
+		
+		log.info("Registrando Ingreso Producto");		
+		
+		MsgResponseDto response = new MovimientoController().registraIngreso(movimiento);
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible realizar el Ingreso de los Productos");
 			return Response.status(200).entity(null).build();
 		}
 		

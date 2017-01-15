@@ -17,4 +17,24 @@ public class PosSGlobal {
 	 */
 	public static final String ESQUEMA_BASE = "public";
 	
+	/**
+	 * Numero identificador del cliente.
+	 */
+	public static final Integer TIPO_CLIENTE = 1;
+	
+	/**
+	 * Numero identificador del proveedor
+	 */
+	public static final Integer TIPO_PROVEEDOR = 2;
+	
+	/**
+	 * Numero identificador del cliente.
+	 */
+	public static final Integer TIPO_COMPRA = 1;
+	
+	/**
+	 * Numero identificador del proveedor
+	 */
+	public static final Integer TIPO_VENTA = 2;
+	
 }

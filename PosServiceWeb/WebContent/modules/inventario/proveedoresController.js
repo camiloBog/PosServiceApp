@@ -71,7 +71,7 @@ function proveedoresController($scope, serviciosRestRequest) {
 		var json_proveedor = {
 				
 			idpersona : $scope.proveedor.idpersona,
-			//idtipopersona : $scope.proveedor.idtipopersona,
+			idtipopersona : $scope.proveedor.idtipopersona,
 			idtipoidentificacion : $scope.proveedor.idTipo,
 			identificacion : $scope.proveedor.identificacion,
 			nombre : $scope.proveedor.nombre,
@@ -132,7 +132,6 @@ function proveedoresController($scope, serviciosRestRequest) {
 					
 				var json_proveedor = {
 
-						//idtipopersona : $scope.proveedor.idtipopersona,
 						idtipoidentificacion : $scope.proveedor.idtipoidentificacion,
 						identificacion : $scope.proveedor.identificacion,
 						nombre : $scope.proveedor.nombre,
