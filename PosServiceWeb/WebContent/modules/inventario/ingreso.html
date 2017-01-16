@@ -51,10 +51,11 @@
 		<tr>
 			<td>
 				<select ng-options="tipo.idproducto as tipo.nombreproducto for tipo in productosList" 
-					ng-model="movimientoTemp.idproducto"></select>
+					ng-model="movimientoTemp.idproducto" required ></select>
 			</td>
-			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.cantidad" placeholder="Cantidad"></td>
-			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.valor" placeholder="Valor Unitario"></td>
+
+			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.cantidad" placeholder="Cantidad" ></td>
+			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.valor" placeholder="Valor Unitario" ></td>
 			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.observacion" placeholder="Observacion"></td>
 			<td><img src="assets/img/agregar.png" class="agregar" ng-click="agregarIngreso(movimientoTemp)"></td>
 		</tr>
@@ -66,7 +67,7 @@
 			<td>{{detalle.observacion}}</td>
 			<td>
 				<img src="assets/img/eliminar.png" class="caneca"
-					ng-click="borrarIngreso(detallemovimiento)">
+					ng-click="borrarIngreso(detalle)">
 			</td>
 		</tr>
 		

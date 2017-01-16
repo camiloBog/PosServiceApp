@@ -80,6 +80,15 @@
 	height: 27px;
 	padding: 0px 3px !important;
 	margin-bottom: -9px;
+	cursor:pointer;
+}
+
+.agregar{
+	width: 24px;
+	height: 25px;
+	padding: 0px 3px !important;
+	margin-bottom: -9px;
+	cursor:pointer;
 }
 
 

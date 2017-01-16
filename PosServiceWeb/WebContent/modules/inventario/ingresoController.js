@@ -33,21 +33,35 @@ function ingresoController($scope, serviciosRestRequest) {
 		$scope.productosList = data.objeto;
 	});
 	
+	$scope.patternNumeric=/^[0-9]*$/;
+	var regexp = /^[\ |0-9]{0,10}$/;
+	
 	$scope.ingresoGrilla = [];
 	$scope.agregarIngreso = function(json_movimiento) {
+		
 
-		$scope.ingresoGrilla.push(
-			{
+		if (json_movimiento.idproducto == null || json_movimiento.idproducto == "") {
+			swal("Upss!", "El campo Producto esta vacio.", "error");
+		} else if (json_movimiento.cantidad == null || json_movimiento.cantidad == "") {
+			swal("Upss!", "El campo Cantidad esta vacio.", "error");
+		} else if (json_movimiento.valor == null || json_movimiento.valor == "") {
+			swal("Upss!", "El campo Valor Unitario esta vacio.", "error");
+		} else if (!regexp.test(json_movimiento.cantidad)) {
+			swal("Upss!", "El campo Cantidad debe ser numerico.", "error");
+		} else if (!regexp.test(json_movimiento.valor)) {
+			swal("Upss!", "El campo Valor Unitario debe ser numerico.", "error");
+		}else{
+			$scope.ingresoGrilla.push({
 				idproducto : json_movimiento.idproducto,
 				cantidad : json_movimiento.cantidad,
 				valor : json_movimiento.valor,
 				observacion : json_movimiento.observacion
-			}
-		);
-		
-		console.log($scope.ingresoGrilla);
-		
-		$scope.movimientoTemp = {};
+			});
+			
+			console.log($scope.ingresoGrilla);
+			
+			$scope.movimientoTemp = {};
+		}
 	}
 	
 	$scope.ingresoFinal = {};
@@ -57,15 +71,9 @@ function ingresoController($scope, serviciosRestRequest) {
 		$scope.ingresoFinal.idpersona = $scope.movimiento.proveedorId;
 		$scope.ingresoFinal.detallemovimiento = $scope.ingresoGrilla;
 		
-		console.log($scope.ingresoFinal);
-		
-//		if($scope.productos.nombre == null || $scope.productos.nombre == "" ){
-//			swal("Upss!", "El campo Nombre esta vacio.", "error");
-//		}else if($scope.productos.medidaTipo == null || $scope.productos.medidaTipo == "" ){
-//			swal("Upss!", "El campo Medida esta vacio.", "error");
-//		}else if($scope.productos.descri == null || $scope.productos.descri == "" ){
-//			swal("Upss!", "El campo Descripcion esta vacio.", "error");
-//		}else{
+		if($scope.ingresoFinal.idpersona == null || $scope.ingresoFinal.idpersona == "" ){
+			swal("Upss!", "El campo Proveedor esta vacio.", "error");
+		}else{
 			
 			swal({
 				title: "Creacion de Movimiento",
@@ -88,9 +96,7 @@ function ingresoController($scope, serviciosRestRequest) {
 				});
 				
 			});
-//		}	
-		
-		
+		}	
 		
 	}
 
