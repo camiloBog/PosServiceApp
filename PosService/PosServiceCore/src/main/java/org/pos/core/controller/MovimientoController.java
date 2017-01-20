@@ -44,7 +44,7 @@ public class MovimientoController {
 			id = dao.creaMovimiento(movimiento);
 			
 			if (id!=-1)
-				return new MsgResponseDto("El Movimiento fue registrado con el id: " +id,true,null);
+				return new MsgResponseDto("El Movimiento fue registrado con el id: " +id,true,id);
 			else
 				return new MsgResponseDto("No fue posible realizar el registro!",false,null);
 			

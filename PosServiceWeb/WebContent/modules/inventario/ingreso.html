@@ -6,14 +6,13 @@
 		<form action="" method="POST">
 		
 			<label class="formulario">Pedido: </label>
-			<input style="width: 12%" type="text" 
+			<input style="width: 12%" type="text" ng-disabled="ingreso_pedido"
 				class="buscar-consultor" id="buscar-consultor" placeholder="Identificador del pedido" ng-model="movimiento.id" /><br />
 
 			<label class="formulario">Proveedor: </label> 
 			<select style="width: 30%" name="tipo_medida" class="buscar-consultor2" 
 				ng-model="movimiento.proveedorId" ng-options="tipo.idpersona as tipo.nombre for tipo in proveedoresList">
 			</select>
-
 
 		</form>
 	</div>
@@ -28,7 +27,7 @@
 	</div>
 	<div class="3u">
 		<p class="button-style">
-			<a href="#/ingreso" ng-click="IngresoConsultar()">Consultar</a>
+			<a href="#/ingreso" ng-click="IngresoConsultar()" ng-show="ingreso_btnConsultar">Consultar</a>
 		</p>
 	</div>
 	<div class="2u">
@@ -38,6 +37,31 @@
 	</div>
 </div>
 
+<div ng-show="grilla_ingresos">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Proveedor</th>
+			<th>Val. Total</th>
+			<th>Fecha</th>
+			<th>Usuario</th>
+		</tr>
+
+ 		<tr ng-repeat="proveedor in proveedoresList"> 
+			<td>{{proveedor.idpersona}}</td>
+			<td>{{proveedor.idtipopersona}}</td>
+			<td>{{proveedor.identificacion}}</td>
+			<td>12/11/2017</td>
+			<td>{{proveedor.nombre}}</td>
+			<td>
+				<img src="assets/img/eliminar.png" class="caneca"
+					ng-click="borrarIngreso(proveedor)">
+			</td>
+		</tr>
+		
+	</table>
+</div>
+</br>
 <div ng-show="grilla_ingresos">
 	<table>
 		<tr>
@@ -52,8 +76,7 @@
 			<td>
 				<select ng-options="tipo.idproducto as tipo.nombreproducto for tipo in productosList" 
 					ng-model="movimientoTemp.idproducto" required ></select>
-			</td>
-
+			</td>	
 			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.cantidad" placeholder="Cantidad" ></td>
 			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.valor" placeholder="Valor Unitario" ></td>
 			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.observacion" placeholder="Observacion"></td>
@@ -61,7 +84,7 @@
 		</tr>
 
  		<tr ng-repeat="detalle in ingresoGrilla"> 
-			<td>{{detalle.idproducto}}</td>
+			<td>{{detalle.idproducto}} - {{detalle.nombreproducto}}</td>
 			<td>{{detalle.cantidad}}</td>
 			<td>{{detalle.valor}}</td>
 			<td>{{detalle.observacion}}</td>

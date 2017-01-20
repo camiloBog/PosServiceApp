@@ -17,6 +17,7 @@ public class DetalleMovimiento implements Serializable {
 	private Integer cantidad;
 	private BigDecimal valor;
 	private String observacion;
+	private String nombreproducto;
 
 	public DetalleMovimiento(Integer idmovimiento, Integer iddetalle, Integer idproducto,
 			Integer cantidad, BigDecimal valor, String observacion) {
@@ -82,6 +83,14 @@ public class DetalleMovimiento implements Serializable {
 
 	public void setIddetalle(Integer iddetalle) {
 		this.iddetalle = iddetalle;
+	}
+
+	public String getNombreproducto() {
+		return nombreproducto;
+	}
+
+	public void setNombreproducto(String nombreproducto) {
+		this.nombreproducto = nombreproducto;
 	}
 
 }
