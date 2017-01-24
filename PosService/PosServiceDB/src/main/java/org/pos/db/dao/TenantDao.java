@@ -3,7 +3,6 @@ package org.pos.db.dao;
 import org.pos.com.PosSGlobal;
 import org.pos.db.bind.EsquemaSetter;
 import org.pos.db.entidades.Tenant;
-import org.pos.db.entidades.Usuarios;
 import org.pos.db.mapper.TenantMapper;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;

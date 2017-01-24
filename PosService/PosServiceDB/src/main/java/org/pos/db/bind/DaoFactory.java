@@ -1,13 +1,7 @@
 package org.pos.db.bind;
 
-import org.pos.db.dao.AlmacenDao;
-import org.pos.db.dao.AlmacenProductoDao;
-import org.pos.db.dao.CiudadDao;
 import org.pos.db.dao.DetalleMovimientoDao;
-import org.pos.db.dao.FuncionalidadDao;
-import org.pos.db.dao.ModuloDao;
 import org.pos.db.dao.MovimientoDao;
-import org.pos.db.dao.PerfilFuncionalidadDao;
 import org.pos.db.dao.PerfilesDao;
 import org.pos.db.dao.PersonaDao;
 import org.pos.db.dao.ProductoDao;
@@ -31,54 +25,12 @@ public class DaoFactory {
 		return DbiProvider.getDBI().open(UsuarioDao.class);
 	}
 
-	
-	public static AlmacenDao getAlmacenDao(Class<AlmacenDao> daoClass, String esquema) {
-		return DbiProvider.getDBI(esquema).open(AlmacenDao.class);
-	}
-	public static AlmacenDao getAlmacenDao(Class<AlmacenDao> daoClass) {
-		return DbiProvider.getDBI().open(AlmacenDao.class);
-	}
-
-	
-	public static AlmacenProductoDao getAlmacenProductoDao(Class<AlmacenProductoDao> daoClass, String esquema) {
-		return DbiProvider.getDBI(esquema).open(AlmacenProductoDao.class);
-	}
-	public static AlmacenProductoDao getAlmacenProductoDao(Class<AlmacenProductoDao> daoClass) {
-		return DbiProvider.getDBI().open(AlmacenProductoDao.class);
-	}
-
-	
-	public static CiudadDao getCiudadDao(Class<CiudadDao> daoClass, String esquema) {
-		return DbiProvider.getDBI(esquema).open(CiudadDao.class);
-	}
-	public static CiudadDao getCiudadDao(Class<CiudadDao> daoClass) {
-		return DbiProvider.getDBI().open(CiudadDao.class);
-	}
-
-	
 	public static DetalleMovimientoDao getDetalleMovimientoDao(Class<DetalleMovimientoDao> daoClass, String esquema) {
 		return DbiProvider.getDBI(esquema).open(DetalleMovimientoDao.class);
 	}
 	public static DetalleMovimientoDao getDetalleMovimientoDao(Class<DetalleMovimientoDao> daoClass) {
 		return DbiProvider.getDBI().open(DetalleMovimientoDao.class);
 	}
-	
-
-	public static FuncionalidadDao getFuncionalidadDao(Class<FuncionalidadDao> daoClass, String esquema) {
-		return DbiProvider.getDBI(esquema).open(FuncionalidadDao.class);
-	}
-	public static FuncionalidadDao getFuncionalidadDao(Class<FuncionalidadDao> daoClass) {
-		return DbiProvider.getDBI().open(FuncionalidadDao.class);
-	}
-	
-
-	public static ModuloDao get(Class<ModuloDao> daoClass, String esquema) {
-		return DbiProvider.getDBI(esquema).open(ModuloDao.class);
-	}
-	public static ModuloDao get(Class<ModuloDao> daoClass) {
-		return DbiProvider.getDBI().open(ModuloDao.class);
-	}
-	
 
 	public static MovimientoDao getMovimientoDao(Class<MovimientoDao> daoClass, String esquema) {
 		return DbiProvider.getDBI(esquema).open(MovimientoDao.class);
@@ -93,13 +45,6 @@ public class DaoFactory {
 	}
 	public static PerfilesDao getPerfilesDao(Class<PerfilesDao> daoClass) {
 		return DbiProvider.getDBI().open(PerfilesDao.class);
-	}
-	
-	public static PerfilFuncionalidadDao getPerfilFuncionalidadDao(Class<PerfilFuncionalidadDao> daoClass, String esquema) {
-		return DbiProvider.getDBI(esquema).open(PerfilFuncionalidadDao.class);
-	}
-	public static PerfilFuncionalidadDao getPerfilFuncionalidadDao(Class<PerfilFuncionalidadDao> daoClass) {
-		return DbiProvider.getDBI().open(PerfilFuncionalidadDao.class);
 	}
 	
 

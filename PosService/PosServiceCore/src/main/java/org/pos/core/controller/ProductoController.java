@@ -47,37 +47,6 @@ public class ProductoController {
 		
 	}
 	
-	public MsgResponseDto buscarProducto_BACKUP(Producto producto) {
-		
-		ProductoDao dao = null;
-		String usuario = producto.getUsuario();
-		
-		try {
-			
-			String esquema = new TenantController().getEsquema(usuario);
-			if("".equals(esquema) || null==esquema)
-				return new MsgResponseDto("El usuario "+producto.getUsuario()+" no existe.",false,null);
-			
-			dao = DaoFactory.getProductoDao(ProductoDao.class, esquema);
-			
-			List<Producto> productos = dao.findAll();
-
-			if (null!=productos && 0!=productos.size())
-				return new MsgResponseDto("Se encontraron "+productos.size()+" productos",true,productos);
-			else
-				return new MsgResponseDto("No se encontraron productos!",false,null);
-			
-		} catch (Exception e) {
-			log.error("Ocurrio un error al buscar el producto " + usuario);
-			log.error(e.getMessage());
-			return new MsgResponseDto("Ocurrio un error al buscar el producto!",false,null);
-		}finally{
-			if(null!=dao)
-				dao.close();
-		}
-		
-	}
-	
 	public MsgResponseDto buscarPorDescri(Producto producto) {
 		
 		ProductoDao dao = null;
