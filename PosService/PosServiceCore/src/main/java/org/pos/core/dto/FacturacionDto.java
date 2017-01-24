@@ -1,8 +1,8 @@
 package org.pos.core.dto;
 
-public class ProductoDto {
+public class FacturacionDto {
 
-	public ProductoDto() {
+	public FacturacionDto() {
 		// TODO Auto-generated constructor stub
 	}
 
