@@ -1,0 +1,1672 @@
+[
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:31.453Z",
+      "duration": 343,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 0,
+      "isWarmup": true
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:32.310Z",
+      "duration": 39,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 1,
+      "isWarmup": true
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:32.854Z",
+      "duration": 36,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 2,
+      "isWarmup": true
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:33.394Z",
+      "duration": 43,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 3,
+      "isWarmup": true
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:33.939Z",
+      "duration": 24,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 4,
+      "isWarmup": true
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:34.465Z",
+      "duration": 17,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 5,
+      "isWarmup": false
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:34.986Z",
+      "duration": 24,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 6,
+      "isWarmup": false
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:35.516Z",
+      "duration": 41,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 7,
+      "isWarmup": false
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:36.061Z",
+      "duration": 23,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 8,
+      "isWarmup": false
+   },
+   {
+      "request": {
+         "url": "http://localhost/PosServiceRest/rest/loginsrv/validar/",
+         "method": "POST",
+         "data": {
+            "contrasena": "123",
+            "usuario": "Nata"
+         },
+         "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+         },
+         "withCredentials": false,
+         "isHandledXhrRequest": true
+      },
+      "start": "2017-02-01T02:18:36.589Z",
+      "duration": 30,
+      "data": {
+         "validacion": true,
+         "tenant": 4,
+         "tenantName": "Panaderia Rosita",
+         "usuario": "Nata      ",
+         "nombre": "Natalia",
+         "mensaje": "",
+         "menu": {
+            "headConfiguracion": false,
+            "tenan": false,
+            "usuario": false,
+            "headInventario": true,
+            "proveedores": true,
+            "productos": true,
+            "ingreso": true,
+            "headFacturacion": true,
+            "headConsultas": true,
+            "inventario": true,
+            "ventas": true
+         },
+         "tiposIdentificacion": [
+            {
+               "ididentificacion": 1,
+               "descripcion": "Tarjeta de Identidad"
+            },
+            {
+               "ididentificacion": 2,
+               "descripcion": "Cedula de Ciudadania"
+            },
+            {
+               "ididentificacion": 3,
+               "descripcion": "Tarjeta de Extranjeria"
+            },
+            {
+               "ididentificacion": 4,
+               "descripcion": "NIT"
+            },
+            {
+               "ididentificacion": 5,
+               "descripcion": "RUT"
+            }
+         ],
+         "tipoMedida": [
+            {
+               "idtipomedida": 8,
+               "descripcion": "Arroba"
+            },
+            {
+               "idtipomedida": 20,
+               "descripcion": "Caja"
+            },
+            {
+               "idtipomedida": 17,
+               "descripcion": "Centilitro"
+            },
+            {
+               "idtipomedida": 11,
+               "descripcion": "Centrimetro"
+            },
+            {
+               "idtipomedida": 14,
+               "descripcion": "Centrimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 18,
+               "descripcion": "Decilitro"
+            },
+            {
+               "idtipomedida": 5,
+               "descripcion": "Gramo"
+            },
+            {
+               "idtipomedida": 6,
+               "descripcion": "Kilo"
+            },
+            {
+               "idtipomedida": 7,
+               "descripcion": "Libra"
+            },
+            {
+               "idtipomedida": 16,
+               "descripcion": "Litro"
+            },
+            {
+               "idtipomedida": 10,
+               "descripcion": "Metro"
+            },
+            {
+               "idtipomedida": 13,
+               "descripcion": "Metro Cuadrado"
+            },
+            {
+               "idtipomedida": 4,
+               "descripcion": "Miligramo"
+            },
+            {
+               "idtipomedida": 12,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 19,
+               "descripcion": "Milimetro"
+            },
+            {
+               "idtipomedida": 15,
+               "descripcion": "Milimetro Cuadrado"
+            },
+            {
+               "idtipomedida": 2,
+               "descripcion": "Par"
+            },
+            {
+               "idtipomedida": 3,
+               "descripcion": "Set"
+            },
+            {
+               "idtipomedida": 9,
+               "descripcion": "Tonelada"
+            },
+            {
+               "idtipomedida": 1,
+               "descripcion": "Unidad"
+            }
+         ],
+         "tiposPerfiles": [
+            {
+               "idperfil": 1,
+               "descripcion": "Administrador"
+            },
+            {
+               "idperfil": 2,
+               "descripcion": "Cliente"
+            }
+         ],
+         "tiposPersonas": [
+            {
+               "idtipopersona": 1,
+               "descripcion": "Cliente"
+            },
+            {
+               "idtipopersona": 2,
+               "descripcion": "Proveedor"
+            }
+         ]
+      },
+      "status": 200,
+      "isSuccess": true,
+      "iterationNumber": 9,
+      "isWarmup": false
+   }
+]

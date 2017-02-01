@@ -1,0 +1,26 @@
+{
+   "structureVersion": "1.5.0",
+   "registrationDate": "2017-02-01T00:08:54-05:00",
+   "atom": {
+      "url": "https://maps.googleapis.com/maps/api/geocode/json?address=Meran",
+      "verb": "GET",
+      "body": null,
+      "headers": "{\n   \"Accept\": \"application/json\",\n   \"Content-Type\": \"application/json; charset=utf-8\"\n}",
+      "bodyKind": "json",
+      "withCredentials": false
+   },
+   "scenario": {
+      "code": "$.ajax({\n\turl:'https://maps.googleapis.com/maps/api/geocode/json?address=Meran',\n\tmethod:'GET',\n\tsuccess: function(res){\n\t\tdone(res);\n\t},\n\terror: function(err){\n\t\tdone(err);\n}});\n"
+   },
+   "massive": {
+      "batch": "[\r\n   {\r\n      \"verb\": \"POST\",\r\n      \"url\": \"http://localhost/PosServiceRest/rest/loginsrv/validar/\",\r\n      \"body\": {\"contrasena\":\"123\",\"usuario\":\"Nata\"},\r\n      \"headers\": {\"Accept\": \"application/json\", \"Content-Type\": \"application/json; charset=utf-8\"},\r\n      \"withCredentials\": false\r\n   },\r\n   {\r\n      \"verb\": \"POST\",\r\n      \"url\": \"http://localhost/PosServiceRest/rest/inv/busc/pers/\",\r\n      \"body\": {\"usuario\":\"Nata\"},\r\n      \"headers\": {\"Accept\": \"application/json\", \"Content-Type\": \"application/json; charset=utf-8\"},\r\n      \"withCredentials\": false\r\n   }\r\n]"
+   },
+   "engine": {
+      "name": "NoName",
+      "iterations": 99,
+      "delay": 5,
+      "warmup": 5,
+      "timeout": 1000,
+      "mode": "massiveAdapter"
+   }
+}
