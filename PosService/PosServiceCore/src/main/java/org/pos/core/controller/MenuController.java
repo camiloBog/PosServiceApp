@@ -15,11 +15,14 @@ public class MenuController {
 	public MenuDto getAdministrador(){
 		
 		MenuDto menu = new MenuDto(true);
-		
-//		MenuDto menu = new MenuDto(false);
-//		menu.setHeadConfiguracion(true);
-//		menu.setUsuario(true);
-//		menu.setTenan(true);
+		menu.setHeadConsultas(false);
+		menu.setHeadFacturacion(false);
+		menu.setHeadInventario(false);
+		menu.setIngreso(false);
+		menu.setInventario(false);
+		menu.setProductos(false);
+		menu.setProveedores(false);
+		menu.setVentas(false);
 		
 		return menu;
 		

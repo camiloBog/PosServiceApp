@@ -14,6 +14,7 @@ public class Producto implements Serializable {
 	private String nombreproducto;
 	private String descripcion;
 	private Integer idtipomedida;
+	private String tipomedida;
 	private String usuario;
 
 	public Producto() {
@@ -66,6 +67,14 @@ public class Producto implements Serializable {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getTipomedida() {
+		return tipomedida;
+	}
+
+	public void setTipomedida(String tipomedida) {
+		this.tipomedida = tipomedida;
 	}
 		
 }

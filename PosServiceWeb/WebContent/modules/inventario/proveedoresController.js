@@ -116,7 +116,7 @@ function proveedoresController($scope, serviciosRestRequest) {
 		}else if($scope.proveedor.telefono == null || $scope.proveedor.telefono == ""){
 			swal("Upss!", "El campo Telefono esta vacio.", "error");
 		}else if($scope.proveedor.correocontacto == null || $scope.proveedor.correocontacto == ""){
-			swal("Upss!", "El campo Correo esta vacio.", "error");
+			swal("Upss!", "El campo Correo no es correcto.", "error");
 		}else if($scope.proveedor.contacto == null || $scope.proveedor.contacto == ""){
 			swal("Upss!", "El campo Contacto esta vacio.", "error");
 		}else{

@@ -15,6 +15,7 @@ public class Usuarios implements Serializable {
 	private String nombre;
 	private String apellidos;
 	private String contrasena;
+	private String descripcion;
 	private Integer idperfil;
 	private Integer idtenant;
 
@@ -88,6 +89,14 @@ public class Usuarios implements Serializable {
 
 	public void setIdtenant(Integer idtenant) {
 		this.idtenant = idtenant;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 }

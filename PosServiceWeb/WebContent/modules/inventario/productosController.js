@@ -88,7 +88,8 @@ function productosController($scope, serviciosRestRequest) {
 				for (var i = 0; i < $scope.productosGrid.length; i++)
 					for (var j = 0; j < $scope.tiposMedida.length; j++)
 						if( $scope.productosGrid[i].idtipomedida == $scope.tiposMedida[j].idtipomedida )
-							$scope.productosGrid[i].idtipomedida = $scope.tiposMedida[j].descripcion;
+							//$scope.productosGrid[i].idtipomedida = $scope.tiposMedida[j].descripcion;
+							$scope.productosGrid[i].tipomedida = $scope.tiposMedida[j].descripcion;
 				
 			} else {
 				$scope.grilla_productos = false;

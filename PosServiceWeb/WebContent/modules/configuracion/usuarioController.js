@@ -34,7 +34,7 @@ function usuarioController($scope, serviciosRestRequest) {
 			
 			serviciosRestRequest.eliminaUsuario(usuarioBorrar).success(function (data){
 				
-				$scope.usuariosResp = data;
+				$scope.usuariosResp = data;				
 				if( $scope.usuariosResp.validacion == true ){
 					swal($scope.usuariosResp.mensaje, "", "success");
 				} else {
@@ -76,7 +76,9 @@ function usuarioController($scope, serviciosRestRequest) {
 				for (var i = 0; i < $scope.usuariosGrid.length; i++)
 					for (var j = 0; j < $scope.tiposPerfil.length; j++)
 						if( $scope.usuariosGrid[i].idperfil == $scope.tiposPerfil[j].idperfil )
-							$scope.usuariosGrid[i].idperfil = $scope.tiposPerfil[j].descripcion;
+							//$scope.usuariosGrid[i].idperfil = $scope.tiposPerfil[j].descripcion;
+							$scope.usuariosGrid[i].descripcion = $scope.tiposPerfil[j].descripcion;
+						
 
 			} else {
 				$scope.grilla_usuarios = false;
