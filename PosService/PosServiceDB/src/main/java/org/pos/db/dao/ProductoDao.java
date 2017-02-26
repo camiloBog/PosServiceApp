@@ -18,8 +18,8 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 @OverrideStatementLocatorWith(EsquemaSetter.class)
 public abstract class ProductoDao {
 
-	@SqlUpdate("insert into "+PosSGlobal.ESQUEMA+".PRODUCTO (idproducto, nombreproducto, descripcion, idtipomedida) "
-			+ "values (:idproducto, :nombreproducto, :descripcion, :idtipomedida)")
+	@SqlUpdate("insert into "+PosSGlobal.ESQUEMA+".PRODUCTO (idproducto, nombreproducto, descripcion, idtipomedida, precioventa) "
+			+ "values (:idproducto, :nombreproducto, :descripcion, :idtipomedida, :precioVenta)")
 	protected abstract void insert(@BindBean Producto producto);
 	
 	@SqlUpdate("delete from "+PosSGlobal.ESQUEMA+".PRODUCTO where idproducto = :idproducto")

@@ -15,7 +15,8 @@ public class ProductoMapper implements ResultSetMapper<Producto> {
         		rs.getInt("idproducto"),
         		rs.getString("nombreproducto"),
         		rs.getString("descripcion"),
-        		rs.getInt("idtipomedida")
+        		rs.getInt("idtipomedida"),
+        		rs.getInt("precioVenta")
         		);
     }
 }

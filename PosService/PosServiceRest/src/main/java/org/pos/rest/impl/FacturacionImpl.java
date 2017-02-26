@@ -16,13 +16,10 @@ public class FacturacionImpl implements FacturacionService{
 
 	@Override
 	public Response consultaVenta(FacturacionDto fact) {
+
+		log.info("Registrando factura...");		
 		
-		Movimiento movimiento = new Movimiento();
-		// TODO Auto-generated method stub
-		
-		log.info("Registrando Ingreso Producto");		
-		
-		MsgResponseDto response = new MovimientoController().registraIngreso(movimiento);
+		MsgResponseDto response = new MovimientoController().registraFactura(fact);
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();

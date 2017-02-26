@@ -111,6 +111,8 @@ function productosController($scope, serviciosRestRequest) {
 			swal("Upss!", "El campo Medida esta vacio.", "error");
 		}else if($scope.productos.descri == null || $scope.productos.descri == "" ){
 			swal("Upss!", "El campo Descripcion esta vacio.", "error");
+		}else if($scope.productos.precioventa == null || $scope.productos.precioventa == "" ){
+			swal("Upss!", "El campo Precio de Venta esta vacio.", "error");
 		}else{
 			
 			swal({
@@ -126,7 +128,8 @@ function productosController($scope, serviciosRestRequest) {
 					nombreproducto : $scope.productos.nombre,
 					idtipomedida : $scope.productos.medidaTipo,
 					descripcion : $scope.productos.descri,
-					usuario : $scope.valUsu.usuario
+					usuario : $scope.valUsu.usuario,
+					precioVenta: $scope.productos.precioventa
 				};
 
 				serviciosRestRequest.creaProducto(json_producto).success(function (data){

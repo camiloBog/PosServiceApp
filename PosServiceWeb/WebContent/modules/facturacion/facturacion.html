@@ -4,125 +4,82 @@
 	</section>
 	<div>
 		<form action="" method="POST">
+			
+			<label class="formulario">Factura:</label>
+			<input style="width: 10%" type="text" 
+				class="buscar-consultor" id="buscar-consultor" placeholder="Factura" ng-model="cliente.idMovimiento" />
+				
+			<label class="espacio">Total:</label>
+			<input style="width: 12%" type="text" class="buscar-consultor" placeholder="Valor" 
+				ng-disabled="true" ng-model="totaliza.totalPesos"/> <br/>
+				
 			<label class="formulario">Cliente:</label>
-			<input style="width: 20%" style="width: 30%" type="text" class="buscar-consultor" id="buscar-consultor" name="usuario" value="" />
-			<label class="espacio">Razon Social: </label> 
-			<input style="width: 25%" type="" class="buscar-consultor" /><br /> 
-			<label class="formulario">Identificacion: </label>
-			<input style="width: 15%" class="buscar-consultor" /> 
-			<label class="espacio">Tipo de Identificacion: </label> 
-			<select name="tipo_identificacion" class="buscar-consultor2">
-				<option>Seleccione</option>
-				<option>Cedula de Ciudadania</option>
-				<option>Cedula de Extranjeria</option>
-			</select> <br/> 
-			<label class="formulario">Telefono:</label> 
-			<input type="text" class="buscar-consultor" /> 
-			<label class="espacio">Direccion: </label>
-			<input style="width: 20%" type="text" class="buscar-consultor" placeholder="" /> <br> 
-			<label class="formulario">Correo:</label>
-			<input style="width: 15%" type="text" class="buscar-consultor" id="edad" name="edad" />
+			<input style="width: 33%" type="text" 
+				class="buscar-consultor" id="buscar-consultor" placeholder="Nombre del Cliente" ng-model="cliente.nombre" /><br/>
+			
+			<label class="formulario">Identificacion:</label>
+			<input style="width: 10%" class="buscar-consultor" placeholder="Identificacion" ng-model="cliente.identificacion"/>
+			
+			<label class="espacio">Tipo Id:</label> 
+			<select style="width: 15%" name="tipo_identificacion" class="buscar-consultor2" 
+				ng-model="cliente.idtipoidentificacion" ng-options="tipo.ididentificacion as tipo.descripcion for tipo in tiposId">
+			</select> <br/> 		
+			
 		</form>
 	</div>
 </div>
-<table>
-	<tr>
-		<th>Buscar Producto</th>
-		<th>Codigo</th>
-		<th>Descripcion</th>
-		<th>Cantidad</th>
-		<th>Eliminar</th>
-	</tr>
-	<tr>
-		<td>
-			<form id="form" name="form" class="buscar-consultor5"
-				action="buscar.php" method="POST">
-				<input class="buscar1" type="text" placeholder="Buscar" onkeydown="">
-			</form>
-		</td>
-		<td>9868su9u</td>
-		<td>Producto1</td>
-		<td>751</td>
-		<td><center>
-				<img src="assets/img/eliminar.png"
-					style="width: 26px; height: 27px; padding: 0px 3px !important; margin-bottom: -9px;">
-			</center></td>
-	</tr>
-	<tr>
-		<td>
-			<form id="form" name="form" class="buscar-consultor5"
-				action="buscar.php" method="POST">
-				<input class="buscar1" type="text" placeholder="Buscar" onkeydown="">
-			</form>
-		</td>
-		<td>9868su9u</td>
-		<td>Producto2</td>
-		<td>45</td>
-		<td><center>
-				<img src="assets/img/eliminar.png"
-					style="width: 26px; height: 27px; padding: 0px 3px !important; margin-bottom: -9px;">
-			</center></td>
-	</tr>
-	<tr>
-		<td>
-			<form id="form" name="form" class="buscar-consultor5"
-				action="buscar.php" method="POST">
-				<input class="buscar1" type="text" placeholder="Buscar" onkeydown="">
-			</form>
-		</td>
-		<td>9868su9u</td>
-		<td>Producto3</td>
-		<td>34</td>
-		<td><center>
-				<img src="assets/img/eliminar.png"
-					style="width: 26px; height: 27px; padding: 0px 3px !important; margin-bottom: -9px;">
-			</center></td>
-	</tr>
-	<tr>
-		<td>
-			<form id="form" name="form" class="buscar-consultor5"
-				action="buscar.php" method="POST">
-				<input class="buscar1" type="text" placeholder="Buscar" onkeydown="">
-			</form>
-		</td>
-		<td>9868su9u</td>
-		<td>Producto4</td>
-		<td>345</td>
-		<td><center>
-				<img src="assets/img/eliminar.png"
-					style="width: 26px; height: 27px; padding: 0px 3px !important; margin-bottom: -9px;">
-			</center></td>
-	</tr>
-	<tr>
-		<td align="center">
-			<form id="form" name="form" class="buscar-consultor5"
-				action="buscar.php" method="POST">
-				<input class="buscar1" type="text" placeholder="Buscar" onkeydown="">
-			</form>
-		</td>
-		<td>9868su9u</td>
-		<td>Producto5</td>
-		<td>34</td>
-		<td><center>
-				<img src="assets/img/eliminar.png"
-					style="width: 26px; height: 27px; padding: 0px 3px !important; margin-bottom: -9px;">
-			</center></td>
-	</tr>
-</table>
 
-<div class="2u">
-	<p class="button-style">
-		<a href="#/facturacion" ng-click="consultar()">Agregar Producto</a>
-	</p>
+<div class="botonera">
+	<div class="2u">
+		<p class="button-style">
+			<a href="#/facturacion" ng-click="FacturacionRegistrar()">Guardar</a>
+		</p>
+	</div>
+	<div class="3u">
+		<p class="button-style">
+			<a href="#/facturacion" ng-click="FacturacionConsultar()" ng-show="facturacion_btnConsultar">Consultar</a>
+		</p>
+	</div>
+	<div class="2u">
+		<p class="button-style">
+			<a href="#/facturacion" ng-click="FacturacionCancelar()">Limpiar</a>
+		</p>
+	</div>
 </div>
-<div class="3u">
-	<p class="button-style" align="center">
-		<a href="#/facturacion" ng-click="crear()">Cancelar</a>
-	</p>
-</div>
-<div class="2u">
-	<p class="button-style">
-		<a href="#/facturacion" ng-click="cancelar()">Facturar</a>
-	</p>
+
+<div ng-show="grilla_facturacion">
+	<table>
+		<tr>
+			<th>Producto</th>
+			<th>Cantidad</th>
+			<th>Valor Unitario</th>
+			<th>Valor</th>
+			<th>Accion</th>
+		</tr>
+		
+		<tr>
+			<td>
+				<select ng-options="tipo.idproducto as tipo.nombreproducto for tipo in productosList" 
+					ng-model="movimientoTemp.idproducto" required ></select>
+			</td>	
+			<td><input class="buscar-consultor-grill" type="text" ng-model="movimientoTemp.cantidad" placeholder="Cantidad" ></td>
+			<td></td>
+			<td></td>
+			<td><img src="assets/img/agregar.png" class="agregar" ng-click="agregarFacturacion(movimientoTemp)"></td>
+		</tr>
+
+ 		<tr ng-repeat="detalle in facturacionGrilla"> 
+			<td>{{detalle.idproducto}} - {{detalle.nombreproducto}}</td>
+			<td>{{detalle.cantidad}}</td>
+			<td>$ {{detalle.valorunitario}}</td>
+			<td>$ {{detalle.valor}}</td>
+			
+			<td>
+				<img src="assets/img/eliminar.png" class="caneca"
+					ng-click="borrarFacturacion(detalle)">
+			</td>
+		</tr>
+		
+	</table>
 </div>
 

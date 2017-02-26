@@ -10,7 +10,7 @@ import org.pos.core.dto.FacturacionDto;
 
 @Path("fact")
 public interface FacturacionService {
-		
+
 	@POST
 	@Path("reg/vent")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -38,10 +38,8 @@ function ingresoController($scope, serviciosRestRequest) {
 	});
 	
 	$scope.IngresoConsultar = function() {
-		
 		$scope.grilla_movimientos = true;
-		alert("Por implementar...");
-
+		swal("Upss!", "Este metodo aun no se ha implementado... :(", "error");
 	}
 	
 	
@@ -77,6 +75,7 @@ function ingresoController($scope, serviciosRestRequest) {
 			$scope.ingreso_btnConsultar = false;
 			$scope.movimiento.id = "";
 			
+			//Trae el nombre del producto para que se observe en la grilla
 			for (var i = 0; i < $scope.productosList.length; i++)
 				if(json_movimiento.idproducto==$scope.productosList[i].idproducto)
 					json_movimiento.nombreproducto=$scope.productosList[i].nombreproducto;

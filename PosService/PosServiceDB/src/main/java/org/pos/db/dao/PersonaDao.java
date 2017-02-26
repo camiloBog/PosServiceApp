@@ -1,5 +1,7 @@
 package org.pos.db.dao;
 
+import java.util.List;
+
 import org.pos.com.PosSGlobal;
 import org.pos.db.bind.EsquemaSetter;
 import org.pos.db.entidades.Persona;
@@ -21,6 +23,10 @@ public abstract class PersonaDao{
 			+ "values (:idpersona, :idtipopersona, :idtipoidentificacion, :identificacion, :nombre, :direccion, "
 			+ ":telefono, :correocontacto, :contacto)")
 	protected abstract void insert(@BindBean Persona persona);
+	
+	@SqlQuery("select p.* from "+PosSGlobal.ESQUEMA+ ".PERSONA p where identificacion = :identificacion and "
+			+ "idtipoidentificacion = :idtipoidentificacion and idtipopersona = :idtipopersona")
+	public abstract List<Persona> getPersona(@BindBean Persona persona);
 	
 	@SqlUpdate("delete from "+PosSGlobal.ESQUEMA+".PERSONA where idpersona = :idpersona")
 	public abstract void deleteById(@BindBean Persona persona);

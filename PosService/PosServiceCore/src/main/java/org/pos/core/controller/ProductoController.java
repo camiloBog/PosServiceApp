@@ -24,8 +24,7 @@ public class ProductoController {
 	public MsgResponseDto buscarProducto(Producto producto) {
 		
 		String usuario = producto.getUsuario();
-		
-		
+
 		try {
 			
 			String esquema = new TenantController().getEsquema(usuario);

@@ -131,8 +131,7 @@ function proveedoresController($scope, serviciosRestRequest) {
 			}, function(){
 					
 				var json_proveedor = {
-
-						idtipoidentificacion : $scope.proveedor.idtipoidentificacion,
+						idtipoidentificacion : $scope.proveedor.idTipo,
 						identificacion : $scope.proveedor.identificacion,
 						nombre : $scope.proveedor.nombre,
 						direccion : $scope.proveedor.direccion,
@@ -140,7 +139,6 @@ function proveedoresController($scope, serviciosRestRequest) {
 						correocontacto : $scope.proveedor.correocontacto,
 						contacto : $scope.proveedor.contacto,
 						usuario : $scope.valUsu.usuario,
-						
 				};
 
 				serviciosRestRequest.creaProveedor(json_proveedor).success(function (data){

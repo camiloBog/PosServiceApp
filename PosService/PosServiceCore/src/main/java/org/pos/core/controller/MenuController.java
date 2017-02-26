@@ -34,6 +34,7 @@ public class MenuController {
 		menu.setHeadConfiguracion(false);
 		menu.setUsuario(false);
 		menu.setTenan(false);
+		menu.setHeadConsultas(false);
 		
 		return menu;
 		
