@@ -16,10 +16,10 @@ public class EsquemaSetter implements StatementLocator {
 	@Override
     public String locate(String sql, StatementContext ctx) throws Exception {
 		
-		String query = sql.replaceAll(PosSGlobal.ESQUEMA, ctx.getAttribute(PosSGlobal.ESQUEMA).toString());
-		log.info(query);
-		return query;
+//		String query = sql.replaceAll(PosSGlobal.ESQUEMA, ctx.getAttribute(PosSGlobal.ESQUEMA).toString());
+//		log.info(query);
+//		return query;
 		
-//    	return sql.replaceAll(PosSGlobal.ESQUEMA, ctx.getAttribute(PosSGlobal.ESQUEMA).toString()); 
+    	return sql.replaceAll(PosSGlobal.ESQUEMA, ctx.getAttribute(PosSGlobal.ESQUEMA).toString()); 
     }
 }
