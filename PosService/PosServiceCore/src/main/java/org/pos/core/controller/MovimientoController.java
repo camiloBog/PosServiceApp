@@ -11,9 +11,9 @@ import org.pos.core.dto.DetalleMovimientoDto;
 import org.pos.core.dto.FacturacionDto;
 import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
-import org.pos.db.dao.DetalleMovimientoDao;
 import org.pos.db.dao.MovimientoDao;
 import org.pos.db.dao.PersonaDao;
+import org.pos.db.dao.QueryDinamicoDao;
 import org.pos.db.dao.UsuarioDao;
 import org.pos.db.entidades.DetalleMovimiento;
 import org.pos.db.entidades.Movimiento;
@@ -62,6 +62,38 @@ public class MovimientoController {
 		}finally{
 			if(null!=dao)
 				dao.close();
+		}
+		
+	}
+	
+	public MsgResponseDto consultaFactura(FacturacionDto fact) {
+		
+		String usuario = fact.getUsuario();
+
+		try {
+			
+			String esquema = new TenantController().getEsquema(usuario);
+			if("".equals(esquema) || null==esquema)
+				return new MsgResponseDto("El usuario "+fact.getUsuario()+" no existe.",false,null);
+			
+			Movimiento movimiento = new Movimiento();
+//			movimiento.setFecha();
+			movimiento.setIdmovimiento(fact.getIdFactura());
+//			movimiento.setIdpersona();
+			movimiento.setIdtipomovimiento(PosSGlobal.TIPO_VENTA);
+//			movimiento.setIdusuario(fact.get);
+			
+			List<Movimiento> movimientos = new QueryDinamicoDao().buscaFacturas(movimiento, esquema);
+			
+			if (null!=movimientos && 0!=movimientos.size())
+				return new MsgResponseDto("Se encontraron "+movimientos.size()+" movimientos",true,movimientos);
+			else
+				return new MsgResponseDto("No se encontraron movimientos!",false,null);
+			
+		} catch (Exception e) {
+			log.error("Ocurrio un error al buscar los movimientos. " + usuario);
+			log.error(e.getMessage());
+			return new MsgResponseDto("Ocurrio un error al buscar los movimientos!",false,null);
 		}
 		
 	}

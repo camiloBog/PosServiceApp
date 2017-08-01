@@ -4,6 +4,7 @@ import java.util.List;
 
 public class FacturacionDto {
 	
+	private Integer idFactura;
 	private String usuario;
 	private String nombre;
 	private Long identificacion;
@@ -14,8 +15,9 @@ public class FacturacionDto {
 		
 	}
 	
-	public FacturacionDto(String usuario, String nombre, Long identificacion, 
+	public FacturacionDto(Integer idFactura, String usuario, String nombre, Long identificacion, 
 			Integer idtipoidentificacion, List<DetalleMovimientoDto> detallemovimiento) {
+		this.idFactura=idFactura;
 		this.usuario = usuario;
 		this.nombre = nombre; 
 		this.identificacion = identificacion; 
@@ -62,6 +64,14 @@ public class FacturacionDto {
 
 	public void setDetallemovimiento(List<DetalleMovimientoDto> detallemovimiento) {
 		this.detallemovimiento = detallemovimiento;
+	}
+
+	public Integer getIdFactura() {
+		return idFactura;
+	}
+
+	public void setIdFactura(Integer idFactura) {
+		this.idFactura = idFactura;
 	}
 
 }

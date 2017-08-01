@@ -67,6 +67,10 @@ angular.module('serviciosRest', [])
 		
 		creafacturacionProductos : function(factura_movimiento){
 			return $http.post(path+"fact/reg/vent/",factura_movimiento);
+		},
+		
+		consultafacturacionProductos : function(factura_movimiento){
+			return $http.post(path+"fact/cons/vent/",factura_movimiento);
 		}
 		
 	};

@@ -24,6 +24,7 @@ function facturacionController($scope, serviciosRestRequest) {
 	$scope.grilla_movimientos = false;
 	$scope.facturacion_pedido = false;
 	$scope.facturacion_btnConsultar = true;
+	$scope.facturacion_btnRegistrar = true;
 	
 	var json_usuario = {
 		usuario : $scope.valUsu.usuario,
@@ -35,10 +36,33 @@ function facturacionController($scope, serviciosRestRequest) {
 		$scope.productosList = data.objeto;
 	});
 	
+	
+	
 	$scope.FacturacionConsultar = function() {
-		$scope.grilla_movimientos = true;
-		swal("Upss!", "Este metodo aun no se ha implementado... :(", "error");
+		
+		$scope.facturacionFinal.usuario = $scope.valUsu.usuario;
+		$scope.facturacionFinal.nombre = $scope.cliente.nombre;
+		$scope.facturacionFinal.identificacion = $scope.cliente.identificacion;
+		$scope.facturacionFinal.idtipoidentificacion = $scope.cliente.idtipoidentificacion;
+
+		serviciosRestRequest.consultafacturacionProductos($scope.facturacionFinal).success(function (data){
+							
+			$scope.movimientoResp = data;
+			if( $scope.movimientoResp.validacion == true ){
+				
+				$scope.facturacion_pedido = true;
+				$scope.facturacion_btnRegistrar = false;
+				$scope.facturacion_btnConsultar = false;
+				$scope.grilla_facturacion = false;
+				$scope.facturacionGrilla = [];
+				
+			}
+			
+		});
+		
 	}
+	
+	
 	
 	
 	$scope.FacturacionCancelar = function() {
@@ -52,6 +76,8 @@ function facturacionController($scope, serviciosRestRequest) {
 		$scope.facturacionFinal = {};
 		$scope.facturacion_pedido = false;
 		$scope.facturacion_btnConsultar = true;
+		$scope.facturacion_btnRegistrar = true;
+		$scope.grilla_facturacion = true;
 	}
 	
 	var regexp = /^[\ |0-9]{0,10}$/;
@@ -107,6 +133,7 @@ function facturacionController($scope, serviciosRestRequest) {
 	}
 	
 	$scope.facturacionFinal = {};
+	
 	//Agrega registros a la base de datos
 	$scope.FacturacionRegistrar  = function() {
 

@@ -14,11 +14,11 @@ public interface FacturacionService {
 	@POST
 	@Path("reg/vent")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response consultaVenta(FacturacionDto fact);
+	public Response registraVenta(FacturacionDto fact);
 	
 	@POST
 	@Path("cons/vent")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response registraVenta(FacturacionDto fact);
+	public Response consultaVenta(FacturacionDto fact);
 
 }

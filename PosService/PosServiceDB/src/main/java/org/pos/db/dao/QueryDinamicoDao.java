@@ -7,10 +7,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.pos.com.PosSGlobal;
 import org.pos.db.bind.DbiProvider;
+import org.pos.db.entidades.Movimiento;
 import org.pos.db.entidades.Persona;
 import org.pos.db.entidades.Producto;
 import org.pos.db.entidades.Tenant;
 import org.pos.db.entidades.Usuarios;
+import org.pos.db.mapper.MovimientoMapper;
 import org.pos.db.mapper.PersonaMapper;
 import org.pos.db.mapper.ProductoMapper;
 import org.pos.db.mapper.TenantMapper;
@@ -37,6 +39,40 @@ public class QueryDinamicoDao {
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 		}
+	}
+	
+	public List<Movimiento> buscaFacturas(Movimiento fact, String esquema) {
+
+		try {
+
+			String sql = "SELECT * FROM " + esquema + ".MOVIMIENTO WHERE ";
+
+			if (null != fact.getIdmovimiento())
+				sql += "IDMOVIMIENTO = :idmovimiento AND ";
+			if (null != fact.getIdtipomovimiento())
+				sql += "IDTIPOMOVIMIENTO = :idtipomovimiento AND ";
+			if (null != fact.getIdpersona())
+				sql += "IDPERSONA = :idpersona AND ";	
+			sql += "1=1 ORDER BY IDMOVIMIENTO";
+
+			Query<Map<String, Object>> query = handle.createQuery(sql);
+			if (null != fact.getIdmovimiento())
+				query.bind("idmovimiento", fact.getIdmovimiento());
+			if (null != fact.getIdtipomovimiento())
+				query.bind("idtipomovimiento", fact.getIdtipomovimiento());
+			if (null != fact.getIdpersona())
+				query.bind("idpersona", fact.getIdpersona());
+
+			return query.map(new MovimientoMapper()).list();
+
+		} catch (Exception e) {
+			log.error("Ocurrio un error al buscar los movimientos!");
+			log.error(e.getMessage());
+			return null;
+		} finally {
+			closeHandle();
+		}
+
 	}
 
 	public List<Producto> buscaProducto(Producto producto, String esquema) {

@@ -15,7 +15,7 @@ public class FacturacionImpl implements FacturacionService{
 	private Logger log = LogManager.getLogger(FacturacionImpl.class);
 
 	@Override
-	public Response consultaVenta(FacturacionDto fact) {
+	public Response registraVenta(FacturacionDto fact) {
 
 		log.info("Registrando factura...");		
 		
@@ -31,13 +31,12 @@ public class FacturacionImpl implements FacturacionService{
 	}
 
 	@Override
-	public Response registraVenta(FacturacionDto fact) {
+	public Response consultaVenta(FacturacionDto fact) {
 		Movimiento movimiento = new Movimiento();
-		// TODO Auto-generated method stub
 		
-		log.info("Registrando Ingreso Producto");		
+		log.info("Camilo...");		
 		
-		MsgResponseDto response = new MovimientoController().registraIngreso(movimiento);
+		MsgResponseDto response = new MovimientoController().consultaFactura(fact);
 
 		if (response != null) {
 			return Response.status(200).entity(response).build();
