@@ -1,5 +1,6 @@
 package org.pos.core.dto;
 
+import java.util.Date;
 import java.util.List;
 
 public class FacturacionDto {
@@ -9,6 +10,7 @@ public class FacturacionDto {
 	private String nombre;
 	private Long identificacion;
 	private Integer idtipoidentificacion;
+	private Date fecha;
 	private List<DetalleMovimientoDto> detallemovimiento;
 
 	public FacturacionDto() {
@@ -16,12 +18,13 @@ public class FacturacionDto {
 	}
 	
 	public FacturacionDto(Integer idFactura, String usuario, String nombre, Long identificacion, 
-			Integer idtipoidentificacion, List<DetalleMovimientoDto> detallemovimiento) {
+			Integer idtipoidentificacion, Date fecha, List<DetalleMovimientoDto> detallemovimiento) {
 		this.idFactura=idFactura;
 		this.usuario = usuario;
 		this.nombre = nombre; 
 		this.identificacion = identificacion; 
-		this.idtipoidentificacion = idtipoidentificacion; 
+		this.idtipoidentificacion = idtipoidentificacion;
+		this.setFecha(fecha);
 		this.detallemovimiento = detallemovimiento;
 		
 	}
@@ -72,6 +75,14 @@ public class FacturacionDto {
 
 	public void setIdFactura(Integer idFactura) {
 		this.idFactura = idFactura;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 }

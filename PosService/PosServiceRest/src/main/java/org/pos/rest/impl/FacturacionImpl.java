@@ -17,7 +17,7 @@ public class FacturacionImpl implements FacturacionService{
 	@Override
 	public Response registraVenta(FacturacionDto fact) {
 
-		log.info("Registrando factura...");		
+		log.info("Registrando factura...");
 		
 		MsgResponseDto response = new MovimientoController().registraFactura(fact);
 
@@ -34,7 +34,7 @@ public class FacturacionImpl implements FacturacionService{
 	public Response consultaVenta(FacturacionDto fact) {
 		Movimiento movimiento = new Movimiento();
 		
-		log.info("Camilo...");		
+		log.info("Consultando facturacion...");
 		
 		MsgResponseDto response = new MovimientoController().consultaFactura(fact);
 

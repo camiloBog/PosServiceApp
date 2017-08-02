@@ -1,7 +1,7 @@
 package org.pos.db.entidades;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,14 +15,14 @@ public class Movimiento implements Serializable {
 	private Integer idmovimiento;
 	private Integer idtipomovimiento;
 	private Integer idpersona;
-	private Timestamp fecha;
+	private Date fecha;
 	private Integer idusuario;
 	private String usuario;
 	
 	private List<DetalleMovimiento> detallemovimiento;
 	
 	public Movimiento(Integer idmovimiento, Integer idtipomovimiento, Integer idpersona,
-			Timestamp fecha, Integer idusuario) {
+			Date fecha, Integer idusuario) {
 		this.idmovimiento = idmovimiento;
 		this.idtipomovimiento = idtipomovimiento;
 		this.idpersona = idpersona;
@@ -58,11 +58,11 @@ public class Movimiento implements Serializable {
 		this.idpersona = idpersona;
 	}
 
-	public Timestamp getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Timestamp fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

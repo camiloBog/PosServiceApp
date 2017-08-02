@@ -17,11 +17,11 @@ function facturacionController($scope, serviciosRestRequest) {
 	
 	//Contiene los input de la grilla
 	$scope.movimientoTemp = {};
-	
 	$scope.movimientoResp = {};
+	$scope.facturacion = {};
 	
 	$scope.grilla_facturacion = true;
-	$scope.grilla_movimientos = false;
+	$scope.grilla_consulta_facturacion = false;
 	$scope.facturacion_pedido = false;
 	$scope.facturacion_btnConsultar = true;
 	$scope.facturacion_btnRegistrar = true;
@@ -37,34 +37,45 @@ function facturacionController($scope, serviciosRestRequest) {
 	});
 	
 	
-	
+	$scope.consultaFacturacionGrilla = {};
+	//Consulta la facturacion
 	$scope.FacturacionConsultar = function() {
 		
+		$scope.facturacionFinal.idFactura = $scope.cliente.idMovimiento;
 		$scope.facturacionFinal.usuario = $scope.valUsu.usuario;
 		$scope.facturacionFinal.nombre = $scope.cliente.nombre;
 		$scope.facturacionFinal.identificacion = $scope.cliente.identificacion;
 		$scope.facturacionFinal.idtipoidentificacion = $scope.cliente.idtipoidentificacion;
 
 		serviciosRestRequest.consultafacturacionProductos($scope.facturacionFinal).success(function (data){
-							
-			$scope.movimientoResp = data;
-			if( $scope.movimientoResp.validacion == true ){
+
+			$scope.facturacion = data;
+			if( $scope.facturacion.validacion == true ){
+				
+				$scope.consultaFacturacionGrilla = $scope.facturacion.objeto;
+				
 				
 				$scope.facturacion_pedido = true;
 				$scope.facturacion_btnRegistrar = false;
 				$scope.facturacion_btnConsultar = false;
 				$scope.grilla_facturacion = false;
+				$scope.grilla_consulta_facturacion = true;
 				$scope.facturacionGrilla = [];
 				
+			}else {
+				swal($scope.facturacion.mensaje, "", "error");
 			}
 			
 		});
 		
 	}
 	
+
+	$scope.VerFactura = function(json_movimiento) {
+		swal("Ver Factura #"+json_movimiento.idmovimiento, "Este es otro texto", "success");
+	}
 	
-	
-	
+
 	$scope.FacturacionCancelar = function() {
 		$scope.totaliza = {};
 		$scope.totaliza.totalPesos ='$ 0';
@@ -72,12 +83,16 @@ function facturacionController($scope, serviciosRestRequest) {
 		$scope.cliente = {};
 		$scope.movimientoTemp = {};
 		$scope.movimientoResp = {};
+		$scope.facturacion = {};
 		$scope.facturacionGrilla = [];
+		$scope.consultaFacturacionGrilla = {};
 		$scope.facturacionFinal = {};
 		$scope.facturacion_pedido = false;
-		$scope.facturacion_btnConsultar = true;
 		$scope.facturacion_btnRegistrar = true;
+		$scope.facturacion_btnConsultar = true;
 		$scope.grilla_facturacion = true;
+		$scope.grilla_consulta_facturacion = false;
+		
 	}
 	
 	var regexp = /^[\ |0-9]{0,10}$/;

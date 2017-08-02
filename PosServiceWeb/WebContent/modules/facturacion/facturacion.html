@@ -83,3 +83,32 @@
 	</table>
 </div>
 
+
+<div ng-show="grilla_consulta_facturacion">
+	<table>
+		<tr>
+			<th>Factura</th>
+			<th>Id Cliente</th>
+			<th>Fecha</th>
+			<th>Valor</th>
+			<th>Vendedor</th>
+			<th>Accion</th>
+		</tr>
+
+ 		<tr ng-repeat="facturas in consultaFacturacionGrilla">
+ 			
+ 			<td>{{facturas.idmovimiento}}</td>
+ 			<td>{{facturas.idpersona}}</td>
+ 			<td>{{facturas.fecha | date:'M/d/yyyy HH:mm:ss'}}</td>
+ 			<td>$ </td>
+ 			<td>{{facturas.idusuario}}</td>
+ 			
+			<td>
+				<img src="assets/img/magnifier.png" class="caneca"
+					ng-click="VerFactura(facturas)">
+			</td>
+		</tr>
+		
+	</table>
+</div>
+

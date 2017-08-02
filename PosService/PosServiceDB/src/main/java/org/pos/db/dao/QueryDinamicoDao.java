@@ -41,7 +41,7 @@ public class QueryDinamicoDao {
 		}
 	}
 	
-	public List<Movimiento> buscaFacturas(Movimiento fact, String esquema) {
+	public List<Movimiento> buscaFacturas(Movimiento fact, List<Persona> personas, String esquema) {
 
 		try {
 
@@ -51,17 +51,26 @@ public class QueryDinamicoDao {
 				sql += "IDMOVIMIENTO = :idmovimiento AND ";
 			if (null != fact.getIdtipomovimiento())
 				sql += "IDTIPOMOVIMIENTO = :idtipomovimiento AND ";
-			if (null != fact.getIdpersona())
-				sql += "IDPERSONA = :idpersona AND ";	
+			if (null != fact.getFecha())
+				sql += "TO_CHAR(FECHA,'YYYY-MM-DD')= :fecha AND ";
+			if (!personas.isEmpty()){
+				sql += "IDPERSONA IN (";
+				for (Persona persona : personas)
+					sql += persona.getIdpersona()+", ";
+				sql += "0) AND ";
+			}
+
 			sql += "1=1 ORDER BY IDMOVIMIENTO";
+			
+			log.info("SQL: "+sql);
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			if (null != fact.getIdmovimiento())
 				query.bind("idmovimiento", fact.getIdmovimiento());
 			if (null != fact.getIdtipomovimiento())
 				query.bind("idtipomovimiento", fact.getIdtipomovimiento());
-			if (null != fact.getIdpersona())
-				query.bind("idpersona", fact.getIdpersona());
+			if (null != fact.getFecha())
+				query.bind("fecha", "'"+fact.getFecha()+"'");
 
 			return query.map(new MovimientoMapper()).list();
 
@@ -123,6 +132,8 @@ public class QueryDinamicoDao {
 				sql += "IDPERSONA = :idpersona AND ";
 			if (null != persona.getIdtipopersona())
 				sql += "IDTIPOPERSONA = :idtipopersona AND ";
+			if (null != persona.getIdtipoidentificacion())
+				sql += "IDTIPODEIDENTIFICACION = :idtipoidentificacion AND ";
 			if (null != persona.getIdentificacion())
 				sql += "IDENTIFICACION = :identificacion AND ";
 			if (null != persona.getNombre() && !"".equals(persona.getNombre()))
@@ -135,7 +146,11 @@ public class QueryDinamicoDao {
 				sql += "LOWER(CORREOCONTACTO) LIKE LOWER('%'||:correocontacto||'%') AND ";
 			if (null != persona.getContacto() && !"".equals(persona.getContacto()))
 				sql += "LOWER(CONTACTO) LIKE LOWER('%'||:contacto||'%') AND ";
+			
+			
 			sql += "1=1 ORDER BY IDPERSONA";
+			
+			log.info("SQL: "+sql);
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			
@@ -143,6 +158,8 @@ public class QueryDinamicoDao {
 				query.bind("idpersona", persona.getIdpersona());
 			if (null != persona.getIdtipopersona())
 				query.bind("idtipopersona", persona.getIdtipopersona());
+			if (null != persona.getIdtipoidentificacion())
+				query.bind("idtipoidentificacion", persona.getIdtipoidentificacion());
 			if (null != persona.getIdentificacion())
 				query.bind("identificacion", persona.getIdentificacion());
 			if (null != persona.getNombre() && !"".equals(persona.getNombre()))

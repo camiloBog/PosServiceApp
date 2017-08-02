@@ -76,24 +76,58 @@ public class MovimientoController {
 			if("".equals(esquema) || null==esquema)
 				return new MsgResponseDto("El usuario "+fact.getUsuario()+" no existe.",false,null);
 			
-			Movimiento movimiento = new Movimiento();
-//			movimiento.setFecha();
-			movimiento.setIdmovimiento(fact.getIdFactura());
-//			movimiento.setIdpersona();
-			movimiento.setIdtipomovimiento(PosSGlobal.TIPO_VENTA);
-//			movimiento.setIdusuario(fact.get);
+			Persona persona = new Persona();
+			persona.setIdtipopersona(PosSGlobal.TIPO_CLIENTE);
+			persona.setNombre(fact.getNombre());
+			persona.setIdentificacion(fact.getIdentificacion());
+			persona.setIdtipoidentificacion(fact.getIdtipoidentificacion());			
+			List<Persona> personas = new QueryDinamicoDao().buscaPersona(persona, esquema);
+
+			Movimiento movimientoBusqueda = new Movimiento();
+			movimientoBusqueda.setFecha(fact.getFecha());
+			movimientoBusqueda.setIdmovimiento(fact.getIdFactura());
+			movimientoBusqueda.setIdtipomovimiento(PosSGlobal.TIPO_VENTA);
+			List<Movimiento> movimientos = new QueryDinamicoDao().buscaFacturas(movimientoBusqueda, personas, esquema);
 			
-			List<Movimiento> movimientos = new QueryDinamicoDao().buscaFacturas(movimiento, esquema);
 			
-			if (null!=movimientos && 0!=movimientos.size())
-				return new MsgResponseDto("Se encontraron "+movimientos.size()+" movimientos",true,movimientos);
+			List<FacturacionDto> facturas = new ArrayList<FacturacionDto>();
+			for (Movimiento movimiento : movimientos) {
+				
+				Persona cliente = new Persona();
+				cliente.setIdpersona(movimiento.getIdpersona());
+				cliente = new QueryDinamicoDao().buscaPersona(cliente, esquema).get(0);
+				
+				**** POR IMPLEMENTAR **** 
+				List<DetalleMovimientoDto> detalles = 
+					new QueryDinamicoDao().buscaDetallesMovimiento(movimiento, esquema);
+				
+				FacturacionDto factura = new FacturacionDto();
+				factura.setFecha(movimiento.getFecha());
+				factura.setIdentificacion(cliente.getIdentificacion());
+				factura.setIdFactura(movimiento.getIdmovimiento());
+				factura.setIdtipoidentificacion(cliente.getIdtipoidentificacion());
+				factura.setNombre(cliente.getNombre());
+				factura.setUsuario(movimiento.getIdusuario().toString());
+				factura.setDetallemovimiento(detalles);
+				
+				facturas.add(factura);
+			}
+
+			if (null!=facturas && 0!=facturas.size())
+				return new MsgResponseDto("Se encontraron "+movimientos.size()+" facturas",true,facturas);
 			else
-				return new MsgResponseDto("No se encontraron movimientos!",false,null);
+				return new MsgResponseDto("No se encontraron facturas!",false,null);
+			
+			
+//			if (null!=movimientos && 0!=movimientos.size())
+//				return new MsgResponseDto("Se encontraron "+movimientos.size()+" movimientos",true,movimientos);
+//			else
+//				return new MsgResponseDto("No se encontraron movimientos!",false,null);
 			
 		} catch (Exception e) {
-			log.error("Ocurrio un error al buscar los movimientos. " + usuario);
+			log.error("Ocurrio un error al buscar las facturas. " + usuario);
 			log.error(e.getMessage());
-			return new MsgResponseDto("Ocurrio un error al buscar los movimientos!",false,null);
+			return new MsgResponseDto("Ocurrio un error al buscar las facturas!",false,null);
 		}
 		
 	}
