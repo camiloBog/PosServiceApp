@@ -1,5 +1,6 @@
 package org.pos.core.controller;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,10 @@ import org.pos.core.dto.DetalleMovimientoDto;
 import org.pos.core.dto.FacturacionDto;
 import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
+import org.pos.db.dao.DetalleMovimientoDao;
 import org.pos.db.dao.MovimientoDao;
 import org.pos.db.dao.PersonaDao;
+import org.pos.db.dao.ProductoDao;
 import org.pos.db.dao.QueryDinamicoDao;
 import org.pos.db.dao.UsuarioDao;
 import org.pos.db.entidades.DetalleMovimiento;
@@ -69,6 +72,9 @@ public class MovimientoController {
 	public MsgResponseDto consultaFactura(FacturacionDto fact) {
 		
 		String usuario = fact.getUsuario();
+		DetalleMovimientoDao daoDetalle;
+		ProductoDao daoProducto;
+		UsuarioDao daoUsuario;
 
 		try {
 			
@@ -89,17 +95,41 @@ public class MovimientoController {
 			movimientoBusqueda.setIdtipomovimiento(PosSGlobal.TIPO_VENTA);
 			List<Movimiento> movimientos = new QueryDinamicoDao().buscaFacturas(movimientoBusqueda, personas, esquema);
 			
-			
 			List<FacturacionDto> facturas = new ArrayList<FacturacionDto>();
 			for (Movimiento movimiento : movimientos) {
+				
+				BigDecimal valorTotal = new BigDecimal(0);
 				
 				Persona cliente = new Persona();
 				cliente.setIdpersona(movimiento.getIdpersona());
 				cliente = new QueryDinamicoDao().buscaPersona(cliente, esquema).get(0);
+
+				daoDetalle = DaoFactory.getDetalleMovimientoDao(DetalleMovimientoDao.class, esquema);
+				daoProducto = DaoFactory.getProductoDao(ProductoDao.class, esquema);
 				
-				**** POR IMPLEMENTAR **** 
-				List<DetalleMovimientoDto> detalles = 
-					new QueryDinamicoDao().buscaDetallesMovimiento(movimiento, esquema);
+				List<DetalleMovimiento> detallesList = daoDetalle.findAllById(movimiento.getIdmovimiento());
+				
+				List<DetalleMovimientoDto> detalles = new ArrayList<DetalleMovimientoDto>();
+				for (DetalleMovimiento detalleMovimiento : detallesList) {
+					
+					BigDecimal cant = new BigDecimal(detalleMovimiento.getCantidad());
+					BigDecimal valor = detalleMovimiento.getValor().multiply(cant);
+					valorTotal = valorTotal.add(valor);
+
+					DetalleMovimientoDto dto = new 
+							DetalleMovimientoDto(
+								detalleMovimiento.getIdproducto(), 
+								daoProducto.findById(detalleMovimiento.getIdproducto()).getNombreproducto(), 
+								detalleMovimiento.getCantidad(), 
+								valor, 
+								detalleMovimiento.getValor()
+							);
+					
+					detalles.add(dto);
+				}
+				
+				daoUsuario = DaoFactory.getUsuarioDao(UsuarioDao.class);
+				String vendedor = daoUsuario.findById(movimiento.getIdusuario()).getNombre();
 				
 				FacturacionDto factura = new FacturacionDto();
 				factura.setFecha(movimiento.getFecha());
@@ -107,25 +137,20 @@ public class MovimientoController {
 				factura.setIdFactura(movimiento.getIdmovimiento());
 				factura.setIdtipoidentificacion(cliente.getIdtipoidentificacion());
 				factura.setNombre(cliente.getNombre());
-				factura.setUsuario(movimiento.getIdusuario().toString());
+				factura.setUsuario(vendedor);
+				factura.setValorTotal(valorTotal);
 				factura.setDetallemovimiento(detalles);
 				
 				facturas.add(factura);
 			}
 
 			if (null!=facturas && 0!=facturas.size())
-				return new MsgResponseDto("Se encontraron "+movimientos.size()+" facturas",true,facturas);
+				return new MsgResponseDto("Se encontraron "+facturas.size()+" facturas",true,facturas);
 			else
 				return new MsgResponseDto("No se encontraron facturas!",false,null);
 			
-			
-//			if (null!=movimientos && 0!=movimientos.size())
-//				return new MsgResponseDto("Se encontraron "+movimientos.size()+" movimientos",true,movimientos);
-//			else
-//				return new MsgResponseDto("No se encontraron movimientos!",false,null);
-			
 		} catch (Exception e) {
-			log.error("Ocurrio un error al buscar las facturas. " + usuario);
+			log.error("Ocurrio un error al buscar las facturas.");
 			log.error(e.getMessage());
 			return new MsgResponseDto("Ocurrio un error al buscar las facturas!",false,null);
 		}

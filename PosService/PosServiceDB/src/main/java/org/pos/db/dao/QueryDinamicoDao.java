@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.pos.com.PosSGlobal;
 import org.pos.db.bind.DbiProvider;
+import org.pos.db.entidades.DetalleMovimiento;
 import org.pos.db.entidades.Movimiento;
 import org.pos.db.entidades.Persona;
 import org.pos.db.entidades.Producto;
@@ -61,8 +62,6 @@ public class QueryDinamicoDao {
 			}
 
 			sql += "1=1 ORDER BY IDMOVIMIENTO";
-			
-			log.info("SQL: "+sql);
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			if (null != fact.getIdmovimiento())
@@ -133,7 +132,7 @@ public class QueryDinamicoDao {
 			if (null != persona.getIdtipopersona())
 				sql += "IDTIPOPERSONA = :idtipopersona AND ";
 			if (null != persona.getIdtipoidentificacion())
-				sql += "IDTIPODEIDENTIFICACION = :idtipoidentificacion AND ";
+				sql += "IDTIPOIDENTIFICACION = :idtipoidentificacion AND ";
 			if (null != persona.getIdentificacion())
 				sql += "IDENTIFICACION = :identificacion AND ";
 			if (null != persona.getNombre() && !"".equals(persona.getNombre()))
@@ -149,8 +148,6 @@ public class QueryDinamicoDao {
 			
 			
 			sql += "1=1 ORDER BY IDPERSONA";
-			
-			log.info("SQL: "+sql);
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
 			

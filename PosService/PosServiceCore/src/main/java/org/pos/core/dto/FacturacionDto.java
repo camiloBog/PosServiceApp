@@ -1,5 +1,6 @@
 package org.pos.core.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class FacturacionDto {
 	private Long identificacion;
 	private Integer idtipoidentificacion;
 	private Date fecha;
+	private BigDecimal valorTotal;
 	private List<DetalleMovimientoDto> detallemovimiento;
 
 	public FacturacionDto() {
@@ -18,13 +20,15 @@ public class FacturacionDto {
 	}
 	
 	public FacturacionDto(Integer idFactura, String usuario, String nombre, Long identificacion, 
-			Integer idtipoidentificacion, Date fecha, List<DetalleMovimientoDto> detallemovimiento) {
+			Integer idtipoidentificacion, Date fecha, BigDecimal valorTotal ,
+			List<DetalleMovimientoDto> detallemovimiento) {
 		this.idFactura=idFactura;
 		this.usuario = usuario;
 		this.nombre = nombre; 
 		this.identificacion = identificacion; 
 		this.idtipoidentificacion = idtipoidentificacion;
-		this.setFecha(fecha);
+		this.fecha = fecha;
+		this.setValorTotal(valorTotal);
 		this.detallemovimiento = detallemovimiento;
 		
 	}
@@ -83,6 +87,14 @@ public class FacturacionDto {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 }

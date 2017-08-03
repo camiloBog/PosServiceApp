@@ -22,4 +22,7 @@ public interface DetalleMovimientoDao extends DaoInterface  {
 	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".DETALLEMOVIMIENTO")
 	public List<DetalleMovimiento> findAll();
 	
+	@SqlQuery("select * from "+PosSGlobal.ESQUEMA+".DETALLEMOVIMIENTO where idmovimiento = :idmovimiento")
+	public List<DetalleMovimiento> findAllById(@Bind("idmovimiento") int idmovimiento);
+	
 }

@@ -69,10 +69,91 @@ function facturacionController($scope, serviciosRestRequest) {
 		});
 		
 	}
-	
+/*	
+	{
+        "idFactura": 8,
+        "usuario": "Vendedor1",
+        "nombre": "Pedro Picapiedra",
+        "identificacion": 999009,
+        "idtipoidentificacion": 2,
+        "fecha": 1501725610458,
+        "valorTotal": 119200,
+        "detallemovimiento": [
+            {
+                "idproducto": 1,
+                "nombreproducto": "Harina",
+                "cantidad": 1,
+                "valor": 100000,
+                "valorunitario": 100000
+            },
+            {
+                "idproducto": 2,
+                "nombreproducto": "Huevos tipo A",
+                "cantidad": 2,
+                "valor": 18000,
+                "valorunitario": 9000
+            },
+            {
+                "idproducto": 3,
+                "nombreproducto": "Huevo",
+                "cantidad": 4,
+                "valor": 1200,
+                "valorunitario": 300
+            }
+        ]
+    }
+*/	
 
-	$scope.VerFactura = function(json_movimiento) {
-		swal("Ver Factura #"+json_movimiento.idmovimiento, "Este es otro texto", "success");
+	$scope.VerFactura = function(factura) {
+		
+		var txt = "<table>";
+		
+		txt += "<tr>";
+		txt += "<th>Cliente: "+factura.nombre+"</th>";
+		txt += "<th>Documento: "+factura.identificacion+"</th>";
+		txt += "</tr>";
+		
+		txt += "</table>";
+		
+		var productos = factura.detallemovimiento;
+		
+		txt += "<BR>";
+		
+		txt += "<table>";
+		
+		txt += "<tr>";
+		txt += "<th>Producto</th>";
+		txt += "<th>Cantidad</th>";
+		txt += "<th>Precio</th>";
+		txt += "<th>Total</th>";
+		txt += "</tr>";
+		
+		for ( var index in productos ) {
+			var producto = productos[index];
+			
+			txt += "<tr>";
+			txt += "<th>"+producto.nombreproducto+"</th>";
+			txt += "<th>"+producto.cantidad+"</th>";
+			txt += "<th>$"+producto.valorunitario+"</th>";
+			txt += "<th>$"+producto.valor+"</th>";
+			txt += "</tr>";
+			
+		}
+		
+		txt += "<tr>";
+		txt += "<th></th>";
+		txt += "<th></th>";
+		txt += "<th>TOTAL</th>";
+		txt += "<th>$"+factura.valorTotal+"</th>";
+		txt += "</tr>";
+		
+		txt += "</table>";
+		
+		swal({
+			title: "Factura #"+factura.idFactura,
+			text: txt,
+			html: true
+		});
 	}
 	
 
@@ -185,6 +266,7 @@ function facturacionController($scope, serviciosRestRequest) {
 						$scope.cliente.idMovimiento = $scope.movimientoResp.objeto;
 						$scope.facturacion_pedido = true;
 						$scope.facturacion_btnConsultar = false;
+						$scope.facturacion_btnRegistrar = false;
 						
 						swal($scope.movimientoResp.mensaje, "", "success");
 					} else {
