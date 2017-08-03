@@ -22,7 +22,7 @@
 <div class="botonera">
 	<div class="2u">
 		<p class="button-style">
-			<a href="#/ingreso" ng-click="IngresoRegistrar()">Guardar</a>
+			<a href="#/ingreso" ng-click="IngresoRegistrar()" ng-show="ingreso_btnIngreso">Guardar</a>
 		</p>
 	</div>
 	<div class="3u">
@@ -37,31 +37,6 @@
 	</div>
 </div>
 
-<!-- <div ng-show="grilla_ingresos"> -->
-<!-- 	<table> -->
-<!-- 		<tr> -->
-<!-- 			<th>Id</th> -->
-<!-- 			<th>Proveedor</th> -->
-<!-- 			<th>Val. Total</th> -->
-<!-- 			<th>Fecha</th> -->
-<!-- 			<th>Usuario</th> -->
-<!-- 		</tr> -->
-
-<!--  		<tr ng-repeat="proveedor in proveedoresList">  -->
-<!-- 			<td>{{proveedor.idpersona}}</td> -->
-<!-- 			<td>{{proveedor.idtipopersona}}</td> -->
-<!-- 			<td>{{proveedor.identificacion}}</td> -->
-<!-- 			<td>12/11/2017</td> -->
-<!-- 			<td>{{proveedor.nombre}}</td> -->
-<!-- 			<td> -->
-<!-- 				<img src="assets/img/eliminar.png" class="caneca" -->
-<!-- 					ng-click="borrarIngreso(proveedor)"> -->
-<!-- 			</td> -->
-<!-- 		</tr> -->
-		
-<!-- 	</table> -->
-<!-- </div> -->
-<!-- </br> -->
 <div ng-show="grilla_ingresos">
 	<table>
 		<tr>
@@ -96,3 +71,31 @@
 		
 	</table>
 </div>
+
+
+<div ng-show="grilla_movimientos">
+	<table>
+		<tr>
+			<th>Pedido</th>
+			<th>Id Proveedor</th>
+			<th>Proveedor</th>
+			<th>Fecha</th>
+			<th>Valor</th>
+			<th>Accion</th>
+		</tr>
+		
+ 		<tr ng-repeat="movimiento in consultaMovimientosGrilla"> 
+			<td>{{movimiento.idFactura}}</td>
+			<td>{{movimiento.identificacion}}</td>
+			<td>{{movimiento.nombre}}</td>
+			<td>{{movimiento.fecha | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+			<td>$ {{movimiento.valorTotal}}</td>
+			<td>
+				<img src="assets/img/magnifier.png" class="caneca"
+					ng-click="VerMovimiento(movimiento)">
+			</td>
+		</tr>
+		
+	</table>
+</div>
+

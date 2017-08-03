@@ -19,6 +19,7 @@ function ingresoController($scope, serviciosRestRequest) {
 	$scope.grilla_movimientos = false;
 	$scope.ingreso_pedido = false;
 	$scope.ingreso_btnConsultar = true;
+	$scope.ingreso_btnIngreso = true;
 	
 	
 	var json_usuario = {
@@ -37,11 +38,6 @@ function ingresoController($scope, serviciosRestRequest) {
 		$scope.productosList = data.objeto;
 	});
 	
-	$scope.IngresoConsultar = function() {
-		$scope.grilla_movimientos = true;
-		swal("Upss!", "Este metodo aun no se ha implementado... :(", "error");
-	}
-	
 	
 	$scope.IngresoCancelar = function() {
 		$scope.movimiento = {};
@@ -49,8 +45,10 @@ function ingresoController($scope, serviciosRestRequest) {
 		$scope.movimientoResp = {};
 		$scope.ingresoGrilla = [];
 		$scope.ingresoFinal = {};
-		$scope.ingreso_pedido = false;
+		$scope.ingreso_btnIngreso = true;
 		$scope.ingreso_btnConsultar = true;
+		$scope.grilla_ingresos = true;
+		$scope.grilla_movimientos = false;
 	}
 	
 	var regexp = /^[\ |0-9]{0,10}$/;
@@ -129,6 +127,7 @@ function ingresoController($scope, serviciosRestRequest) {
 						$scope.movimiento.id = $scope.movimientoResp.objeto;
 						$scope.ingreso_pedido = true;
 						$scope.ingreso_btnConsultar = false;
+						$scope.ingreso_btnIngreso = false;
 						
 						swal($scope.movimientoResp.mensaje, "", "success");
 					} else {
@@ -137,6 +136,117 @@ function ingresoController($scope, serviciosRestRequest) {
 				});
 			});
 		}	
+	}
+	
+	
+	$scope.consultaMovimientosGrilla = {};
+	
+	$scope.IngresoConsultar = function() {
+		
+		$scope.ingresosResp = {};
+		
+		var json_producto = {
+			idmovimiento : $scope.movimiento.id,
+			idpersona : $scope.movimiento.proveedorId,
+			usuario : $scope.valUsu.usuario
+		};
+		
+		$scope.movimientoResp = {};
+		
+		serviciosRestRequest.consultaIngresoProductos(json_producto).success(function (data){
+			
+			$scope.movimientoResp = data;
+			
+			if( $scope.movimientoResp.validacion == true ){
+				
+				$scope.consultaMovimientosGrilla = $scope.movimientoResp.objeto;
+				
+				
+				
+				$scope.ingreso_btnConsultar = false;
+				$scope.ingreso_btnIngreso = false;
+				$scope.grilla_ingresos = false;
+				$scope.grilla_movimientos = true;
+				
+				$scope.ingresoFinal = {};
+				$scope.ingresoGrilla = [];
+				
+			}else {
+				swal($scope.movimientoResp.mensaje, "", "error");
+			}
+						
+		});
+		
+	}
+	
+	$scope.formatDate = function (date) {
+	    function pad(n) {
+	        return n < 10 ? '0' + n : n;
+	    }
+
+	    return date && 
+	    pad(date.getDate()
+        + '-' + pad(date.getMonth() + 1)
+        + '-' + date.getFullYear() )
+        ;
+	};
+
+	$scope.VerFecha = function() {
+		$scope.verCalendario = !$scope.verCalendario;		
+	}
+	
+	$scope.VerMovimiento = function(movimiento) {
+		
+		var txt = "<h1 style='display: table-row-group; text-align: right;' >Fecha de Ingreso: "+movimiento.fecha+"<h1>";
+		
+		txt += "<table>";
+		
+		txt += "<tr>";
+		txt += "<th>Cliente: "+movimiento.nombre+"</th>";
+		txt += "<th>Documento: "+movimiento.identificacion+"</th>";
+		txt += "</tr>";
+		
+		txt += "</table>";
+		
+		var movimientos = movimiento.detallemovimiento;
+		
+		txt += "<BR>";
+		
+		txt += "<table>";
+		
+		txt += "<tr>";
+		txt += "<th>Producto</th>";
+		txt += "<th>Cantidad</th>";
+		txt += "<th>Precio</th>";
+		txt += "<th>Total</th>";
+		txt += "</tr>";
+		
+		for ( var index in movimientos ) {
+			var movimi = movimientos[index];
+			
+			txt += "<tr>";
+			txt += "<th>"+movimi.nombreproducto+"</th>";
+			txt += "<th>"+movimi.cantidad+"</th>";
+			txt += "<th>$"+movimi.valorunitario+"</th>";
+			txt += "<th>$"+movimi.valor+"</th>";
+			txt += "</tr>";
+			
+		}
+		
+		txt += "<tr>";
+		txt += "<th></th>";
+		txt += "<th></th>";
+		txt += "<th>TOTAL</th>";
+		txt += "<th>$"+movimiento.valorTotal+"</th>";
+		txt += "</tr>";
+		
+		txt += "</table>";
+		
+		swal({
+			title: "Ingreso #"+movimiento.idFactura,
+			text: txt,
+			html: true
+		});
 	}
 
 	

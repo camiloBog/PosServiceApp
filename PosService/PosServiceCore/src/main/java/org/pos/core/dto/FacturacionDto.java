@@ -11,7 +11,7 @@ public class FacturacionDto {
 	private String nombre;
 	private Long identificacion;
 	private Integer idtipoidentificacion;
-	private Date fecha;
+	private String fecha;
 	private BigDecimal valorTotal;
 	private List<DetalleMovimientoDto> detallemovimiento;
 
@@ -20,7 +20,7 @@ public class FacturacionDto {
 	}
 	
 	public FacturacionDto(Integer idFactura, String usuario, String nombre, Long identificacion, 
-			Integer idtipoidentificacion, Date fecha, BigDecimal valorTotal ,
+			Integer idtipoidentificacion, String fecha, BigDecimal valorTotal ,
 			List<DetalleMovimientoDto> detallemovimiento) {
 		this.idFactura=idFactura;
 		this.usuario = usuario;
@@ -81,11 +81,11 @@ public class FacturacionDto {
 		this.idFactura = idFactura;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

@@ -39,6 +39,8 @@ public interface InventarioService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response borrarProducto(Producto producto);
 	
+	
+	
 	@POST
 	@Path("reg/pers")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -54,9 +56,16 @@ public interface InventarioService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response borrarProveedor(Persona persona);
 	
+	
+	
 	@POST
 	@Path("reg/mov/prod/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response registraIngresoProducto(Movimiento movimiento);
+	
+	@POST
+	@Path("cons/mov/prod/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response consultaIngresoProducto(Movimiento movimiento);
 
 }

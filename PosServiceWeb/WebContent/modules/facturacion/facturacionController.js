@@ -12,6 +12,10 @@ function facturacionController($scope, serviciosRestRequest) {
 	$scope.totaliza.totalPesos ='$ 0';
 	$scope.totaliza.total = 0;
 	
+	$scope.verCalendario = false;
+	
+	$scope.fecha_seleccion;
+	
 	//Contiene los input del front
 	$scope.cliente = {};
 	
@@ -44,6 +48,7 @@ function facturacionController($scope, serviciosRestRequest) {
 		$scope.facturacionFinal.idFactura = $scope.cliente.idMovimiento;
 		$scope.facturacionFinal.usuario = $scope.valUsu.usuario;
 		$scope.facturacionFinal.nombre = $scope.cliente.nombre;
+		$scope.facturacionFinal.fecha = $scope.fecha_seleccion;
 		$scope.facturacionFinal.identificacion = $scope.cliente.identificacion;
 		$scope.facturacionFinal.idtipoidentificacion = $scope.cliente.idtipoidentificacion;
 
@@ -69,44 +74,28 @@ function facturacionController($scope, serviciosRestRequest) {
 		});
 		
 	}
-/*	
-	{
-        "idFactura": 8,
-        "usuario": "Vendedor1",
-        "nombre": "Pedro Picapiedra",
-        "identificacion": 999009,
-        "idtipoidentificacion": 2,
-        "fecha": 1501725610458,
-        "valorTotal": 119200,
-        "detallemovimiento": [
-            {
-                "idproducto": 1,
-                "nombreproducto": "Harina",
-                "cantidad": 1,
-                "valor": 100000,
-                "valorunitario": 100000
-            },
-            {
-                "idproducto": 2,
-                "nombreproducto": "Huevos tipo A",
-                "cantidad": 2,
-                "valor": 18000,
-                "valorunitario": 9000
-            },
-            {
-                "idproducto": 3,
-                "nombreproducto": "Huevo",
-                "cantidad": 4,
-                "valor": 1200,
-                "valorunitario": 300
-            }
-        ]
-    }
-*/	
+	
+	$scope.formatDate = function (date) {
+	    function pad(n) {
+	        return n < 10 ? '0' + n : n;
+	    }
 
+	    return date && 
+	    pad(date.getDate()
+        + '-' + pad(date.getMonth() + 1)
+        + '-' + date.getFullYear() )
+        ;
+	};
+
+	$scope.VerFecha = function() {
+		$scope.verCalendario = !$scope.verCalendario;		
+	}
+	
 	$scope.VerFactura = function(factura) {
 		
-		var txt = "<table>";
+		var txt = "<h1 style='display: table-row-group; text-align: right;' >Fecha de Compra: "+factura.fecha+"<h1>";
+		
+		txt += "<table>";
 		
 		txt += "<tr>";
 		txt += "<th>Cliente: "+factura.nombre+"</th>";
@@ -173,6 +162,7 @@ function facturacionController($scope, serviciosRestRequest) {
 		$scope.facturacion_btnConsultar = true;
 		$scope.grilla_facturacion = true;
 		$scope.grilla_consulta_facturacion = false;
+		$scope.fecha_seleccion = "";
 		
 	}
 	

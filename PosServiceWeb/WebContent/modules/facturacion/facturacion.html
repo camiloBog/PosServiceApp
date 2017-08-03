@@ -14,7 +14,7 @@
 				ng-disabled="true" ng-model="totaliza.totalPesos"/> <br/>
 				
 			<label class="formulario">Cliente:</label>
-			<input style="width: 33%" type="text" 
+			<input style="width: 32%" type="text" 
 				class="buscar-consultor" id="buscar-consultor" placeholder="Nombre del Cliente" ng-model="cliente.nombre" /><br/>
 			
 			<label class="formulario">Identificacion:</label>
@@ -23,9 +23,17 @@
 			<label class="espacio">Tipo Id:</label> 
 			<select style="width: 15%" name="tipo_identificacion" class="buscar-consultor2" 
 				ng-model="cliente.idtipoidentificacion" ng-options="tipo.ididentificacion as tipo.descripcion for tipo in tiposId">
-			</select> <br/> 		
+			</select> <br/>
+			
+			<label class="formulario">Fecha:</label>
+			<input style="width: 7%" type="text" class="buscar-consultor" placeholder="DD/MM/AAAA" 
+				ng-disabled="true" ng-model="fecha_seleccion" ng-click="VerFecha()"/>
+			<date-picker ng-model="fecha_seleccion" ng-show="verCalendario" 
+				on-date-selected="VerFecha()" format-date="formatDate">	</date-picker>
+			<img src="assets/img/calendar.png" class="caneca" ng-click="VerFecha()" ng-hide="verCalendario"><br/>
 			
 		</form>
+
 	</div>
 </div>
 
@@ -101,7 +109,7 @@
  			<td>{{facturas.idFactura}}</td>
  			<td>{{facturas.identificacion}}</td>
  			<td>{{facturas.nombre}}</td>
- 			<td>{{facturas.fecha | date:'M/d/yyyy HH:mm:ss'}}</td>
+ 			<td>{{facturas.fecha | date:'dd/MM/yyyy HH:mm:ss'}}</td>
  			<td>$ {{facturas.valorTotal}}</td>
  			<td>{{facturas.usuario}}</td>
  			

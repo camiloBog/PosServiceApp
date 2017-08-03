@@ -1,5 +1,7 @@
 package org.pos.db.dao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.pos.com.PosSGlobal;
 import org.pos.db.bind.DbiProvider;
-import org.pos.db.entidades.DetalleMovimiento;
 import org.pos.db.entidades.Movimiento;
 import org.pos.db.entidades.Persona;
 import org.pos.db.entidades.Producto;
@@ -42,8 +43,10 @@ public class QueryDinamicoDao {
 		}
 	}
 	
-	public List<Movimiento> buscaFacturas(Movimiento fact, List<Persona> personas, String esquema) {
-
+	public List<Movimiento> buscaMovimientos(Movimiento fact, List<Persona> personas, String esquema) {
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		
 		try {
 
 			String sql = "SELECT * FROM " + esquema + ".MOVIMIENTO WHERE ";
@@ -53,7 +56,8 @@ public class QueryDinamicoDao {
 			if (null != fact.getIdtipomovimiento())
 				sql += "IDTIPOMOVIMIENTO = :idtipomovimiento AND ";
 			if (null != fact.getFecha())
-				sql += "TO_CHAR(FECHA,'YYYY-MM-DD')= :fecha AND ";
+				sql += "TO_CHAR(FECHA,'DD-MM-YYYY')= '"+dateFormat.format(fact.getFecha())+"' AND ";
+//				sql += "TO_CHAR(FECHA,'DD-MM-YYYY')= :fecha AND ";
 			if (!personas.isEmpty()){
 				sql += "IDPERSONA IN (";
 				for (Persona persona : personas)
@@ -68,9 +72,11 @@ public class QueryDinamicoDao {
 				query.bind("idmovimiento", fact.getIdmovimiento());
 			if (null != fact.getIdtipomovimiento())
 				query.bind("idtipomovimiento", fact.getIdtipomovimiento());
-			if (null != fact.getFecha())
-				query.bind("fecha", "'"+fact.getFecha()+"'");
+//			if (null != fact.getFecha())
+//				query.bind("fecha", "'"+dateFormat.format(fact.getFecha())+"'" );
 
+			log.info(sql);
+			
 			return query.map(new MovimientoMapper()).list();
 
 		} catch (Exception e) {

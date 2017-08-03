@@ -65,6 +65,10 @@ angular.module('serviciosRest', [])
 			return $http.post(path+"inv/reg/mov/prod/",ingresa_movimiento);
 		},
 		
+		consultaIngresoProductos : function(consulta_movimiento){
+			return $http.post(path+"inv/cons/mov/prod/",consulta_movimiento);
+		},
+		
 		creafacturacionProductos : function(factura_movimiento){
 			return $http.post(path+"fact/reg/vent/",factura_movimiento);
 		},

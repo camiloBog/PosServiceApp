@@ -153,4 +153,20 @@ public class InventarioImpl implements InventarioService{
 		
 	}
 
+	@Override
+	public Response consultaIngresoProducto(Movimiento movimiento) {
+		
+		log.info("Consulta Ingreso Producto");		
+		
+		MsgResponseDto response = new MovimientoController().consultaIngreso(movimiento);
+
+		if (response != null) {
+			return Response.status(200).entity(response).build();
+		} else {
+			log.warn("No fue posible realizar la consulta de Ingreso de Productos");
+			return Response.status(200).entity(null).build();
+		}
+		
+	}
+
 }
