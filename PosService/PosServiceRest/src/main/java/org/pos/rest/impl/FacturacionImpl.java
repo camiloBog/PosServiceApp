@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.pos.core.controller.MovimientoController;
 import org.pos.core.dto.FacturacionDto;
 import org.pos.core.dto.MsgResponseDto;
-import org.pos.db.entidades.Movimiento;
 import org.pos.rest.service.FacturacionService;
 
 public class FacturacionImpl implements FacturacionService{
@@ -32,8 +31,7 @@ public class FacturacionImpl implements FacturacionService{
 
 	@Override
 	public Response consultaVenta(FacturacionDto fact) {
-		Movimiento movimiento = new Movimiento();
-		
+				
 		log.info("Consultando facturacion...");
 		
 		MsgResponseDto response = new MovimientoController().consultaFactura(fact);

@@ -2,6 +2,8 @@ package org.pos.com;
 
 public class PosSGlobal {
 	
+	public static final Integer CERO = 0;
+	
 	/**
 	 * JNDI del datasource de la base de datos de PosService
 	 */

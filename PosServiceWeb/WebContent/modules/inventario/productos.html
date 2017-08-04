@@ -51,6 +51,7 @@
 		<tr>
 			<th>Id</th>
 			<th>Nombre</th>
+			<th>Existencias</th>
 			<th>Medida</th>
 			<th>Precio Venta</th>
 			<th>Descripcion</th>
@@ -60,6 +61,7 @@
 		<tr ng-repeat="producto in productosGrid">
 			<td>{{producto.idproducto}}</td>
 			<td>{{producto.nombreproducto}}</td>
+			<td>{{producto.existencias}}</td>
 			<td>{{producto.tipomedida}}</td>
 			<td>$ {{producto.precioVenta}}</td>
 			<td>{{producto.descripcion}}</td>

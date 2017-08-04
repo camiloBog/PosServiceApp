@@ -7,6 +7,7 @@ import org.pos.db.bind.EsquemaSetter;
 import org.pos.db.entidades.DetalleMovimiento;
 import org.pos.db.entidades.Movimiento;
 import org.pos.db.mapper.MovimientoMapper;
+import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
@@ -25,6 +26,16 @@ public abstract class MovimientoDao {
 	@SqlUpdate("insert into "+PosSGlobal.ESQUEMA+".DETALLEMOVIMIENTO (idmovimiento, iddetalle, idproducto, cantidad, valor, observacion) "
 			+ "values (:idmovimiento, :iddetalle, :idproducto, :cantidad, :valor, :observacion)")
 	protected abstract int insertDetalle(@BindBean DetalleMovimiento detalleMovimiento);
+	
+	@SqlUpdate("update "+PosSGlobal.ESQUEMA+".PRODUCTO set existencias = "
+			+ "(:existencias + (select existencias from obleasmaria_27.PRODUCTO where idproducto = :idproducto)) "
+			+ "where idproducto = :idproducto")
+	public abstract void agregaExistenciasProducto(@Bind("idproducto") int idproducto, @Bind("existencias") int existencias);
+	
+	@SqlUpdate("update "+PosSGlobal.ESQUEMA+".PRODUCTO set existencias = "
+			+ "( (select existencias from obleasmaria_27.PRODUCTO where idproducto = :idproducto) - :existencias) "
+			+ "where idproducto = :idproducto")
+	public abstract void restaExistenciasProducto(@Bind("idproducto") int idproducto, @Bind("existencias") int existencias);
 	
 	@SqlQuery("select nextval('"+PosSGlobal.ESQUEMA+".movimiento_seq')")
 	protected abstract int getSecuence();
@@ -50,6 +61,12 @@ public abstract class MovimientoDao {
 			detalle.setIdmovimiento(movimiento.getIdmovimiento());
 			
 			insertDetalle(detalle);
+			
+			if(movimiento.getIdtipomovimiento()==PosSGlobal.TIPO_COMPRA) 
+				agregaExistenciasProducto(detalle.getIdproducto(), detalle.getCantidad());
+			else if(movimiento.getIdtipomovimiento()==PosSGlobal.TIPO_VENTA)
+				restaExistenciasProducto(detalle.getIdproducto(), detalle.getCantidad());
+			
 		}
 
 		return idMov;

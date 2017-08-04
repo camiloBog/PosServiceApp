@@ -103,6 +103,9 @@ public class QueryDinamicoDao {
 				sql += "LOWER(NOMBREPRODUCTO) LIKE LOWER('%'||:nombreproducto||'%') AND ";
 			if (null != producto.getDescripcion() && !"".equals(producto.getDescripcion()))
 				sql += "LOWER(DESCRIPCION) LIKE LOWER('%'||:descripcion||'%') AND ";
+			if (null != producto.getExistencias())
+				sql += "EXISTENCIAS = :existencias AND ";
+			
 			sql += "1=1 ORDER BY IDPRODUCTO";
 
 			Query<Map<String, Object>> query = handle.createQuery(sql);
@@ -114,6 +117,8 @@ public class QueryDinamicoDao {
 				query.bind("nombreproducto", producto.getNombreproducto());
 			if (null != producto.getDescripcion() && !"".equals(producto.getDescripcion()))
 				query.bind("descripcion", producto.getDescripcion());
+			if (null != producto.getExistencias())
+				query.bind("existencias", producto.getExistencias());
 
 			return query.map(new ProductoMapper()).list();
 

@@ -17,18 +17,21 @@ public class Producto implements Serializable {
 	private String tipomedida;
 	private String usuario;
 	private Integer precioVenta;
-
+	private Integer existencias;
+	
 	public Producto() {
 		
 	}
 
 	public Producto(Integer idproducto, String nombreproducto, 
-			String descripcion, Integer idtipomedida,Integer precioVenta) {
+			String descripcion, Integer idtipomedida,
+			Integer precioVenta, Integer existencias) {
 		this.idproducto = idproducto;
 		this.nombreproducto = nombreproducto;
 		this.descripcion = descripcion;
 		this.idtipomedida = idtipomedida;
 		this.precioVenta = precioVenta;
+		this.setExistencias(existencias);
 	}
 
 	public Integer getIdproducto() {
@@ -85,6 +88,14 @@ public class Producto implements Serializable {
 
 	public void setPrecioVenta(Integer precioVenta) {
 		this.precioVenta = precioVenta;
+	}
+
+	public Integer getExistencias() {
+		return existencias;
+	}
+
+	public void setExistencias(Integer existencias) {
+		this.existencias = existencias;
 	}
 		
 }

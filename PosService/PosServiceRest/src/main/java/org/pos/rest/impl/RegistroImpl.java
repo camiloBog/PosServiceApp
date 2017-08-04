@@ -4,7 +4,6 @@ import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.pos.core.controller.ProductoController;
 import org.pos.core.controller.TenantController;
 import org.pos.core.controller.UsuarioController;
 import org.pos.core.dto.MsgResponseDto;

@@ -23,6 +23,7 @@ import org.pos.db.dao.UsuarioDao;
 import org.pos.db.entidades.DetalleMovimiento;
 import org.pos.db.entidades.Movimiento;
 import org.pos.db.entidades.Persona;
+import org.pos.db.entidades.Producto;
 import org.pos.db.entidades.Usuarios;
 
 
@@ -268,6 +269,7 @@ public class MovimientoController {
 		MovimientoDao dao = null;
 		UsuarioDao daoUsu = null;
 		PersonaDao daoPersona = null;
+		ProductoDao daoProducto = null;
 		
 		Persona cliente = new Persona();
 		Integer idPersona = null;
@@ -287,6 +289,19 @@ public class MovimientoController {
 			if("".equals(esquema) || null==esquema)
 				return new MsgResponseDto("El usuario "+usuario.getUsuario()+" no existe.",false,null);
 			
+			//Valida si hay existencia de los productos
+			daoProducto = DaoFactory.getProductoDao(ProductoDao.class, esquema);
+			for (DetalleMovimientoDto detalle : fact.getDetallemovimiento()) {
+				
+				Producto producto = daoProducto.findById(detalle.getIdproducto());
+				if(null==producto){
+					return new MsgResponseDto("El Producto "+detalle.getNombreproducto()+" no existe.",false,null);
+				} else if( detalle.getCantidad() > producto.getExistencias() )
+						return new MsgResponseDto("No hay suficientes existencias del Producto "
+								+detalle.getNombreproducto()+" para realizar esta venta.",false,null);
+						
+			}
+
 			//Valida los datos del cliente
 			cliente.setIdentificacion(fact.getIdentificacion());
 			cliente.setIdtipoidentificacion(fact.getIdtipoidentificacion());
@@ -341,7 +356,8 @@ public class MovimientoController {
 			if(null!=dao) dao.close();
 			if(null!=daoUsu) daoUsu.close();
 			if(null!=daoPersona) daoPersona.close();
-
+			if(null!=daoProducto) daoProducto.close();
+			
 		}
 
 	}

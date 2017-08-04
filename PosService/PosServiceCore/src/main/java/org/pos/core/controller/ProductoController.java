@@ -1,20 +1,15 @@
 package org.pos.core.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.pos.com.PosSGlobal;
 import org.pos.core.dto.MsgResponseDto;
 import org.pos.db.bind.DaoFactory;
-import org.pos.db.bind.DbiProvider;
-import org.pos.db.dao.QueryDinamicoDao;
 import org.pos.db.dao.ProductoDao;
+import org.pos.db.dao.QueryDinamicoDao;
 import org.pos.db.entidades.Producto;
-import org.pos.db.mapper.ProductoMapper;
-import org.skife.jdbi.v2.DBI;
-import org.skife.jdbi.v2.Handle;
-import org.skife.jdbi.v2.Query;
 
 
 public class ProductoController {
@@ -88,6 +83,9 @@ public class ProductoController {
 			
 			dao = DaoFactory.getProductoDao(ProductoDao.class, esquema);
 
+			if( null==producto.getExistencias() ) 
+				producto.setExistencias(PosSGlobal.CERO);
+			
 			int id = -1;
 			id = dao.creaProducto(producto);
 			

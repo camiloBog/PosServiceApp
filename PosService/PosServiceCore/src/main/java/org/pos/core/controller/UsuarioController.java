@@ -165,6 +165,7 @@ public class UsuarioController {
 
 	}
 	
+	@SuppressWarnings("unused")
 	public LoginResponseDto validarUsuario(Usuarios usuarios) {
 		
 		UsuarioDao dao = null;
